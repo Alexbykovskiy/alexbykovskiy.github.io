@@ -80,20 +80,35 @@
         </div>
       </section>
 
-      <!-- РАБОТЫ -->
+                  <!-- РАБОТЫ -->
       <section class="section section--works" id="works">
         <div class="container">
           <h2 class="section-title">РАБОТЫ</h2>
 
           <div class="works-layout">
-          <div class="works-gallery">
-  <div class="work-item"><img src="img/works/work1.JPG" alt=""></div>
-  <div class="work-item"><img src="img/works/work2.JPG" alt=""></div>
-  <div class="work-item"><img src="img/works/work3.JPG" alt=""></div>
-  <div class="work-item"><img src="img/works/work4.JPG" alt=""></div>
-  <div class="work-item"><img src="img/works/work5.JPG" alt=""></div>
-<div class="work-item"><img src="img/works/work6.JPG" alt=""></div>
-</div>
+            <div class="works-carousel">
+              <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+
+              <div class="works-track">
+                <div class="work-item">
+                  <img src="img/works/work1.JPG" alt="Татуировка 1">
+                </div>
+                <div class="work-item">
+                  <img src="img/works/work2.JPG" alt="Татуировка 2">
+                </div>
+                <div class="work-item">
+                  <img src="img/works/work3.JPG" alt="Татуировка 3">
+                </div>
+                <div class="work-item">
+                  <img src="img/works/work4.JPG" alt="Татуировка 4">
+                </div>
+                <div class="work-item">
+                  <img src="img/works/work5.JPG" alt="Татуировка 5">
+                </div>
+              </div>
+
+              <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+            </div>
 
             <div class="works-caption">
               <p>
@@ -101,15 +116,11 @@
                 перекрытия, цвет/чёрно-белые работы, крупные проекты, рукава и т.д.
               </p>
             </div>
-
-            <div class="works-arrows">
-              <!-- Декоративные стрелки, пока без функционала -->
-              <button class="arrow-btn" type="button">&#10094;</button>
-              <button class="arrow-btn" type="button">&#10095;</button>
-            </div>
           </div>
         </div>
       </section>
+
+
 
       <!-- УСЛУГИ -->
       <section class="section section--services" id="services">
@@ -237,9 +248,57 @@
     </footer>
   </div>
 
-  <script>
-    // Current year in footer
+   <script>
+    // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Карусель работ
+    (function () {
+      const track = document.querySelector('.works-track');
+      if (!track) return;
+
+      const items = Array.from(track.querySelectorAll('.work-item'));
+      const prevBtn = document.querySelector('.works-arrow--prev');
+      const nextBtn = document.querySelector('.works-arrow--next');
+      if (items.length < 3 || !prevBtn || !nextBtn) return;
+
+      const visibleCount = 3;                     // сколько карточек видно
+      const slidePercent = 100 / visibleCount;   // ширина шага в %
+      const maxIndex = items.length - 2;         // последний центральный индекс
+      let currentIndex = 1;                      // начнём со второй работы как центральной
+
+      function updateCarousel() {
+        // сдвигаем трек так, чтобы currentIndex был в центре
+        const offset = -slidePercent * (currentIndex - 1);
+        track.style.transform = 'translateX(' + offset + '%)';
+
+        // выделяем активную карточку
+        items.forEach((item, index) => {
+          item.classList.toggle('work-item--active', index === currentIndex);
+        });
+
+        // блокируем стрелки на краях
+        prevBtn.disabled = currentIndex === 1;
+        nextBtn.disabled = currentIndex === maxIndex;
+      }
+
+      prevBtn.addEventListener('click', function () {
+        if (currentIndex > 1) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+
+      // первая инициализация
+      updateCarousel();
+    })();
   </script>
 </body>
 </html>
