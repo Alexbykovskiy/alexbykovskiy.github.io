@@ -134,10 +134,9 @@ opacity: 1;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
   align-items: flex-end;
-  padding-top: 120px;   /* ← новый отступ сверху */
+  padding-top: 180px;      /* было 120, стало 180 — блок опустится ниже */
   padding-bottom: 40px;
 }
-
 .hero-name h1 {
   margin: 0;
   font-size: clamp(40px, 7vw, 80px);
@@ -249,9 +248,7 @@ opacity: 1;
 .works-carousel {
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
 }
 
 .works-track {
@@ -260,7 +257,7 @@ opacity: 1;
   width: 100%;
 }
 
-/* каждый слайд — треть ширины, с обрезкой и приглушением */
+/* каждый слайд — треть ширины, приглушённый по умолчанию */
 
 .work-item {
   flex: 0 0 33.3333%;
@@ -287,13 +284,27 @@ opacity: 1;
   transform: scale(1);
 }
 
+/* стрелки — поверх всего, по бокам карусели */
+
 .works-arrow {
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5; /* выше трека и картинок */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.45);
   padding: 6px 10px;
   color: var(--text-main);
   cursor: pointer;
   min-width: 36px;
+}
+
+.works-arrow--prev {
+  left: 4px;
+}
+
+.works-arrow--next {
+  right: 4px;
 }
 
 .works-arrow:disabled {
@@ -315,7 +326,9 @@ opacity: 1;
     flex: 0 0 100%;
     padding: 0 4px;
   }
-}/* SERVICES */
+}
+
+/* SERVICES */
 
 .services-layout {
   display: grid;
