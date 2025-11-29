@@ -288,10 +288,13 @@
 
     // Обновить активный слайд
     function setActive() {
-      allSlides.forEach(s => s.classList.remove('work-item--active'));
-      let centerIndex = currentIndex + total; 
-      allSlides[centerIndex]?.classList.add('work-item--active');
-    }
+  allSlides.forEach(s => s.classList.remove('work-item--active'));
+
+  // центральный элемент — следующий после currentIndex
+  let centerIndex = currentIndex + total + 1;
+
+  allSlides[centerIndex]?.classList.add('work-item--active');
+}
 
     setActive();
 
