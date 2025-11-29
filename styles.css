@@ -134,7 +134,7 @@ opacity: 1;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
   align-items: center; 
-   padding-top: 230px;  /* было 180 → стало 230 — имя уйдёт ниже */
+   padding-top: 300px;  /* было 180 → стало 230 — имя уйдёт ниже */
   padding-bottom: 40px;
 }
 .hero-name h1 {
@@ -147,7 +147,7 @@ opacity: 1;
 }
 
 .hero-text-block {
- margin-top: -60px; /* поднимает блок вверх */
+ margin-top: -300px; /* поднимает блок вверх */
   max-width: 420px;
 }
 
