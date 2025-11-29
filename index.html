@@ -1,286 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Тату-мастер | Ваше имя</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="UTF-8">
+  <title>Алекс Быковский | Тату мастер Братислава</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Верхняя полоска с быстрыми ссылками -->
-  <div class="topbar">
-    <div class="topbar__inner">
-      <span class="topbar__label">Напиши мне</span>
-      <nav class="topbar__links">
-        <a href="#special">Абонементы</a>
-        <a href="#care">Памятка по уходу</a>
-        <a href="#referral">Приведи друга</a>
-      </nav>
-    </div>
+  <div class="page">
+
+    <!-- HERO / HEADER -->
+    <header class="hero" id="top">
+      <div class="hero-bg-image">
+        <!-- Сюда потом поставишь фон-фото с портретом -->
+      </div>
+
+      <div class="hero-overlay">
+        <div class="hero-inner container">
+          <div class="hero-top-row">
+            <div class="logo">AB</div>
+
+            <nav class="main-nav">
+              <a href="#about">ОБО МНЕ</a>
+              <a href="#works">РАБОТЫ</a>
+              <a href="#services">УСЛУГИ</a>
+              <a href="#contact">КОНТАКТЫ</a>
+            </nav>
+          </div>
+
+          <div class="hero-content">
+            <div class="hero-name">
+              <h1>АЛЕКС<br>БЫКОВСКИЙ</h1>
+            </div>
+
+            <div class="hero-text-block">
+              <p class="hero-tagline">
+                Здесь будет твой короткий текст о том, какие татуировки ты делаешь,<br>
+                в каком стиле работаешь и чем отличаешься от других мастеров.
+              </p>
+
+              <div class="hero-links">
+                <a href="#works" class="hero-link">СМОТРЕТЬ РАБОТЫ</a>
+                <a href="#contact" class="hero-link hero-link--accent">КОНТАКТЫ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ОБО МНЕ -->
+      <section class="section section--about" id="about">
+        <div class="container">
+          <h2 class="section-title">ОБО МНЕ</h2>
+
+          <div class="about-layout">
+            <div class="about-photo-placeholder">
+              <!-- Заглушка под фото -->
+              <span>ФОТО</span>
+            </div>
+
+            <div class="about-text-columns">
+              <p>
+                Здесь будет основной текст о тебе: сколько лет ты в татуировке,
+                какие стили любишь, в каких городах работаешь и так далее.
+              </p>
+              <p>
+                Здесь можно написать про твой подход: работа только по записи,
+                индивидуальные эскизы, комфорт клиента, консультации перед сеансом.
+              </p>
+              <p class="about-highlight">
+                ГОТОВ(А) ОСТАВИТЬ СВОЙ СЛЕД?<br>
+                ТОГДА Я ТВОЙ МАСТЕР.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- РАБОТЫ -->
+      <section class="section section--works" id="works">
+        <div class="container">
+          <h2 class="section-title">РАБОТЫ</h2>
+
+          <div class="works-layout">
+            <div class="works-gallery">
+              <!-- 5 заглушек под будущие фото работ -->
+              <div class="work-item"><span>РАБОТА&nbsp;1</span></div>
+              <div class="work-item"><span>РАБОТА&nbsp;2</span></div>
+              <div class="work-item"><span>РАБОТА&nbsp;3</span></div>
+              <div class="work-item"><span>РАБОТА&nbsp;4</span></div>
+              <div class="work-item"><span>РАБОТА&nbsp;5</span></div>
+            </div>
+
+            <div class="works-caption">
+              <p>
+                Здесь будет короткое описание твоего стиля: реализм, графика,
+                перекрытия, цвет/чёрно-белые работы, крупные проекты, рукава и т.д.
+              </p>
+            </div>
+
+            <div class="works-arrows">
+              <!-- Декоративные стрелки, пока без функционала -->
+              <button class="arrow-btn" type="button">&#10094;</button>
+              <button class="arrow-btn" type="button">&#10095;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- УСЛУГИ -->
+      <section class="section section--services" id="services">
+        <div class="container">
+          <h2 class="section-title">УСЛУГИ</h2>
+
+          <div class="services-layout">
+            <div class="services-list">
+              <div class="service-item">
+                <h3>01. ИНДИВИДУАЛЬНЫЕ ЭСКИЗЫ</h3>
+                <p>
+                  Заглушка текста: подготовка уникальных эскизов под клиента,
+                  работа с референсами и идеями, подбор размера и места.
+                </p>
+              </div>
+
+              <div class="service-item">
+                <h3>02. ПЕРЕКРЫТИЯ</h3>
+                <p>
+                  Перекрытие старых татуировок и шрамов, исправление неудачных работ,
+                  проработка вариантов с клиентом.
+                </p>
+              </div>
+
+              <div class="service-item">
+                <h3>03. КОНСУЛЬТАЦИИ</h3>
+                <p>
+                  Онлайн и офлайн консультации: обсуждение идеи, стиля, логистики,
+                  количества сеансов и стоимости.
+                </p>
+              </div>
+
+              <div class="service-item">
+                <h3>04. УХОД ЗА ТАТУИРОВКОЙ</h3>
+                <p>
+                  Подробные рекомендации по уходу, сопровождение после сеанса,
+                  ответы на вопросы в процессе заживления.
+                </p>
+              </div>
+            </div>
+
+            <div class="services-photo-placeholder">
+              <!-- Заглушка под широкую фотографию студии / процесса -->
+              <span>ФОТО<br>СТУДИИ</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- КОНТАКТЫ -->
+      <section class="section section--contact" id="contact">
+        <div class="container">
+          <h2 class="section-title">КОНТАКТЫ</h2>
+
+          <div class="contact-layout">
+            <div class="contact-info">
+              <p class="contact-block">
+                Студия:<br>
+                Название студии / коворкинга<br>
+                Улица, дом<br>
+                Город, страна
+              </p>
+
+              <p class="contact-block">
+                Время работы (пример):<br>
+                ПН–ПТ: 10:00 – 18:00<br>
+                СБ: 11:00 – 16:00<br>
+                ВС: выходной
+              </p>
+
+              <p class="contact-block">
+                Телефон / WhatsApp: +421 XXX XXX XXX<br>
+                Email: yourmail@example.com<br>
+                Instagram: @your_instagram
+              </p>
+            </div>
+
+            <div class="contact-form-wrap">
+              <p class="contact-intro">
+                ДАВАЙ НАЧНЁМ С ПРОЕКТА
+              </p>
+
+              <form class="contact-form" action="#" method="post">
+                <label class="field">
+                  <span>Ваше имя</span>
+                  <input type="text" name="name" placeholder="Введите ваше имя">
+                </label>
+
+                <label class="field">
+                  <span>Ваш телефон</span>
+                  <input type="tel" name="phone" placeholder="Номер телефона">
+                </label>
+
+                <label class="field">
+                  <span>Ваш email</span>
+                  <input type="email" name="email" placeholder="Email">
+                </label>
+
+                <label class="field">
+                  <span>Сообщение</span>
+                  <textarea name="message" rows="4" placeholder="Коротко опишите идею татуировки"></textarea>
+                </label>
+
+                <button class="btn-primary" type="submit">
+                  ОТПРАВИТЬ
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="footer-name">АЛЕКС БЫКОВСКИЙ</span>
+        <span class="footer-links">
+          ОБО МНЕ · РАБОТЫ · УСЛУГИ · КОНТАКТЫ
+        </span>
+        <span class="footer-copy">
+          © <span id="year"></span> Все права защищены.
+        </span>
+      </div>
+    </footer>
   </div>
 
-  <!-- Хедер -->
-  <header class="header">
-    <div class="header__inner">
-      <div class="header__logo">
-        <!-- можешь заменить на картинку логотипа -->
-        <span class="header__logo-main">Ваше имя</span>
-        <span class="header__logo-sub">тату-мастер</span>
-      </div>
-      <nav class="header__nav">
-        <a href="#about">Обо мне</a>
-        <a href="#works">Мои работы</a>
-        <a href="#process">Как я работаю</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-      <a href="#contacts" class="header__cta">Записаться</a>
-      <button class="header__burger" id="burgerBtn" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Мобильное меню -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="#about">Обо мне</a>
-    <a href="#works">Мои работы</a>
-    <a href="#process">Как я работаю</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-
-  <!-- Первый экран -->
-  <section class="hero" id="about">
-    <div class="hero__overlay"></div>
-    <div class="hero__inner">
-      <div class="hero__content">
-        <p class="hero__eyebrow">тату-мастер в вашем городе</p>
-        <h1 class="hero__title">Авторские тату с характером<br />и вниманием к деталям</h1>
-        <p class="hero__text">
-          Делаю продуманные тату-проекты, которые подходят к телу, образу и образу жизни.
-          Помогаю с идеей, эскизом и даю полное сопровождение по уходу.
-        </p>
-        <div class="hero__actions">
-          <a href="#works" class="btn btn--primary">Смотреть работы</a>
-          <a href="#contacts" class="btn btn--ghost">Бесплатная консультация</a>
-        </div>
-        <p class="hero__note">10+ лет опыта • индивидуальные проекты • стерильность и комфорт</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Быстрые офферы: абонемент / реферал -->
-  <section class="offers" id="special">
-    <div class="section-inner">
-      <div class="offers__grid">
-        <article class="offers__card">
-          <h2 class="offers__title">Абонемент на большие проекты</h2>
-          <p class="offers__text">
-            Рукав, спина или нога по фиксированной цене. Распределим сеансы по времени,
-            чтобы нагрузка и бюджет были комфортными.
-          </p>
-          <a href="#contacts" class="offers__link">Обсудить детали</a>
-        </article>
-
-        <article class="offers__card" id="referral">
-          <h2 class="offers__title">Приведи друга — получи бонус</h2>
-          <p class="offers__text">
-            Делись контактами студии с друзьями и получай бонусы к следующим сеансам
-            или частичный кэшбэк на карту.
-          </p>
-          <a href="#contacts" class="offers__link">Узнать условия</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Почему мне можно доверять -->
-  <section class="section section--light" id="trust">
-    <div class="section-inner">
-      <h2 class="section__title">Почему мне можно доверять</h2>
-      <div class="features">
-        <div class="features__item">
-          <h3>Стерильность и безопасность</h3>
-          <p>Одноразовые расходники, порядок на рабочем месте и строгие санитарные нормы.</p>
-        </div>
-        <div class="features__item">
-          <h3>Опыт и насмотренность</h3>
-          <p>Многолетняя практика, учеба у сильных художников и регулярное развитие.</p>
-        </div>
-        <div class="features__item">
-          <h3>Современное оборудование</h3>
-          <p>Комфортная машинка, качественные пигменты и удобное кресло для долгих сеансов.</p>
-        </div>
-        <div class="features__item">
-          <h3>Довожу до результата</h3>
-          <p>Помогаю с идеей, аккуратно веду проект до конца и сопровождаю по уходу.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- В каких стилях работаю -->
-  <section class="section" id="styles">
-    <div class="section-inner">
-      <h2 class="section__title">В каких стилях я работаю</h2>
-      <div class="styles-grid">
-        <div class="styles-grid__item"><span class="styles-grid__index">01</span>Черно-белый реализм</div>
-        <div class="styles-grid__item"><span class="styles-grid__index">02</span>Цветной реализм</div>
-        <div class="styles-grid__item"><span class="styles-grid__index">03</span>Стилизация реализма с графикой</div>
-        <div class="styles-grid__item"><span class="styles-grid__index">04</span>Сложные перекрытия старых тату</div>
-        <div class="styles-grid__item"><span class="styles-grid__index">05</span>Большие проекты (рукава, спины)</div>
-        <div class="styles-grid__item"><span class="styles-grid__index">06</span>Небольшие аккуратные работы</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Портфолио -->
-  <section class="section section--light" id="works">
-    <div class="section-inner">
-      <h2 class="section__title">Мои работы</h2>
-      <p class="section__subtitle">
-        Здесь будут фотографии заживших и свежих работ. Можешь загрузить свои фото в папку
-        <code>/images</code> и подставить их в разметку.
-      </p>
-      <div class="gallery">
-        <!-- Примеры: замени src на свои изображения -->
-        <figure class="gallery__item">
-          <img src="images/work1.jpg" alt="Пример татуировки 1" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="images/work2.jpg" alt="Пример татуировки 2" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="images/work3.jpg" alt="Пример татуировки 3" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="images/work4.jpg" alt="Пример татуировки 4" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="images/work5.jpg" alt="Пример татуировки 5" />
-        </figure>
-        <figure class="gallery__item">
-          <img src="images/work6.jpg" alt="Пример татуировки 6" />
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Как я работаю -->
-  <section class="section" id="process">
-    <div class="section-inner">
-      <h2 class="section__title">Как проходит работа над тату</h2>
-      <div class="steps">
-        <article class="steps__item">
-          <h3>1. Консультация</h3>
-          <p>
-            Обсуждаем идею, место на теле, стиль и примерный размер. Можешь прислать референсы,
-            я подскажу, что сработает лучше всего.
-          </p>
-        </article>
-        <article class="steps__item">
-          <h3>2. Эскиз и подготовка</h3>
-          <p>
-            Я готовлю эскиз под твое тело и в нужном стиле. Перед сеансом примеряем, при
-            необходимости — вносим правки.
-          </p>
-        </article>
-        <article class="steps__item">
-          <h3>3. Сеанс</h3>
-          <p>
-            Работаю спокойно и аккуратно, делаем перерывы, чтобы ты чувствовал(а) себя комфортно.
-            Большие проекты разбиваем на несколько сеансов.
-          </p>
-        </article>
-        <article class="steps__item">
-          <h3>4. Уход и сопровождение</h3>
-          <p>
-            Даю подробную памятку по уходу и остаюсь на связи. Следим за заживлением по фото,
-            при необходимости назначаем коррекцию.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Тизер памятки по уходу -->
-  <section class="section section--light" id="care">
-    <div class="section-inner">
-      <h2 class="section__title">Памятка по уходу за тату</h2>
-      <p class="section__subtitle">
-        На сеансе сложно запомнить все детали. Поэтому у моих клиентов есть простая и понятная
-        памятка по уходу за татуировкой по дням — от первого до полного заживления.
-      </p>
-      <p class="section__subtitle">
-        Здесь будет ссылка на отдельную страницу с подробной инструкцией: чем мыть, как мазать,
-        чего избегать и когда прислать фото. Мы можем добавить эту страницу следующим шагом.
-      </p>
-      <a href="#contacts" class="btn btn--ghost">Получить памятку после сеанса</a>
-    </div>
-  </section>
-
-  <!-- Контакты / запись -->
-  <section class="section section--accent" id="contacts">
-    <div class="section-inner section-inner--narrow">
-      <h2 class="section__title section__title--on-dark">Записаться или задать вопрос</h2>
-      <p class="section__subtitle section__subtitle--on-dark">
-        Напиши мне в удобный мессенджер или оставь свои контакты — я отвечу, помогу с идеей и
-        сориентирую по стоимости.
-      </p>
-
-      <div class="contacts">
-        <div class="contacts__column">
-          <h3>Мессенджеры</h3>
-          <ul class="contacts__list">
-            <li><a href="#" target="_blank">Telegram</a></li>
-            <li><a href="#" target="_blank">WhatsApp</a></li>
-            <li><a href="#" target="_blank">Instagram*</a></li>
-          </ul>
-          <p class="contacts__note">
-            *Запрещённая в РФ соцсеть — добавь формулировку, как тебе комфортно, или убери.
-          </p>
-        </div>
-        <div class="contacts__column">
-          <h3>Форма для связи</h3>
-          <form class="contact-form">
-            <label>
-              Имя
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Телеграм / WhatsApp
-              <input type="text" name="contact" required />
-            </label>
-            <label>
-              Сообщение
-              <textarea name="message" rows="3" placeholder="Кратко опиши идею тату"></textarea>
-            </label>
-            <button type="submit" class="btn btn--primary" disabled>
-              Отправка через форму пока не настроена
-            </button>
-            <p class="contact-form__hint">
-              Сейчас форму можно оставить как макет, а переписку вести через мессенджеры.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Футер -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__col">
-        <p class="footer__brand">Ваше имя • тату-мастер</p>
-        <p class="footer__small">© <span id="year"></span>. Все права защищены.</p>
-      </div>
-      <div class="footer__col">
-        <p class="footer__small">
-          Сайт на GitHub Pages • можно подключить свой домен.
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="scripts/main.js"></script>
+  <script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
