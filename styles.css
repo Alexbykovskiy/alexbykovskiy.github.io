@@ -133,14 +133,14 @@ opacity: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
-  align-items: flex-end;
-  padding-top: 180px;      /* было 120, стало 180 — блок опустится ниже */
+  align-items: center; 
+   padding-top: 230px;  /* было 180 → стало 230 — имя уйдёт ниже */
   padding-bottom: 40px;
 }
 .hero-name h1 {
   margin: 0;
-  font-size: clamp(40px, 7vw, 80px);
-  line-height: 0.9;
+  font-size: clamp(36px, 5.8vw, 68px); /* было 40/7vw/80px — стало меньше */
+  line-height: 0.95;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #ffffff;
