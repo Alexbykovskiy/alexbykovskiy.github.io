@@ -470,3 +470,10 @@ body {
     padding: 20px 16px;
   }
 }
+
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background: red;
+}
