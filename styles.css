@@ -133,8 +133,8 @@ opacity: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
-  align-items: flex-start;   /* оба блока выравниваем по ВЕРХУ */
-  padding-top: 160px;        /* можно чуть меньше/больше по вкусу */
+   align-items: start;
+  padding-top: 120px; /* немного уменьшаем */
   padding-bottom: 40px;
 }
 
@@ -148,14 +148,13 @@ opacity: 1;
 }
 
 .hero-name {
-  align-self: end;           /* левый блок – ниже строки */
+  margin-top: 120px;   /* ПОДНИМАЕМ ФИО НИЖЕ */
 }
 
 .hero-text-block {
-  align-self: start;         /* правый блок – выше строки */
-  margin-top: 0;             /* убираем костыль */
-  max-width: 420px;
+  margin-top: -40px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
 }
+
 .hero-tagline {
   margin: 0 0 24px;
   color: var(--text-muted);
