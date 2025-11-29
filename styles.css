@@ -248,7 +248,7 @@ opacity: 1;
   gap: 24px;
 }
 
-/* карусель */
+/* КАРУСЕЛЬ */
 
 .works-carousel {
   position: relative;
@@ -256,59 +256,58 @@ opacity: 1;
   display: block;
 }
 
-.works-track {
-  display: flex;
-  transition: transform 0.4s ease;
-  width: 100%;
+/* мягкие затемнения по краям (soft gradient) */
+.works-carousel::before,
+.works-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 5;
 }
 
-.work-item {
-  flex: 0 0 33.3333%;
-  padding: 0 8px;
-  aspect-ratio: 3 / 4;
-  background: var(--bg-block);
-  overflow: hidden;
-  opacity: 0.35;
-  transform: scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.works-carousel::before {
+  left: 0;
+  background: linear-gradient(to right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0));
 }
 
-.work-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.works-carousel::after {
+  right: 0;
+  background: linear-gradient(to left,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0));
 }
 
-.work-item--active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* стрелки — поверх всего, по бокам карусели */
-
-/* БОЛЬШИЕ ПОЛУПРОЗРАЧНЫЕ СТРЕЛКИ ДЛЯ КАРУСЕЛИ */
+/* большие стрелки, плавное появление/исчезновение */
 
 .works-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  color: rgba(255, 255, 255, 0.35);   /* полупрозрачная стрелка */
-  font-size: 68px;                    /* РАЗМЕР СТРЕЛКИ — регулируется здесь */
+  color: rgba(255, 255, 255, 0.0);    /* по умолчанию невидимы */
+  font-size: 68px;
   line-height: 1;
   cursor: pointer;
   user-select: none;
   border: none;
-  background: none;                   /* УБРАТЬ ФОН */
+  background: none;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  height: 50%;                        /* занимает половину фото по высоте */
-  width: 90px;                        /* широкая зона клика — можешь менять */
+  height: 50%;                        /* половина высоты фото */
+  width: 90px;                        /* широкая кликабельная зона */
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
+
+/* слева / справа */
 
 .works-arrow--prev {
   left: 0;
@@ -318,19 +317,30 @@ opacity: 1;
   right: 0;
 }
 
-.works-arrow:hover {
-  color: rgba(255, 255, 255, 0.7);     /* при наведении становится ярче */
+/* показываем стрелки при наведении на карусель (десктоп) */
+
+.works-carousel:hover .works-arrow {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.works-carousel:hover .works-arrow:hover {
+  color: rgba(255, 255, 255, 0.8);
   transform: translateY(-50%) scale(1.1);
 }
-/* адаптация под мобилки: показываем по одному */
 
-@media (max-width: 700px) {
-  .work-item {
-    flex: 0 0 100%;
-    padding: 0 4px;
+/* на мобильных/планшетах стрелки всегда чуть видимы */
+
+@media (max-width: 900px) {
+  .works-arrow {
+    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .works-carousel:hover .works-arrow {
+    opacity: 0.9;
   }
 }
-
 /* SERVICES */
 
 .services-layout {
