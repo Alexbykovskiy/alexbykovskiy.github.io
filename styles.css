@@ -248,7 +248,7 @@ opacity: 1;
   gap: 24px;
 }
 
-/* КАРУСЕЛЬ */
+/* карусель */
 
 .works-carousel {
   position: relative;
@@ -256,58 +256,59 @@ opacity: 1;
   display: block;
 }
 
-/* мягкие затемнения по краям (soft gradient) */
-.works-carousel::before,
-.works-carousel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  pointer-events: none;
-  z-index: 5;
+.works-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  width: 100%;
 }
 
-.works-carousel::before {
-  left: 0;
-  background: linear-gradient(to right,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0));
+.work-item {
+  flex: 0 0 33.3333%;
+  padding: 0 8px;
+  aspect-ratio: 3 / 4;
+  background: var(--bg-block);
+  overflow: hidden;
+  opacity: 0.35;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.works-carousel::after {
-  right: 0;
-  background: linear-gradient(to left,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0));
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* большие стрелки, плавное появление/исчезновение */
+.work-item--active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* стрелки — поверх всего, по бокам карусели */
+
+/* БОЛЬШИЕ ПОЛУПРОЗРАЧНЫЕ СТРЕЛКИ ДЛЯ КАРУСЕЛИ */
 
 .works-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  color: rgba(255, 255, 255, 0.0);    /* по умолчанию невидимы */
-  font-size: 68px;
+  color: rgba(255, 255, 255, 0.35);   /* полупрозрачная стрелка */
+  font-size: 68px;                    /* РАЗМЕР СТРЕЛКИ — регулируется здесь */
   line-height: 1;
   cursor: pointer;
   user-select: none;
   border: none;
-  background: none;
+  background: none;                   /* УБРАТЬ ФОН */
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  height: 50%;                        /* половина высоты фото */
-  width: 90px;                        /* широкая кликабельная зона */
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  height: 50%;                        /* занимает половину фото по высоте */
+  width: 90px;                        /* широкая зона клика — можешь менять */
 }
-
-/* слева / справа */
 
 .works-arrow--prev {
   left: 0;
@@ -317,30 +318,19 @@ opacity: 1;
   right: 0;
 }
 
-/* показываем стрелки при наведении на карусель (десктоп) */
-
-.works-carousel:hover .works-arrow {
-  opacity: 1;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.works-carousel:hover .works-arrow:hover {
-  color: rgba(255, 255, 255, 0.8);
+.works-arrow:hover {
+  color: rgba(255, 255, 255, 0.7);     /* при наведении становится ярче */
   transform: translateY(-50%) scale(1.1);
 }
+/* адаптация под мобилки: показываем по одному */
 
-/* на мобильных/планшетах стрелки всегда чуть видимы */
-
-@media (max-width: 900px) {
-  .works-arrow {
-    opacity: 0.6;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .works-carousel:hover .works-arrow {
-    opacity: 0.9;
+@media (max-width: 700px) {
+  .work-item {
+    flex: 0 0 100%;
+    padding: 0 4px;
   }
 }
+
 /* SERVICES */
 
 .services-layout {

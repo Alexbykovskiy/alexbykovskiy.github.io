@@ -329,30 +329,7 @@
       }
 
       nextBtn.addEventListener('click', goNext);
-prevBtn.addEventListener('click', goPrev);
-
-// скролл колесом мыши / тачпадом по карусели
-const carousel = document.querySelector('.works-carousel');
-if (carousel) {
-  carousel.addEventListener(
-    'wheel',
-    (e) => {
-      // если крутим вертикально — превращаем в листание
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        if (e.deltaY > 0) {
-          goNext();
-        } else if (e.deltaY < 0) {
-          goPrev();
-        }
-      }
-    },
-    { passive: false }
-  );
-}
-
-// стартовое выделение центральной
-setActive();
+      prevBtn.addEventListener('click', goPrev);
 
       // стартовое выделение центральной
       setActive();
