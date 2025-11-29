@@ -248,90 +248,92 @@
     </footer>
   </div>
 
-  <script>
-  // Год в подвале
-  document.getElementById('year').textContent = new Date().getFullYear();
+   <script>
+    // Год в подвале
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Бесконечная карусель
-  (function() {
-    const track = document.querySelector('.works-track');
-    const items = Array.from(track.children);
-    const prevBtn = document.querySelector('.works-arrow--prev');
-    const nextBtn = document.querySelector('.works-arrow--next');
+    // Бесконечная карусель без клонов: перестановка карточек
+    (function () {
+      const track = document.querySelector('.works-track');
+      const prevBtn = document.querySelector('.works-arrow--prev');
+      const nextBtn = document.querySelector('.works-arrow--next');
 
-    if (!track || items.length === 0) return;
+      if (!track || !prevBtn || !nextBtn) return;
 
-    let currentIndex = 0;
-    const visibleCount = 3;
-    const total = items.length;
-    let isAnimating = false;
+      const visibleCount = 3;
+      const shift = 100 / visibleCount; // 33.3333%
+      let isAnimating = false;
 
-    // Клонируем слайды для бесконечного цикла
-    items.forEach(item => {
-      const clone = item.cloneNode(true);
-      clone.classList.add('clone');
-      track.appendChild(clone);
-    });
+      // Помощник: актуальный список слайдов
+      const getSlides = () => Array.from(track.children);
 
-    items.forEach(item => {
-      const clone = item.cloneNode(true);
-      clone.classList.add('clone');
-      track.insertBefore(clone, track.firstChild);
-    });
-
-    const allSlides = Array.from(track.children);
-    const slideWidth = 100 / visibleCount;
-    const startOffset = -total * slideWidth;
-    let position = startOffset;
-
-    track.style.transform = `translateX(${position}%)`;
-
-    // Обновить активный слайд
-    function setActive() {
-  allSlides.forEach(s => s.classList.remove('work-item--active'));
-
-  // центральный элемент — следующий после currentIndex
-  let centerIndex = currentIndex + total + 1;
-
-  allSlides[centerIndex]?.classList.add('work-item--active');
-}
-
-    setActive();
-
-    function move(direction) {
-      if (isAnimating) return;
-      isAnimating = true;
-
-      currentIndex = (currentIndex + direction + total) % total;
-      position -= direction * slideWidth;
-
-      track.style.transition = 'transform 0.45s ease';
-      track.style.transform = `translateX(${position}%)`;
-
-      setTimeout(() => {
-        track.style.transition = 'none';
-
-        // Возвращаемся внутрь клонированной зоны
-        if (direction === 1 && position <= -(total + 1) * slideWidth) {
-          position = startOffset - slideWidth * currentIndex;
+      // Центральная карточка — всегда вторая из трёх видимых
+      function setActive() {
+        const slides = getSlides();
+        slides.forEach(s => s.classList.remove('work-item--active'));
+        if (slides[1]) {
+          slides[1].classList.add('work-item--active');
         }
-        if (direction === -1 && position >= -slideWidth) {
-          position = startOffset - slideWidth * currentIndex;
-        }
+      }
 
-        track.style.transform = `translateX(${position}%)`;
+      // Листание вперёд
+      function goNext() {
+        if (isAnimating) return;
+        isAnimating = true;
 
-        setActive();
-        setTimeout(() => {
+        track.style.transition = 'transform 0.4s ease';
+        track.style.transform = `translateX(-${shift}%)`;
+
+        const onEnd = () => {
+          track.removeEventListener('transitionend', onEnd);
+          // после анимации отправляем первый элемент в конец
+          track.style.transition = 'none';
+          track.appendChild(track.firstElementChild);
+          track.style.transform = 'translateX(0)';
+
+          setActive();
+
+          // небольшой трюк, чтобы сбросить состояние
+          void track.offsetWidth;
           track.style.transition = '';
           isAnimating = false;
-        }, 20);
-      }, 460);
-    }
+        };
 
-    nextBtn.addEventListener('click', () => move(1));
-    prevBtn.addEventListener('click', () => move(-1));
-  })();
-</script>
+        track.addEventListener('transitionend', onEnd);
+      }
+
+      // Листание назад
+      function goPrev() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // сначала двигаем последний слайд в начало, затем анимируем назад к 0
+        track.style.transition = 'none';
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        track.style.transform = `translateX(-${shift}%)`;
+
+        // форсим перерисовку
+        void track.offsetWidth;
+
+        track.style.transition = 'transform 0.4s ease';
+        track.style.transform = 'translateX(0)';
+
+        const onEnd = () => {
+          track.removeEventListener('transitionend', onEnd);
+          track.style.transition = '';
+          setActive();
+          isAnimating = false;
+        };
+
+        track.addEventListener('transitionend', onEnd);
+      }
+
+      nextBtn.addEventListener('click', goNext);
+      prevBtn.addEventListener('click', goPrev);
+
+      // стартовое выделение центральной
+      setActive();
+    })();
+  </script>
 </body>
 </html>

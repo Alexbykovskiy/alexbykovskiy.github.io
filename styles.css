@@ -257,8 +257,6 @@ opacity: 1;
   width: 100%;
 }
 
-/* каждый слайд — треть ширины, приглушённый по умолчанию */
-
 .work-item {
   flex: 0 0 33.3333%;
   padding: 0 8px;
@@ -276,8 +274,6 @@ opacity: 1;
   object-fit: cover;
   display: block;
 }
-
-/* активный (центральный) слайд — яркий и чуть крупнее */
 
 .work-item--active {
   opacity: 1;
