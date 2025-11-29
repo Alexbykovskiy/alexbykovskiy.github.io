@@ -287,39 +287,41 @@ opacity: 1;
 
 /* стрелки — поверх всего, по бокам карусели */
 
+/* БОЛЬШИЕ ПОЛУПРОЗРАЧНЫЕ СТРЕЛКИ ДЛЯ КАРУСЕЛИ */
+
 .works-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 5; /* выше трека и картинок */
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(0, 0, 0, 0.45);
-  padding: 6px 10px;
-  color: var(--text-main);
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.35);   /* полупрозрачная стрелка */
+  font-size: 68px;                    /* РАЗМЕР СТРЕЛКИ — регулируется здесь */
+  line-height: 1;
   cursor: pointer;
-  min-width: 36px;
+  user-select: none;
+  border: none;
+  background: none;                   /* УБРАТЬ ФОН */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 50%;                        /* занимает половину фото по высоте */
+  width: 90px;                        /* широкая зона клика — можешь менять */
 }
 
 .works-arrow--prev {
-  left: 4px;
+  left: 0;
 }
 
 .works-arrow--next {
-  right: 4px;
+  right: 0;
 }
 
-.works-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
+.works-arrow:hover {
+  color: rgba(255, 255, 255, 0.7);     /* при наведении становится ярче */
+  transform: translateY(-50%) scale(1.1);
 }
-
-.works-caption {
-  font-size: 13px;
-  color: var(--text-muted);
-  max-width: 520px;
-  margin-top: 12px;
-}
-
 /* адаптация под мобилки: показываем по одному */
 
 @media (max-width: 700px) {
