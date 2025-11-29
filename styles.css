@@ -471,9 +471,3 @@ body {
   }
 }
 
-
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  background: red;
-}
