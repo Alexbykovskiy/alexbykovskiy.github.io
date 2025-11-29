@@ -520,3 +520,8 @@ opacity: 1;
   }
 }
 
+
+.work-item.clone {
+  opacity: 0.35;   /* клоны всегда как боковые, не яркие */
+  transform: scale(0.9);
+}

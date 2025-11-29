@@ -248,57 +248,87 @@
     </footer>
   </div>
 
-   <script>
-    // Год в подвале
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+  // Год в подвале
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Карусель работ
-    (function () {
-      const track = document.querySelector('.works-track');
-      if (!track) return;
+  // Бесконечная карусель
+  (function() {
+    const track = document.querySelector('.works-track');
+    const items = Array.from(track.children);
+    const prevBtn = document.querySelector('.works-arrow--prev');
+    const nextBtn = document.querySelector('.works-arrow--next');
 
-      const items = Array.from(track.querySelectorAll('.work-item'));
-      const prevBtn = document.querySelector('.works-arrow--prev');
-      const nextBtn = document.querySelector('.works-arrow--next');
-      if (items.length < 3 || !prevBtn || !nextBtn) return;
+    if (!track || items.length === 0) return;
 
-      const visibleCount = 3;                     // сколько карточек видно
-      const slidePercent = 100 / visibleCount;   // ширина шага в %
-      const maxIndex = items.length - 2;         // последний центральный индекс
-      let currentIndex = 1;                      // начнём со второй работы как центральной
+    let currentIndex = 0;
+    const visibleCount = 3;
+    const total = items.length;
+    let isAnimating = false;
 
-      function updateCarousel() {
-        // сдвигаем трек так, чтобы currentIndex был в центре
-        const offset = -slidePercent * (currentIndex - 1);
-        track.style.transform = 'translateX(' + offset + '%)';
+    // Клонируем слайды для бесконечного цикла
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.classList.add('clone');
+      track.appendChild(clone);
+    });
 
-        // выделяем активную карточку
-        items.forEach((item, index) => {
-          item.classList.toggle('work-item--active', index === currentIndex);
-        });
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.classList.add('clone');
+      track.insertBefore(clone, track.firstChild);
+    });
 
-        // блокируем стрелки на краях
-        prevBtn.disabled = currentIndex === 1;
-        nextBtn.disabled = currentIndex === maxIndex;
-      }
+    const allSlides = Array.from(track.children);
+    const slideWidth = 100 / visibleCount;
+    const startOffset = -total * slideWidth;
+    let position = startOffset;
 
-      prevBtn.addEventListener('click', function () {
-        if (currentIndex > 1) {
-          currentIndex--;
-          updateCarousel();
+    track.style.transform = `translateX(${position}%)`;
+
+    // Обновить активный слайд
+    function setActive() {
+      allSlides.forEach(s => s.classList.remove('work-item--active'));
+      let centerIndex = currentIndex + total; 
+      allSlides[centerIndex]?.classList.add('work-item--active');
+    }
+
+    setActive();
+
+    function move(direction) {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      currentIndex = (currentIndex + direction + total) % total;
+      position -= direction * slideWidth;
+
+      track.style.transition = 'transform 0.45s ease';
+      track.style.transform = `translateX(${position}%)`;
+
+      setTimeout(() => {
+        track.style.transition = 'none';
+
+        // Возвращаемся внутрь клонированной зоны
+        if (direction === 1 && position <= -(total + 1) * slideWidth) {
+          position = startOffset - slideWidth * currentIndex;
         }
-      });
-
-      nextBtn.addEventListener('click', function () {
-        if (currentIndex < maxIndex) {
-          currentIndex++;
-          updateCarousel();
+        if (direction === -1 && position >= -slideWidth) {
+          position = startOffset - slideWidth * currentIndex;
         }
-      });
 
-      // первая инициализация
-      updateCarousel();
-    })();
-  </script>
+        track.style.transform = `translateX(${position}%)`;
+
+        setActive();
+        setTimeout(() => {
+          track.style.transition = '';
+          isAnimating = false;
+        }, 20);
+      }, 460);
+    }
+
+    nextBtn.addEventListener('click', () => move(1));
+    prevBtn.addEventListener('click', () => move(-1));
+  })();
+</script>
 </body>
 </html>
