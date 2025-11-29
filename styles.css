@@ -133,8 +133,8 @@ opacity: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
-  align-items: center;       /* общая центровка по строке */
-  padding-top: 180px;        /* нормальный общий отступ сверху */
+  align-items: flex-start;   /* оба блока выравниваем по ВЕРХУ */
+  padding-top: 160px;        /* можно чуть меньше/больше по вкусу */
   padding-bottom: 40px;
 }
 
