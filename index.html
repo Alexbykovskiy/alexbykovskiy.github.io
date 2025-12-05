@@ -115,82 +115,65 @@
                   <!-- РАБОТЫ -->
       <section class="section section--works" id="works">
         <div class="container">
-          <div class="gallery-tabs">
+          div class="gallery-tabs">
   <button class="gallery-tab active" data-gallery="bw">Черно-белые</button>
   <button class="gallery-tab" data-gallery="color">Цветные</button>
   <button class="gallery-tab" data-gallery="cover">Перекрытия</button>
   <button class="gallery-tab" data-gallery="watercolor">Акварель</button>
 </div>
 
+<div class="galleries-wrapper">
 
-          <div class="works-layout">
-           <div class="galleries-wrapper">
-
-  <!-- ЧЁРНО-БЕЛЫЕ -->
+  <!-- ALBUM: Ч/Б -->
   <div class="gallery-block active" id="gallery-bw">
-    <div class="works-carousel">
-      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+    <div class="carousel" data-carousel>
+      <button class="carousel-arrow prev">‹</button>
 
-      <div class="works-track">
-       <div class="work-item"><img src="img/placeholders/bw1.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/bw2.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/bw3.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/bw4.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/bw5.jpg" alt=""></div>
+      <div class="carousel-track">
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
       </div>
 
-      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+      <button class="carousel-arrow next">›</button>
     </div>
   </div>
 
-  <!-- ЦВЕТНЫЕ -->
+  <!-- ALBUM: Цветные -->
   <div class="gallery-block" id="gallery-color">
-    <div class="works-carousel">
-      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
-
-      <div class="works-track">
-        <div class="work-item"><img src="img/placeholders/color1.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/color2.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/color3.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/color4.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/color5.jpg" alt=""></div>
+    <div class="carousel" data-carousel>
+      <button class="carousel-arrow prev">‹</button>
+      <div class="carousel-track">
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
       </div>
-
-      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+      <button class="carousel-arrow next">›</button>
     </div>
   </div>
 
-  <!-- ПЕРЕКРЫТИЯ -->
+  <!-- ALBUM: Перекрытия -->
   <div class="gallery-block" id="gallery-cover">
-    <div class="works-carousel">
-      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
-
-      <div class="works-track">
-        <div class="work-item"><img src="img/placeholders/cover1.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/cover2.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/cover3.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/cover4.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/cover5.jpg" alt=""></div>
+    <div class="carousel" data-carousel>
+      <button class="carousel-arrow prev">‹</button>
+      <div class="carousel-track">
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
       </div>
-
-      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+      <button class="carousel-arrow next">›</button>
     </div>
   </div>
 
-  <!-- АКВАРЕЛЬ -->
+  <!-- ALBUM: Акварель -->
   <div class="gallery-block" id="gallery-watercolor">
-    <div class="works-carousel">
-      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
-
-      <div class="works-track">
-        <div class="work-item"><img src="img/placeholders/water1.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/water2.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/water3.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/water4.jpg" alt=""></div>
-<div class="work-item"><img src="img/placeholders/water5.jpg" alt=""></div>
+    <div class="carousel" data-carousel>
+      <button class="carousel-arrow prev">‹</button>
+      <div class="carousel-track">
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
+        <div class="carousel-item"><img src="img/placeholder.png"></div>
       </div>
-
-      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+      <button class="carousel-arrow next">›</button>
     </div>
   </div>
 
@@ -572,16 +555,108 @@ const galleries = document.querySelectorAll(".gallery-block");
 
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
-    // переключаем active-кнопку
+
+    // переключаем активную кнопку
     tabs.forEach(t => t.classList.remove("active"));
     tab.classList.add("active");
 
+    // прячем все галереи
+    galleries.forEach(g => g.classList.remove("active"));
+
     // показываем нужную галерею
     const id = tab.dataset.gallery;
-    galleries.forEach(g => g.classList.remove("active"));
-    document.querySelector(`#gallery-${id}`).classList.add("active");
+    const gallery = document.querySelector(`#gallery-${id}`);
+    gallery.classList.add("active");
   });
 });
+// ——— Переключение альбомов ———
+const tabs = document.querySelectorAll(".gallery-tab");
+const blocks = document.querySelectorAll(".gallery-block");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    blocks.forEach(b => b.classList.remove("active"));
+    document.querySelector("#gallery-" + tab.dataset.gallery)
+      .classList.add("active");
+  });
+});
+
+
+// ——— Новый универсальный движок карусели ———
+document.querySelectorAll("[data-carousel]").forEach(carousel => {
+
+  const track = carousel.querySelector(".carousel-track");
+  const items = Array.from(carousel.querySelectorAll(".carousel-item"));
+  const prevBtn = carousel.querySelector(".prev");
+  const nextBtn = carousel.querySelector(".next");
+
+  let index = 1;
+
+  // Clone for infinite loop
+  const first = items[0].cloneNode(true);
+  const last = items[items.length - 1].cloneNode(true);
+  track.append(first);
+  track.prepend(last);
+
+  const all = Array.from(carousel.querySelectorAll(".carousel-item"));
+  const itemWidth = all[0].clientWidth;
+
+  function updatePosition() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    all.forEach(i => i.classList.remove("active"));
+    all[index].classList.add("active");
+  }
+
+  updatePosition();
+
+  nextBtn.onclick = () => {
+    index++;
+    track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+    updatePosition();
+  };
+
+  prevBtn.onclick = () => {
+    index--;
+    track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+    updatePosition();
+  };
+
+  track.addEventListener("transitionend", () => {
+    if (index === 0) {
+      track.style.transition = "none";
+      index = all.length - 2;
+      updatePosition();
+    }
+    if (index === all.length - 1) {
+      track.style.transition = "none";
+      index = 1;
+      updatePosition();
+    }
+  });
+
+  // Swipe
+  let startX = 0;
+  let diff = 0;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchmove", e => {
+    diff = e.touches[0].clientX - startX;
+  });
+
+  track.addEventListener("touchend", () => {
+    if (diff < -50) nextBtn.click();
+    if (diff > 50) prevBtn.click();
+    diff = 0;
+  });
+
+});
+
 </script>
 </body>
 </html>

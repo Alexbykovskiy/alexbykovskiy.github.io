@@ -1007,3 +1007,85 @@ html, body {
 .gallery-block.active {
   display: block;
 }
+
+.gallery-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.gallery-tab {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+.gallery-tab.active {
+  background: #e60023;
+}
+
+.gallery-block {
+  display: none;
+}
+.gallery-block.active {
+  display: block;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.carousel-item {
+  flex: 0 0 80%;
+  margin: 0 10%;
+  opacity: .4;
+  transition: opacity .3s ease;
+}
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-size: 26px;
+  transition: .2s;
+}
+.carousel-arrow:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+.carousel-arrow.next {
+  right: 10px;
+}
+
+/* CENTER FOCUS */
+.carousel-item.scale {
+  transform: scale(1.03);
+}
