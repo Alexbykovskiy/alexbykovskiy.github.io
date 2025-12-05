@@ -864,3 +864,29 @@ position: relative !important;
     height: 300px;
   }
 }
+
+.route-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.route-btn {
+  display: inline-block;
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  transition: 0.25s ease;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.route-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}

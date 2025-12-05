@@ -257,8 +257,32 @@
             <div class="contact-value">Студия «Body Gallery»</div>
             <div class="contact-value">Štefánikova 14</div>
             <div class="contact-value">Bratislava, 811 05</div>
-          </div>
+          
+<div class="route-buttons">
+  <a 
+    class="route-btn"
+    href="https://www.google.com/maps/dir/?api=1&destination=48.15136,17.10850"
+    target="_blank"
+  >
+    Маршрут в Google Maps
+  </a>
+
+  <a 
+    class="route-btn"
+    href="http://maps.apple.com/?daddr=48.15136,17.10850"
+    target="_blank"
+  >
+    Маршрут в Apple Maps
+  </a>
+</div>
+
+</div>
+
+
         </div>
+
+
+
 
         <!-- SOCIALS -->
         <div class="contact-socials">
@@ -408,16 +432,28 @@ if (expandBtn && expandPanel) {
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
-  const map = L.map('map').setView([48.15136, 17.10850], 17);
+// Координаты студии Body Gallery
+const studioLat = 48.15136;
+const studioLng = 17.10850;
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const map = L.map('map', {
+  zoomControl: true,
+  scrollWheelZoom: true
+}).setView([studioLat, studioLng], 17);
+
+// ТЁМНАЯ КАРТА — NIGHT MODE
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  {
     maxZoom: 19,
-  }).addTo(map);
+    attribution: '&copy; Carto'
+  }
+).addTo(map);
 
- L.marker([48.15136, 17.10850])
+// Кастомный маркер (стандартный, но можно заменить на твой)
+L.marker([studioLat, studioLng])
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikova 14")
   .openPopup();
-</script>
-</body>
+</script></body>
 </html>
