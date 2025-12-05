@@ -148,13 +148,13 @@ opacity: 1;
 }
 
 .hero-name {
-  margin-top: 120px;   /* ПОДНИМАЕМ ФИО НИЖЕ */
+  margin-top: 0;
+  text-align: center;
 }
-
 .hero-text-block {
-  margin-top: -40px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
+  margin-top: 12px; /* лёгкий нормальный отступ, можно 8–16 */
+  text-align: center;
 }
-
 .hero-tagline {
   margin: 0 0 24px;
   color: var(--text-muted);
@@ -777,6 +777,6 @@ margin-bottom: 12px !important;
 
  @media (max-width: 640px) {
   .hero-content {
-    padding-top: 300px !important; /* опускает всё */
+    padding-top: 200px !important; /* опускает всё */
   }
 }
