@@ -41,7 +41,14 @@
 
               <div class="hero-links">
                 <a href="#works" class="hero-link">СМОТРЕТЬ РАБОТЫ</a>
-                <a href="#contact" class="hero-link hero-link--accent">КОНТАКТЫ</a>
+                <button class="contact-expand-btn" type="button">НАПИСАТЬ</button>
+
+<div class="contact-expand-panel">
+  <a href="https://instagram.com/" target="_blank" class="contact-icon inst">IG</a>
+  <a href="https://t.me/" target="_blank" class="contact-icon tg">TG</a>
+  <a href="https://m.me/" target="_blank" class="contact-icon ms">FB</a>
+  <a href="https://wa.me/" target="_blank" class="contact-icon wa">WA</a>
+</div>
               </div>
             </div>
           </div>
@@ -334,6 +341,17 @@
       // стартовое выделение центральной
       setActive();
     })();
+
+// Всплывающее меню «НАПИСАТЬ»
+const expandBtn = document.querySelector(".contact-expand-btn");
+const expandPanel = document.querySelector(".contact-expand-panel");
+
+if (expandBtn && expandPanel) {
+  expandBtn.addEventListener("click", () => {
+    expandPanel.classList.toggle("open");
+  });
+}
+
   </script>
 </body>
 </html>

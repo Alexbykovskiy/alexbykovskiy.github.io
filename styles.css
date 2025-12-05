@@ -548,10 +548,98 @@ opacity: 1;
 /* === MOBILE HEADER FIX === */
 @media (max-width: 640px) {
 
+
+
   /* 1. Убираем логотип AB */
   .logo {
     display: none;
   }
+
+
+.hero-links a {
+    display: inline-block;
+    background: #e60023;                  /* красный */
+    padding: 10px 22px;
+    border-radius: 999px;                 /* пилюля */
+    margin-right: 10px;
+    color: #ffffff !important;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    box-shadow: 0 6px 15px rgba(230, 0, 35, 0.4); /* мягкая тень */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-links a:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(230, 0, 35, 0.25);
+  }
+}
+
+/* === ВСПЛЫВАЮЩАЯ ПАНЕЛЬ С КОНТАКТАМИ === */
+
+.contact-expand-btn {
+  background: #e60023;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 15px rgba(230, 0, 35, 0.4);
+}
+
+.contact-expand-btn:active {
+  transform: scale(0.95);
+}
+
+/* панель скрыта по умолчанию */
+.contact-expand-panel {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.35s ease, max-height 0.35s ease;
+}
+
+/* панель раскрытая */
+.contact-expand-panel.open {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.contact-icon:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.08);
+}
+
+/* цвета при желании */
+.contact-icon.inst { color: #e4405f; }
+.contact-icon.tg { color: #29a9e0; }
+.contact-icon.ms { color: #1877f2; }
+.contact-icon.wa { color: #25d366; }
 
   /* 2. Верхняя строка превращается в центрированную навигацию */
   .hero-top-row {
@@ -574,5 +662,18 @@ opacity: 1;
 
   .main-nav a {
     text-align: center;
+  }
+}
+
+.hero-content {
+    padding-top: 240px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
+  }
+
+  .hero-name {
+    margin-top: 60px !important; /* имя ниже */
+  }
+
+  .hero-text-block {
+    margin-top: 30px !important; /* весь правый текст тоже ниже */
   }
 }
