@@ -753,6 +753,8 @@ position: relative !important;
   /* Сами пилюли */
   .hero-links a,
 .hero-links button {
+ flex: 0 1 auto !important; /* фиксирует ширину без растягивания */
+    text-align: center !important; /* чтобы текст не смещал */
     display: inline-flex !important;
     justify-content: center;
     align-items: center;
