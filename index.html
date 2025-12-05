@@ -113,85 +113,84 @@
       </section>
 
                   <!-- РАБОТЫ -->
+            <!-- РАБОТЫ -->
       <section class="section section--works" id="works">
         <div class="container">
-          div class="gallery-tabs">
-  <button class="gallery-tab active" data-gallery="bw">Черно-белые</button>
-  <button class="gallery-tab" data-gallery="color">Цветные</button>
-  <button class="gallery-tab" data-gallery="cover">Перекрытия</button>
-  <button class="gallery-tab" data-gallery="watercolor">Акварель</button>
-</div>
 
-<div class="galleries-wrapper">
-
-  <!-- ALBUM: Ч/Б -->
-  <div class="gallery-block active" id="gallery-bw">
-    <div class="carousel" data-carousel>
-      <button class="carousel-arrow prev">‹</button>
-
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-      </div>
-
-      <button class="carousel-arrow next">›</button>
-    </div>
-  </div>
-
-  <!-- ALBUM: Цветные -->
-  <div class="gallery-block" id="gallery-color">
-    <div class="carousel" data-carousel>
-      <button class="carousel-arrow prev">‹</button>
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-      </div>
-      <button class="carousel-arrow next">›</button>
-    </div>
-  </div>
-
-  <!-- ALBUM: Перекрытия -->
-  <div class="gallery-block" id="gallery-cover">
-    <div class="carousel" data-carousel>
-      <button class="carousel-arrow prev">‹</button>
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-      </div>
-      <button class="carousel-arrow next">›</button>
-    </div>
-  </div>
-
-  <!-- ALBUM: Акварель -->
-  <div class="gallery-block" id="gallery-watercolor">
-    <div class="carousel" data-carousel>
-      <button class="carousel-arrow prev">‹</button>
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-        <div class="carousel-item"><img src="img/placeholder.png"></div>
-      </div>
-      <button class="carousel-arrow next">›</button>
-    </div>
-  </div>
-
-</div>
-              </div>
-
-              <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
-            </div>
-
-            <div class="works-caption">
-              <p>
-                Здесь будет короткое описание твоего стиля: реализм, графика,
-                перекрытия, цвет/чёрно-белые работы, крупные проекты, рукава и т.д.
-              </p>
-            </div>
+          <div class="gallery-tabs">
+            <button class="gallery-tab active" data-gallery="bw">Черно-белые</button>
+            <button class="gallery-tab" data-gallery="color">Цветные</button>
+            <button class="gallery-tab" data-gallery="cover">Перекрытия</button>
+            <button class="gallery-tab" data-gallery="watercolor">Акварель</button>
           </div>
+
+          <div class="galleries-wrapper">
+
+            <!-- ALBUM: Ч/Б -->
+            <div class="gallery-block active" id="gallery-bw">
+              <div class="carousel" data-carousel>
+                <button class="carousel-arrow prev">‹</button>
+
+                <div class="carousel-track">
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                </div>
+
+                <button class="carousel-arrow next">›</button>
+              </div>
+            </div>
+
+            <!-- ALBUM: Цветные -->
+            <div class="gallery-block" id="gallery-color">
+              <div class="carousel" data-carousel>
+                <button class="carousel-arrow prev">‹</button>
+                <div class="carousel-track">
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                </div>
+                <button class="carousel-arrow next">›</button>
+              </div>
+            </div>
+
+            <!-- ALBUM: Перекрытия -->
+            <div class="gallery-block" id="gallery-cover">
+              <div class="carousel" data-carousel>
+                <button class="carousel-arrow prev">‹</button>
+                <div class="carousel-track">
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                </div>
+                <button class="carousel-arrow next">›</button>
+              </div>
+            </div>
+
+            <!-- ALBUM: Акварель -->
+            <div class="gallery-block" id="gallery-watercolor">
+              <div class="carousel" data-carousel>
+                <button class="carousel-arrow prev">‹</button>
+                <div class="carousel-track">
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                  <div class="carousel-item"><img src="img/placeholder.png" alt=""></div>
+                </div>
+                <button class="carousel-arrow next">›</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="works-caption">
+            <p>
+              Здесь будет короткое описание твоего стиля: реализм, графика,
+              перекрытия, цвет/чёрно-белые работы, крупные проекты, рукава и т.д.
+            </p>
+          </div>
+
         </div>
       </section>
+
 
 
 
@@ -380,136 +379,7 @@
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Бесконечная карусель без клонов: перестановка карточек
-    (function () {
-      const track = document.querySelector('.works-track');
-// --- SWIPE SUPPORT FOR MOBILE ---
-let startX = 0;
-let currentX = 0;
-let isSwiping = false;
-let swipeTimeStart = 0;
 
-track.addEventListener("touchstart", (e) => {
-  if (window.innerWidth > 700) return;
-  startX = e.touches[0].clientX;
-  isSwiping = true;
-  swipeTimeStart = Date.now();
-});
-
-track.addEventListener("touchmove", (e) => {
-  if (!isSwiping) return;
-  currentX = e.touches[0].clientX;
-});
-
-track.addEventListener("touchend", () => {
-  if (!isSwiping) return;
-
-  const diff = currentX - startX;
-  const swipeDuration = Date.now() - swipeTimeStart;
-  const fastSwipe = swipeDuration < 180; // быстрый свайп
-
-  if (diff < -50) {
-    fastSwipe ? fastNextSlide() : goNext();
-  }
-
-  if (diff > 50) {
-    fastSwipe ? fastPrevSlide() : goPrev();
-  }
-
-  isSwiping = false;
-  startX = 0;
-  currentX = 0;
-});
-
-// плавный быстрый свайп
-function fastNextSlide() {
-  track.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
-  goNext();
-}
-
-function fastPrevSlide() {
-  track.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
-  goPrev();
-}
-
-      // Помощник: актуальный список слайдов
-      const getSlides = () => Array.from(track.children);
-
-      // Центральная карточка — всегда вторая из трёх видимых
-      function setActive() {
-  const slides = getSlides();
-  slides.forEach(s => s.classList.remove("work-item--active"));
-
-  if (visibleCount === 1) {
-    // мобилка: активный — первый и единственный
-    slides[0]?.classList.add("work-item--active");
-  } else {
-    // десктоп: центральный — второй из трёх
-    slides[1]?.classList.add("work-item--active");
-  }
-}
-      // Листание вперёд
-      function goNext() {
-        if (isAnimating) return;
-        isAnimating = true;
-
-       track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
-
-        track.style.transform = `translateX(-${shift}%)`;
-
-        const onEnd = () => {
-          track.removeEventListener('transitionend', onEnd);
-          // после анимации отправляем первый элемент в конец
-          track.style.transition = 'none';
-          track.appendChild(track.firstElementChild);
-          track.style.transform = 'translateX(0)';
-
-          setActive();
-
-          // небольшой трюк, чтобы сбросить состояние
-          void track.offsetWidth;
-          track.style.transition = '';
-          isAnimating = false;
-        };
-
-        track.addEventListener('transitionend', onEnd);
-      }
-
-      // Листание назад
-      function goPrev() {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        // сначала двигаем последний слайд в начало, затем анимируем назад к 0
-        track.style.transition = 'none';
-        track.insertBefore(track.lastElementChild, track.firstElementChild);
-        track.style.transform = `translateX(-${shift}%)`;
-
-        // форсим перерисовку
-        void track.offsetWidth;
-
-        track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
-
-        track.style.transform = 'translateX(0)';
-
-        const onEnd = () => {
-          track.removeEventListener('transitionend', onEnd);
-          track.style.transition = '';
-          setActive();
-          isAnimating = false;
-        };
-
-
-
-        track.addEventListener('transitionend', onEnd);
-      }
-
-      nextBtn.addEventListener('click', goNext);
-      prevBtn.addEventListener('click', goPrev);
-
-      // стартовое выделение центральной
-      setActive();
-    })();
 
 // Всплывающее меню «НАПИСАТЬ»
 const expandBtn = document.querySelector(".contact-expand-btn");
@@ -549,26 +419,6 @@ L.marker([studioLat, studioLng])
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikova 14")
   .openPopup();
-// --- GALLERY TABS ---
-const tabs = document.querySelectorAll(".gallery-tab");
-const galleries = document.querySelectorAll(".gallery-block");
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-
-    // переключаем активную кнопку
-    tabs.forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-
-    // прячем все галереи
-    galleries.forEach(g => g.classList.remove("active"));
-
-    // показываем нужную галерею
-    const id = tab.dataset.gallery;
-    const gallery = document.querySelector(`#gallery-${id}`);
-    gallery.classList.add("active");
-  });
-});
 // ——— Переключение альбомов ———
 const tabs = document.querySelectorAll(".gallery-tab");
 const blocks = document.querySelectorAll(".gallery-block");
@@ -604,10 +454,10 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const all = Array.from(carousel.querySelectorAll(".carousel-item"));
   const itemWidth = all[0].clientWidth;
 
-  function updatePosition() {
+ function updatePosition() {
     track.style.transform = `translateX(-${index * 100}%)`;
-    all.forEach(i => i.classList.remove("active"));
-    all[index].classList.add("active");
+    all.forEach(i => i.classList.remove("active", "scale"));
+    all[index].classList.add("active", "scale");
   }
 
   updatePosition();

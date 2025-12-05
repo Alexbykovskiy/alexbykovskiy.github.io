@@ -1046,19 +1046,22 @@ html, body {
 .carousel-item {
   flex: 0 0 80%;
   margin: 0 10%;
-  opacity: .4;
-  transition: opacity .3s ease;
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .carousel-item.active {
   opacity: 1;
 }
+
+
 
 .carousel-item img {
   width: 100%;
   border-radius: 10px;
   display: block;
 }
-
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -1088,4 +1091,10 @@ html, body {
 /* CENTER FOCUS */
 .carousel-item.scale {
   transform: scale(1.03);
+}
+
+@media (max-width: 700px) {
+  .carousel-arrow {
+    display: none;
+  }
 }
