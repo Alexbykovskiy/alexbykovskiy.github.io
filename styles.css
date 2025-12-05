@@ -890,3 +890,40 @@ position: relative !important;
   background: rgba(255,255,255,0.25);
   transform: translateY(-2px);
 }
+
+/* Map + buttons block */
+.map-and-routes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Route buttons under map */
+.route-buttons.under-map {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.route-buttons.under-map .route-btn {
+  padding: 10px 26px;
+  border-radius: 999px; /* ПИЛЮЛЯ */
+  background: #e60023;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.route-buttons.under-map .route-btn:hover {
+  background: #ff0033;
+  box-shadow: 0 4px 14px rgba(230, 0, 35, 0.45);
+  transform: translateY(-2px);
+}
+
+.route-buttons.under-map .route-btn:active {
+  transform: scale(0.96);
+}
