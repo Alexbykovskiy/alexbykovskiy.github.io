@@ -346,12 +346,15 @@
 let startX = 0;
 let currentX = 0;
 let isSwiping = false;
+let swipeTimeStart = 0;
 
 track.addEventListener("touchstart", (e) => {
-  if (window.innerWidth > 700) return; // свайпы только на мобиле
+  if (window.innerWidth > 700) return;
   startX = e.touches[0].clientX;
   isSwiping = true;
+  swipeTimeStart = Date.now();
 });
+
 track.addEventListener("touchmove", (e) => {
   if (!isSwiping) return;
   currentX = e.touches[0].clientX;
@@ -359,39 +362,34 @@ track.addEventListener("touchmove", (e) => {
 
 track.addEventListener("touchend", () => {
   if (!isSwiping) return;
-  const diff = currentX - startX;
 
-  // свайп влево (листать вперёд)
+  const diff = currentX - startX;
+  const swipeDuration = Date.now() - swipeTimeStart;
+  const fastSwipe = swipeDuration < 180; // быстрый свайп
+
   if (diff < -50) {
-    nextSlide();
+    fastSwipe ? fastNextSlide() : goNext();
   }
 
-  // свайп вправо (листать назад)
   if (diff > 50) {
-    prevSlide();
+    fastSwipe ? fastPrevSlide() : goPrev();
   }
 
   isSwiping = false;
   startX = 0;
   currentX = 0;
 });
-      const prevBtn = document.querySelector('.works-arrow--prev');
-      const nextBtn = document.querySelector('.works-arrow--next');
 
-      if (!track || !prevBtn || !nextBtn) return;
+// плавный быстрый свайп
+function fastNextSlide() {
+  track.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+  goNext();
+}
 
-      let visibleCount = window.innerWidth < 700 ? 1 : 3;
-let shift = 100 / visibleCount;
-let isAnimating = false;
-window.addEventListener("resize", () => {
-  const newCount = window.innerWidth < 700 ? 1 : 3;
-  if (newCount !== visibleCount) {
-    visibleCount = newCount;
-    shift = 100 / visibleCount;
-    setActive();
-  }
-});
-      
+function fastPrevSlide() {
+  track.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+  goPrev();
+}
 
       // Помощник: актуальный список слайдов
       const getSlides = () => Array.from(track.children);
@@ -409,21 +407,13 @@ window.addEventListener("resize", () => {
     slides[1]?.classList.add("work-item--active");
   }
 }
-function nextSlide() {
-  index++;
-  updateSlider();
-}
-
-function prevSlide() {
-  index--;
-  updateSlider();
-}
       // Листание вперёд
       function goNext() {
         if (isAnimating) return;
         isAnimating = true;
 
-        track.style.transition = 'transform 0.4s ease';
+       track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
+
         track.style.transform = `translateX(-${shift}%)`;
 
         const onEnd = () => {
@@ -457,7 +447,8 @@ function prevSlide() {
         // форсим перерисовку
         void track.offsetWidth;
 
-        track.style.transition = 'transform 0.4s ease';
+        track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
+
         track.style.transform = 'translateX(0)';
 
         const onEnd = () => {
@@ -466,6 +457,8 @@ function prevSlide() {
           setActive();
           isAnimating = false;
         };
+
+
 
         track.addEventListener('transitionend', onEnd);
       }
