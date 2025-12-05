@@ -632,7 +632,7 @@ opacity: 1;
     align-items: center !important;
     justify-content: center;
     gap: 12px;
-    margin-top: -10px; /* поднимаем чуть выше */
+    margin-top: 14px; /* поднимаем чуть выше */
   }
 
   /* 3. Центрируем сами ссылки */
