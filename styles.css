@@ -161,21 +161,6 @@ opacity: 1;
   font-size: 14px;
 }
 
-@media (max-width: 640px) {
-  .hero-links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;        /* ставим в столбец */
-    align-items: center !important; /* центрируем */
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .hero-links a,
-  .hero-links button {
-    margin: 0 auto !important;     /* гарантированный центр */
-  }
-}
 
 .hero-link {
   font-size: 12px;
@@ -570,8 +555,7 @@ opacity: 1;
     background: #e60023;                  /* красный */
     padding: 10px 22px;
     border-radius: 999px;                 /* пилюля */
-    margin-right: 10px;
-    color: #ffffff !important;
+       color: #ffffff !important;
     font-size: 14px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -761,5 +745,34 @@ opacity: 1;
     fill: #fff !important;
     width: 32px !important;
     height: 32px !important;
+  }
+}
+
+@media (max-width: 640px) {
+
+  /* Контейнер двух пилюль */
+  .hero-links {
+    display: flex !important;
+    flex-direction: row !important;     /* ← ГОРИЗОНТАЛЬНО */
+    justify-content: center !important; /* ← ПО ЦЕНТРУ */
+    align-items: center !important;     /* ← ВЫРОВНЕНО */
+    gap: 16px;                          /* расстояние между кнопками */
+    width: 100%;
+  }
+
+  /* Сами пилюли */
+  .hero-links a,
+  .hero-links button {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: #e60023;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    white-space: nowrap; /* ← запрет переноса текста */
   }
 }
