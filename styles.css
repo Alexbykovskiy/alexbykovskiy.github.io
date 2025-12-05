@@ -951,3 +951,34 @@ position: relative !important;
 #map {
   max-width: 100% !important;
 }
+
+@media (max-width: 900px) {
+  .contact-map-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .route-buttons.under-map {
+    gap: 10px !important;
+  }
+
+  .route-buttons.under-map .route-btn {
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+  }
+}
+
+#map,
+.leaflet-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+html, body {
+  overflow-x: hidden !important;
+}
