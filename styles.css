@@ -627,20 +627,6 @@ opacity: 1;
   max-height: 200px;
 }
 
-.contact-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
-  color: white;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  backdrop-filter: blur(4px);
-  transition: background 0.25s ease, transform 0.2s ease;
-}
 
 .contact-icon:hover {
   background: rgba(255,255,255,0.22);
@@ -715,11 +701,6 @@ opacity: 1;
   transform: scale(1.12);
 }
 
-/* large icons inside circles */
-.contact-icon .icon-svg {
-  width: 32px;
-  height: 32px;
-}
 
 /* === ИДЕАЛЬНО ВЫРОВНЕННЫЕ КРУГИ + БЕЛЫЕ ИКОНКИ === */
 .contact-icon {
