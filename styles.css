@@ -591,11 +591,12 @@ opacity: 1;
   transform: scale(0.95);
 }
 
-/* панель скрыта по умолчанию */
 .contact-expand-panel {
   position: absolute;
-  left: 0;
   top: 100%;
+  left: 50%;                          /* центрируем */
+  transform: translate(-50%, -10px);   /* центр + смещение вверх */
+
   margin-top: 12px;
 
   display: flex;
@@ -604,10 +605,8 @@ opacity: 1;
   opacity: 0;
   pointer-events: none;
 
-  transform: translateY(-10px);
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
-
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
@@ -656,7 +655,7 @@ opacity: 1;
 }
 
 .hero-content {
-    padding-top: 240px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
+    padding-top: 320px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
   }
 
   .hero-name {
