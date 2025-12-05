@@ -342,6 +342,39 @@
     // Бесконечная карусель без клонов: перестановка карточек
     (function () {
       const track = document.querySelector('.works-track');
+// --- SWIPE SUPPORT FOR MOBILE ---
+let startX = 0;
+let currentX = 0;
+let isSwiping = false;
+
+track.addEventListener("touchstart", (e) => {
+  if (window.innerWidth > 700) return; // свайпы только на мобиле
+  startX = e.touches[0].clientX;
+  isSwiping = true;
+});
+track.addEventListener("touchmove", (e) => {
+  if (!isSwiping) return;
+  currentX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", () => {
+  if (!isSwiping) return;
+  const diff = currentX - startX;
+
+  // свайп влево (листать вперёд)
+  if (diff < -50) {
+    nextSlide();
+  }
+
+  // свайп вправо (листать назад)
+  if (diff > 50) {
+    prevSlide();
+  }
+
+  isSwiping = false;
+  startX = 0;
+  currentX = 0;
+});
       const prevBtn = document.querySelector('.works-arrow--prev');
       const nextBtn = document.querySelector('.works-arrow--next');
 
@@ -376,7 +409,15 @@ window.addEventListener("resize", () => {
     slides[1]?.classList.add("work-item--active");
   }
 }
+function nextSlide() {
+  index++;
+  updateSlider();
+}
 
+function prevSlide() {
+  index--;
+  updateSlider();
+}
       // Листание вперёд
       function goNext() {
         if (isAnimating) return;
