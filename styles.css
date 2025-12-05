@@ -608,24 +608,22 @@ opacity: 1;
 }
 
 /* панель скрыта по умолчанию */
-/* панель иконок — аккуратно выпадает сверху вниз */
 .contact-expand-panel {
   position: absolute;
-  top: 100%;               /* панель появляется ПОД кнопкой */
-  left: 50%;
-  transform: translateX(-50%) translateY(-12px); /* прячем ВВЕРХ чуть выше */
-  opacity: 0;
-  pointer-events: none;
+  left: 0;
+  top: 100%;
+  margin-top: 12px;
+
   display: flex;
   gap: 12px;
-  transition: all 0.35s ease;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.contact-expand-panel.open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(8px);   /* движется ВНИЗ красиво */
-}
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
