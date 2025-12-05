@@ -610,7 +610,7 @@ opacity: 1;
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 
@@ -750,22 +750,27 @@ opacity: 1;
 
   /* Сами пилюли */
   .hero-links a,
-  .hero-links button {
+.hero-links button {
     display: inline-flex !important;
     justify-content: center;
     align-items: center;
     margin: 0 !important;
-    padding: 10px 22px;
+
+    padding: 0 22px;
+    height: 40px;              /* одинаковая высота */
+    line-height: 1;            /* убираем системный мусор */
+
     border-radius: 999px;
     background: #e60023;
     color: #fff;
     font-size: 14px;
     letter-spacing: 0.05em;
-    white-space: nowrap; /* ← запрет переноса текста */
-  }
+    white-space: nowrap;
+}
 }
 
- .hero-content {
-    padding-top: 360px !important; /* опускает ВСЁ */
+ @media (max-width: 640px) {
+  .hero-content {
+    padding-top: 360px !important; /* опускает всё */
   }
 }
