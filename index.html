@@ -211,6 +211,24 @@
       <!-- MAP -->
       <div id="map" class="contact-map"></div>
 
+<div class="route-buttons">
+  <a 
+    class="route-btn"
+    href="https://www.google.com/maps/dir/?api=1&destination=48.15136,17.10850"
+    target="_blank"
+  >
+    Маршрут в Google Maps
+  </a>
+
+  <a 
+    class="route-btn"
+    href="http://maps.apple.com/?daddr=48.15136,17.10850"
+    target="_blank"
+  >
+    Маршрут в Apple Maps
+  </a>
+</div>
+
       <!-- INFO -->
       <div class="contact-info-column">
 
@@ -258,23 +276,7 @@
             <div class="contact-value">Štefánikova 14</div>
             <div class="contact-value">Bratislava, 811 05</div>
           
-<div class="route-buttons">
-  <a 
-    class="route-btn"
-    href="https://www.google.com/maps/dir/?api=1&destination=48.15136,17.10850"
-    target="_blank"
-  >
-    Маршрут в Google Maps
-  </a>
 
-  <a 
-    class="route-btn"
-    href="http://maps.apple.com/?daddr=48.15136,17.10850"
-    target="_blank"
-  >
-    Маршрут в Apple Maps
-  </a>
-</div>
 
 </div>
 
@@ -432,28 +434,29 @@ if (expandBtn && expandPanel) {
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
-// Координаты студии Body Gallery
-const studioLat = 48.15136;
-const studioLng = 17.10850;
+// --- Координаты ВХОДА Body Gallery ---
+const studioLat = 48.15145;
+const studioLng = 17.10844;
 
 const map = L.map('map', {
   zoomControl: true,
   scrollWheelZoom: true
-}).setView([studioLat, studioLng], 17);
+}).setView([studioLat, studioLng], 18);
 
-// ТЁМНАЯ КАРТА — NIGHT MODE
+// --- СТАНДАРТНАЯ СВЕТЛАЯ КАРТА ---
 L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
     maxZoom: 19,
-    attribution: '&copy; Carto'
+    attribution: '&copy; OpenStreetMap'
   }
 ).addTo(map);
 
-// Кастомный маркер (стандартный, но можно заменить на твой)
+// --- Метка ---
 L.marker([studioLat, studioLng])
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikova 14")
   .openPopup();
-</script></body>
+</script>
+</body>
 </html>
