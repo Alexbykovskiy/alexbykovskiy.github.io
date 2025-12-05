@@ -347,21 +347,35 @@
 
       if (!track || !prevBtn || !nextBtn) return;
 
-      const visibleCount = 3;
-      const shift = 100 / visibleCount; // 33.3333%
-      let isAnimating = false;
+      let visibleCount = window.innerWidth < 700 ? 1 : 3;
+let shift = 100 / visibleCount;
+let isAnimating = false;
+window.addEventListener("resize", () => {
+  const newCount = window.innerWidth < 700 ? 1 : 3;
+  if (newCount !== visibleCount) {
+    visibleCount = newCount;
+    shift = 100 / visibleCount;
+    setActive();
+  }
+});
+      
 
       // Помощник: актуальный список слайдов
       const getSlides = () => Array.from(track.children);
 
       // Центральная карточка — всегда вторая из трёх видимых
       function setActive() {
-        const slides = getSlides();
-        slides.forEach(s => s.classList.remove('work-item--active'));
-        if (slides[1]) {
-          slides[1].classList.add('work-item--active');
-        }
-      }
+  const slides = getSlides();
+  slides.forEach(s => s.classList.remove("work-item--active"));
+
+  if (visibleCount === 1) {
+    // мобилка: активный — первый и единственный
+    slides[0]?.classList.add("work-item--active");
+  } else {
+    // десктоп: центральный — второй из трёх
+    slides[1]?.classList.add("work-item--active");
+  }
+}
 
       // Листание вперёд
       function goNext() {

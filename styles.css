@@ -318,12 +318,6 @@ opacity: 1;
 }
 /* адаптация под мобилки: показываем по одному */
 
-@media (max-width: 700px) {
-  .work-item {
-    flex: 0 0 100%;
-    padding: 0 4px;
-  }
-}
 
 /* SERVICES */
 
