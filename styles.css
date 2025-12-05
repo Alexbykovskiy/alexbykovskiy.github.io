@@ -612,11 +612,6 @@ opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
-/* панель раскрытая */
-.contact-expand-panel.open {
-  opacity: 1;
-  max-height: 200px;
-}
 
 
 .contact-icon:hover {
@@ -658,14 +653,8 @@ opacity: 1;
     padding-top: 320px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
   }
 
-  .hero-name {
-    margin-top: 60px !important; /* имя ниже */
-  }
-
-  .hero-text-block {
-    margin-top: 30px !important; /* весь правый текст тоже ниже */
-  }
-
+ 
+ 
 /* SVG иконки */
 .icon-svg {
   width: 26px;
@@ -773,5 +762,10 @@ opacity: 1;
     font-size: 14px;
     letter-spacing: 0.05em;
     white-space: nowrap; /* ← запрет переноса текста */
+  }
+}
+
+ .hero-content {
+    padding-top: 360px !important; /* опускает ВСЁ */
   }
 }
