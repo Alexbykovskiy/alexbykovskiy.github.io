@@ -600,15 +600,26 @@ opacity: 1;
 
 /* панель скрыта по умолчанию */
 .contact-expand-panel {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 12px;
+
   display: flex;
   gap: 12px;
-  margin-top: 14px;
+
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 0.35s ease, max-height 0.35s ease;
+  pointer-events: none;
+
+  transform: translateY(-10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+.contact-expand-panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 /* панель раскрытая */
 .contact-expand-panel.open {
   opacity: 1;
@@ -702,4 +713,10 @@ opacity: 1;
 .contact-icon:hover {
   background: rgba(255,255,255,0.25);
   transform: scale(1.12);
+}
+
+/* large icons inside circles */
+.contact-icon .icon-svg {
+  width: 32px;
+  height: 32px;
 }
