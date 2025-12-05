@@ -148,13 +148,13 @@ opacity: 1;
 }
 
 .hero-name {
-  margin-top: 0;
-  text-align: center;
+  margin-top: 120px;   /* ПОДНИМАЕМ ФИО НИЖЕ */
 }
+
 .hero-text-block {
-  margin-top: 12px; /* лёгкий нормальный отступ, можно 8–16 */
-  text-align: center;
+  margin-top: -40px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
 }
+
 .hero-tagline {
   margin: 0 0 24px;
   color: var(--text-muted);
@@ -741,7 +741,6 @@ opacity: 1;
   /* Контейнер двух пилюль */
   .hero-links {
 position: relative !important;
-margin-bottom: 12px !important;
  padding-bottom: 24px !important;
     display: flex !important;
     flex-direction: row !important;     /* ← ГОРИЗОНТАЛЬНО */
@@ -777,6 +776,6 @@ margin-bottom: 12px !important;
 
  @media (max-width: 640px) {
   .hero-content {
-    padding-top: 200px !important; /* опускает всё */
+    padding-top: 360px !important; /* опускает всё */
   }
 }
