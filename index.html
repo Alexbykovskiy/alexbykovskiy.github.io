@@ -115,28 +115,70 @@
                   <!-- РАБОТЫ -->
       <section class="section section--works" id="works">
         <div class="container">
-          <h2 class="section-title">РАБОТЫ</h2>
+          <div class="gallery-tabs">
+  <button class="gallery-tab active" data-gallery="bw">Черно-белые</button>
+  <button class="gallery-tab" data-gallery="color">Цветные</button>
+  <button class="gallery-tab" data-gallery="cover">Перекрытия</button>
+  <button class="gallery-tab" data-gallery="watercolor">Акварель</button>
+</div>
+
 
           <div class="works-layout">
-            <div class="works-carousel">
-              <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+           <div class="galleries-wrapper">
 
-              <div class="works-track">
-                <div class="work-item">
-                  <img src="img/works/work1.JPG" alt="Татуировка 1">
-                </div>
-                <div class="work-item">
-                  <img src="img/works/work2.JPG" alt="Татуировка 2">
-                </div>
-                <div class="work-item">
-                  <img src="img/works/work3.JPG" alt="Татуировка 3">
-                </div>
-                <div class="work-item">
-                  <img src="img/works/work4.JPG" alt="Татуировка 4">
-                </div>
-                <div class="work-item">
-                  <img src="img/works/work5.JPG" alt="Татуировка 5">
-                </div>
+  <!-- ЧЁРНО-БЕЛЫЕ -->
+  <div class="gallery-block active" id="gallery-bw">
+    <div class="works-carousel">
+      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+
+      <div class="works-track">
+        <!-- Добавь сюда Ч/Б фото -->
+      </div>
+
+      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ЦВЕТНЫЕ -->
+  <div class="gallery-block" id="gallery-color">
+    <div class="works-carousel">
+      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+
+      <div class="works-track">
+        <!-- Цветные фото -->
+      </div>
+
+      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ПЕРЕКРЫТИЯ -->
+  <div class="gallery-block" id="gallery-cover">
+    <div class="works-carousel">
+      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+
+      <div class="works-track">
+        <!-- Перекрытия -->
+      </div>
+
+      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- АКВАРЕЛЬ -->
+  <div class="gallery-block" id="gallery-watercolor">
+    <div class="works-carousel">
+      <button class="works-arrow works-arrow--prev" type="button">&#10094;</button>
+
+      <div class="works-track">
+        <!-- Акварельные работы -->
+      </div>
+
+      <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
+    </div>
+  </div>
+
+</div>
               </div>
 
               <button class="works-arrow works-arrow--next" type="button">&#10095;</button>
@@ -508,6 +550,22 @@ L.marker([studioLat, studioLng])
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikova 14")
   .openPopup();
+// --- GALLERY TABS ---
+const tabs = document.querySelectorAll(".gallery-tab");
+const galleries = document.querySelectorAll(".gallery-block");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    // переключаем active-кнопку
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    // показываем нужную галерею
+    const id = tab.dataset.gallery;
+    galleries.forEach(g => g.classList.remove("active"));
+    document.querySelector(`#gallery-${id}`).classList.add("active");
+  });
+});
 </script>
 </body>
 </html>
