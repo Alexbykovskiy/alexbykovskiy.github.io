@@ -927,3 +927,27 @@ position: relative !important;
 .route-buttons.under-map .route-btn:active {
   transform: scale(0.96);
 }
+
+.route-buttons.under-map {
+  flex-direction: row !important;
+}
+
+@media (max-width: 420px) {
+  .route-buttons.under-map {
+    gap: 8px;
+  }
+
+  .route-buttons.under-map .route-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  /* чтобы ВСЁ помещалось внутри экрана */
+  body, html {
+    overflow-x: hidden;
+  }
+}
+
+#map {
+  max-width: 100% !important;
+}
