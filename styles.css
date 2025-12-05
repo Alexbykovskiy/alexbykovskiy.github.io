@@ -608,22 +608,24 @@ opacity: 1;
 }
 
 /* панель скрыта по умолчанию */
+/* панель иконок — аккуратно выпадает сверху вниз */
 .contact-expand-panel {
   position: absolute;
-  left: 0;
-  top: 100%;
-  margin-top: 12px;
-
-  display: flex;
-  gap: 12px;
-
+  top: 100%;               /* панель появляется ПОД кнопкой */
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px); /* прячем ВВЕРХ чуть выше */
   opacity: 0;
   pointer-events: none;
-
-  transform: translateY(-10px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  display: flex;
+  gap: 12px;
+  transition: all 0.35s ease;
 }
 
+.contact-expand-panel.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(8px);   /* движется ВНИЗ красиво */
+}
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
@@ -761,30 +763,5 @@ opacity: 1;
     fill: #fff !important;
     width: 32px !important;
     height: 32px !important;
-  }
-}
-@media (max-width: 640px) {
-  .hero-links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;        /* ставим в столбец */
-    align-items: center !important; /* центрируем */
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .hero-links a,
-  .hero-links button {
-    margin: 0 auto !important;     /* гарантированный центр */
-  }
-}
-
- .contact-expand-panel {
-    left: 50% !important;
-    transform: translateX(-50%) translateY(10px) !important;
-  }
-
-  .contact-expand-panel.open {
-    transform: translateX(-50%) translateY(0) !important;
   }
 }
