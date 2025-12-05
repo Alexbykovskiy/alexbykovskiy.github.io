@@ -741,7 +741,7 @@ opacity: 1;
   /* Контейнер двух пилюль */
   .hero-links {
 position: relative !important;
- padding-bottom: 80px !important;
+ padding-bottom: 48px !important;
     display: flex !important;
     flex-direction: row !important;     /* ← ГОРИЗОНТАЛЬНО */
     justify-content: center !important; /* ← ПО ЦЕНТРУ */
@@ -770,7 +770,7 @@ position: relative !important;
     white-space: nowrap;
 }
 .contact-expand-panel {
-    margin-top: 16px;
+   margin-top: 8px !important; /* ← было 16px */
 }
 }
 
