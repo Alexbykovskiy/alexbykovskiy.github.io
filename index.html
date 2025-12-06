@@ -462,16 +462,19 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const all = Array.from(carousel.querySelectorAll(".carousel-item"));
   const itemWidth = all[0].clientWidth;
 
- function updatePosition() {
-    const itemWidth = all[index].clientWidth;
-    const offset = all.slice(0, index).reduce((sum, el) => sum + el.clientWidth, 0);
+function updatePosition() {
+  let offset = 0;
 
-    track.style.transform = `translateX(-${offset}px)`;
+  // считаем только реальные элементы
+  for (let i = 0; i < index; i++) {
+    offset += all[i].clientWidth;
+  }
 
-    all.forEach(i => i.classList.remove("active"));
-all[index].classList.add("active");   // scale больше не нужен
+  track.style.transform = `translateX(-${offset}px)`;
+
+  all.forEach(i => i.classList.remove("active"));
+  all[index].classList.add("active");
 }
-
   updatePosition();
 
   nextBtn.onclick = () => {
@@ -487,17 +490,17 @@ all[index].classList.add("active");   // scale больше не нужен
   };
 
   track.addEventListener("transitionend", () => {
-    if (index === 0) {
-      track.style.transition = "none";
-      index = all.length - 2;
-      updatePosition();
-    }
-    if (index === all.length - 1) {
-      track.style.transition = "none";
-      index = 1;
-      updatePosition();
-    }
-  });
+  if (index === 0) {
+    track.style.transition = "none";
+    index = all.length - 2; // последний оригинал
+    updatePosition();
+  }
+  if (index === all.length - 1) {
+    track.style.transition = "none";
+    index = 1; // первый оригинал
+    updatePosition();
+  }
+});
 
   // Swipe
   let startX = 0;

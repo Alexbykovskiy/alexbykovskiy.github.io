@@ -1085,6 +1085,7 @@ html, body {
   background: none;
 }
 .carousel-arrow {
+  z-index: 20 !important; /* стрелка всегда сверху */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1104,10 +1105,10 @@ html, body {
 }
 
 .carousel-arrow.prev {
-  left: 10px;
+    left: 20px !important; /* чуть вправо, чтобы не попадать под край фото */
 }
 .carousel-arrow.next {
-  right: 10px;
+  right: 20px !important; /* симметрия */
 }
 
 
