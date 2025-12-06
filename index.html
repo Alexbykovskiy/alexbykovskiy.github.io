@@ -468,8 +468,8 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 
     track.style.transform = `translateX(-${offset}px)`;
 
-    all.forEach(i => i.classList.remove("active", "scale"));
-    all[index].classList.add("active", "scale");
+    all.forEach(i => i.classList.remove("active"));
+all[index].classList.add("active");   // scale больше не нужен
 }
 
   updatePosition();

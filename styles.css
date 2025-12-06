@@ -1083,7 +1083,8 @@ html, body {
   border-radius: 10px;
   display: block;
   background: none;
-}}.carousel-arrow {
+}
+.carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1109,10 +1110,6 @@ html, body {
   right: 10px;
 }
 
-/* CENTER FOCUS */
-.carousel-item.scale {
-  transform: scale(1.03);
-}
 
 @media (max-width: 700px) {
   .carousel-arrow {
