@@ -1140,3 +1140,9 @@ html, body {
 .carousel-dot.active {
   background: rgba(255,255,255,1); /* белая как у iPhone */
 }
+
+/* FIX: iOS Safari prevents multiple horizontal swipes */
+.carousel,
+.carousel-track {
+  touch-action: pan-y; /* разрешаем вертикальный скролл, но даём горизонтальные жесты JS */
+}
