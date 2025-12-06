@@ -460,7 +460,7 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const last = items[items.length - 1].cloneNode(true);
   track.append(first);
   track.prepend(last);
-const dotsContainer = document.querySelector(".carousel-dots");
+const dotsContainer = carousel.querySelector(".carousel-dots");
 
 // создаём точки под реальные элементы
 items.forEach((_, i) => {
@@ -505,15 +505,16 @@ function updatePosition() {
   all[index].classList.add("active");
 }
 // обновление точек
-const dots = document.querySelectorAll(".carousel-dot");
+const dots = carousel.querySelectorAll(".carousel-dot");
 
-// вычисляем реальный индекс (без клонов)
-let realIndex = index - 1; 
+// реальный индекс без учёта клонов
+let realIndex = index - 1;
 if (realIndex < 0) realIndex = items.length - 1;
 if (realIndex >= items.length) realIndex = 0;
 
 dots.forEach(d => d.classList.remove("active"));
-dots[realIndex].classList.add("active");
+if (dots[realIndex]) dots[realIndex].classList.add("active");
+
   updatePosition();
 
   nextBtn.onclick = () => {
