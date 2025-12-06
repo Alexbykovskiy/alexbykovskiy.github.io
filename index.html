@@ -536,17 +536,15 @@ prevBtn.onclick = () => {
 };
 
 
-  track.addEventListener("transitionend", () => {
-track.addEventListener("transitionend", () => {
-  animating = false;  // ← разблокировка после анимации
+ track.addEventListener("transitionend", () => {
+  animating = false;
+
   // Если попали на клон слева
   if (index === 0) {
-    // первый кадр — убрать анимацию
     track.style.transition = "none";
     index = all.length - 2;
     updatePosition();
 
-    // второй кадр — восстановить анимацию в следующем тике
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
@@ -567,6 +565,7 @@ track.addEventListener("transitionend", () => {
     });
   }
 });
+
 
 // --- MOBILE SWIPE (stable on Safari + Chrome + iOS + Android) ---
 let startX = 0;
