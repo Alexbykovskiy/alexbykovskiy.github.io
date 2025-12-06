@@ -463,10 +463,14 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const itemWidth = all[0].clientWidth;
 
  function updatePosition() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+    const itemWidth = all[index].clientWidth;
+    const offset = all.slice(0, index).reduce((sum, el) => sum + el.clientWidth, 0);
+
+    track.style.transform = `translateX(-${offset}px)`;
+
     all.forEach(i => i.classList.remove("active", "scale"));
     all[index].classList.add("active", "scale");
-  }
+}
 
   updatePosition();
 

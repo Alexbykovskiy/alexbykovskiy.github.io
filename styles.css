@@ -1035,56 +1035,55 @@ html, body {
   display: block;
 }
 
-/* CAROUSEL */
+/* === КАРУСЕЛЬ === */
 .carousel {
   position: relative;
   overflow: hidden;
 }
+
 .carousel-track {
   display: flex;
   transition: transform .55s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* ДЕСКТОП — показываем 3 фото */
+
+/*** ДЕСКТОП ***/
 @media (min-width: 900px) {
- .carousel-item {
-  height: 600px;       /* ВЫСОТА ДЛЯ ДЕСКТОПА – можешь менять */
-  display: flex;
-  justify-content: center;
-  align-items: center; /* центрирование фото */
+  .carousel-item {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-/* ПЛАНШЕТ — два фото */
+/*** ПЛАНШЕТ ***/
 @media (min-width: 600px) and (max-width: 899px) {
   .carousel-item {
-    flex: 0 0 50%;
-    margin: 0;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-/* МОБИЛКА — одно фото (как сейчас) */
+/*** МОБИЛКА ***/
 @media (max-width: 599px) {
   .carousel-item {
-    height: 350px;     /* меньше */
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
-.carousel-item.active {
-  opacity: 1;
-}
-
-
 
 .carousel-item img {
-  height: 100%;         /* фиксированная высота */
-  width: auto;          /* ширина какая получится */
-  object-fit: contain;  /* вписывается полностью */
-  display: block;
-  background: none;     /* убираем черный фон */
+  height: 100%;
+  width: auto;
+  object-fit: contain;
   border-radius: 10px;
-}@media (max-width: 600px) {
-  .carousel-item img {
-    height: 300px;
-  }
-}.carousel-arrow {
+  display: block;
+  background: none;
+}}.carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
