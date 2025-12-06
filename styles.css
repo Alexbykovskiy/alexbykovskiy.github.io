@@ -1146,3 +1146,38 @@ html, body {
 .carousel-track {
   touch-action: pan-y; /* разрешаем вертикальный скролл, но даём горизонтальные жесты JS */
 }
+
+/* === FIX: нормальный размер иконок соцсетей внизу === */
+.socials {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.socials .social img {
+  width: 32px;   /* ← размер иконок */
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+/* опционально — красивые круглые подложки */
+.socials .social {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s ease;
+}
+
+.socials .social:hover {
+  background: rgba(255,255,255,0.28);
+  transform: scale(1.08);
+}
