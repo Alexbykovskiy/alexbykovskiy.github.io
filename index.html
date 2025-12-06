@@ -504,15 +504,32 @@ function updatePosition() {
   };
 
   track.addEventListener("transitionend", () => {
+  // Если попали на клон слева
   if (index === 0) {
+    // первый кадр — убрать анимацию
     track.style.transition = "none";
-    index = all.length - 2; // последний оригинал
+    index = all.length - 2;
     updatePosition();
+
+    // второй кадр — восстановить анимацию в следующем тике
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+      });
+    });
   }
+
+  // Если попали на клон справа
   if (index === all.length - 1) {
     track.style.transition = "none";
-    index = 1; // первый оригинал
+    index = 1;
     updatePosition();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+      });
+    });
   }
 });
 
