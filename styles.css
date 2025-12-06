@@ -257,7 +257,8 @@ opacity: 1;
 }
 
 .work-item {
-  flex: 0 0 33.3333%;
+   flex: 0 0 auto;  /* ширина по содержимому */
+  margin-right: 20px;
   padding: 0 8px;
   aspect-ratio: 3 / 4;
   background: var(--bg-block);
@@ -1045,10 +1046,11 @@ html, body {
 }
 /* ДЕСКТОП — показываем 3 фото */
 @media (min-width: 900px) {
-  .carousel-item {
-    flex: 0 0 33.333%;
-    margin: 0;
-  }
+ .carousel-item {
+  height: 600px;       /* ВЫСОТА ДЛЯ ДЕСКТОПА – можешь менять */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* центрирование фото */
 }
 
 /* ПЛАНШЕТ — два фото */
@@ -1062,8 +1064,7 @@ html, body {
 /* МОБИЛКА — одно фото (как сейчас) */
 @media (max-width: 599px) {
   .carousel-item {
-    flex: 0 0 100%;
-    margin: 0;
+    height: 350px;     /* меньше */
   }
 }
 .carousel-item.active {
@@ -1073,14 +1074,13 @@ html, body {
 
 
 .carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;    /* фото полностью помещается */
-  border-radius: 10px;
+  height: 100%;         /* фиксированная высота */
+  width: auto;          /* ширина какая получится */
+  object-fit: contain;  /* вписывается полностью */
   display: block;
-  background: #000;       /* чёрный фон вокруг, как в галерее тату */
-}
-@media (max-width: 600px) {
+  background: none;     /* убираем черный фон */
+  border-radius: 10px;
+}@media (max-width: 600px) {
   .carousel-item img {
     height: 300px;
   }
