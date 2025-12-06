@@ -485,22 +485,14 @@ items.forEach((_, i) => {
   const itemWidth = all[0].clientWidth;
 
 function updatePosition() {
-  let realItems = items;                        // реальные картинки
-  let cloneLeft = all[0];                       // клон последней
-  let cloneRight = all[all.length - 1];         // клон первой
-
+  let realItems = items;
   let offset = 0;
 
-  // ЕСЛИ индекс на клоне слева (index = 0)
   if (index === 0) {
     offset = 0;
-  }
-  // ЕСЛИ индекс на клоне справа (последний)
-  else if (index === all.length - 1) {
+  } else if (index === all.length - 1) {
     offset = realItems.reduce((sum, el) => sum + el.clientWidth, 0);
-  }
-  // Обычный случай — считаем только реальные элементы
-  else {
+  } else {
     for (let i = 1; i < index; i++) {
       offset += realItems[i - 1].clientWidth;
     }
@@ -510,18 +502,17 @@ function updatePosition() {
 
   all.forEach(el => el.classList.remove("active"));
   all[index].classList.add("active");
+
+  /* === ОБНОВЛЕНИЕ ТОЧЕК === */
+  const dots = carousel.querySelectorAll(".carousel-dot");
+
+  let realIndex = index - 1;
+  if (realIndex < 0) realIndex = items.length - 1;
+  if (realIndex >= items.length) realIndex = 0;
+
+  dots.forEach(d => d.classList.remove("active"));
+  dots[realIndex].classList.add("active");
 }
-// обновление точек
-const dots = carousel.querySelectorAll(".carousel-dot");
-
-// реальный индекс без учёта клонов
-let realIndex = index - 1;
-if (realIndex < 0) realIndex = items.length - 1;
-if (realIndex >= items.length) realIndex = 0;
-
-dots.forEach(d => d.classList.remove("active"));
-if (dots[realIndex]) dots[realIndex].classList.add("active");
-
   updatePosition();
 
   nextBtn.onclick = () => {
