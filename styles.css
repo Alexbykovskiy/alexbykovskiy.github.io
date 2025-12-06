@@ -1084,39 +1084,53 @@ html, body {
   display: block;
   background: none;
 }
+/* === БОЛЬШИЕ ПОЛУПРОЗРАЧНЫЕ БЕЛЫЕ СТРЕЛКИ КАК iOS === */
 .carousel-arrow {
-  z-index: 20 !important; /* стрелка всегда сверху */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
+
+  /* размеры — большие, удобные */
+  width: 80px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 64px;
+  color: rgba(255,255,255,0.55);    /* мягкий белый */
   border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.00) 0%,
+    rgba(0,0,0,0.35) 100%
+  );
+
   cursor: pointer;
-  backdrop-filter: blur(4px);
-  font-size: 26px;
-  transition: .2s;
-}
-.carousel-arrow:hover {
-  background: rgba(255,255,255,0.3);
+  z-index: 20;
+  transition: 0.25s ease;
+  border-radius: 16px;              /* округлённые края */
 }
 
 .carousel-arrow.prev {
-    left: 20px !important; /* чуть вправо, чтобы не попадать под край фото */
+  left: 0;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.00) 0%,
+    rgba(0,0,0,0.35) 100%
+  );
 }
+
 .carousel-arrow.next {
-  right: 20px !important; /* симметрия */
+  right: 0;
 }
 
-
-@media (max-width: 700px) {
-  .carousel-arrow {
-    display: none;
-  }
+.carousel-arrow:hover {
+  color: rgba(255,255,255,0.9);
+  transform: translateY(-50%) scale(1.08);
 }
+
 
 
 .carousel-dots {
