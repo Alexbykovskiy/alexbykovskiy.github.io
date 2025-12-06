@@ -463,16 +463,30 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const itemWidth = all[0].clientWidth;
 
 function updatePosition() {
+  let realItems = items;                        // реальные картинки
+  let cloneLeft = all[0];                       // клон последней
+  let cloneRight = all[all.length - 1];         // клон первой
+
   let offset = 0;
 
-  // считаем только реальные элементы
-  for (let i = 0; i < index; i++) {
-    offset += all[i].clientWidth;
+  // ЕСЛИ индекс на клоне слева (index = 0)
+  if (index === 0) {
+    offset = 0;
+  }
+  // ЕСЛИ индекс на клоне справа (последний)
+  else if (index === all.length - 1) {
+    offset = realItems.reduce((sum, el) => sum + el.clientWidth, 0);
+  }
+  // Обычный случай — считаем только реальные элементы
+  else {
+    for (let i = 1; i < index; i++) {
+      offset += realItems[i - 1].clientWidth;
+    }
   }
 
   track.style.transform = `translateX(-${offset}px)`;
 
-  all.forEach(i => i.classList.remove("active"));
+  all.forEach(el => el.classList.remove("active"));
   all[index].classList.add("active");
 }
   updatePosition();
