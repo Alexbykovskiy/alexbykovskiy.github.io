@@ -557,57 +557,51 @@ function updatePosition() {
   }
 });
 
- // --- MOBILE SWIPE (Safari + Chrome Android + iOS) ---
+// --- MOBILE SWIPE (stable on Safari + Chrome + iOS + Android) ---
 let startX = 0;
-let currentX = 0;
+let startY = 0;
 let dragging = false;
-let moved = false;
 
 track.addEventListener("touchstart", e => {
   dragging = true;
-  moved = false;
-
   startX = e.touches[0].clientX;
-  currentX = startX;
-
-  track.style.transition = "none"; // отключаем анимацию
+  startY = e.touches[0].clientY;
+  track.style.transition = "none";
 }, { passive: true });
 
 track.addEventListener("touchmove", e => {
   if (!dragging) return;
 
-  const touchX = e.touches[0].clientX;
-  const deltaX = touchX - startX;
+  const x = e.touches[0].clientX;
+  const y = e.touches[0].clientY;
 
-  // если движение вертикальное — отдаём Safari скролл
-  if (Math.abs(deltaX) < Math.abs(e.touches[0].clientY - e.touches[0].pageY)) {
-    return;
-  }
+  const deltaX = x - startX;
+  const deltaY = y - startY;
 
-  e.preventDefault(); // Safari-proof
+  // если движение вертикальное → отдаём на скролл
+  if (Math.abs(deltaY) > Math.abs(deltaX)) return;
 
-  moved = true;
-  currentX = touchX;
+  // блокируем скролл Safari
+  e.preventDefault();
 
-  // временно двигаем ленту под пальцем (drag effect)
-  const offset = deltaX;
-  track.style.transform = `translateX(calc(${ -(
+  // фактическое смещение текущего слайда
+  const baseOffset =
     index === 0
       ? 0
       : index === all.length - 1
         ? items.reduce((s, e) => s + e.clientWidth, 0)
-        : items.slice(0, index - 1).reduce((s, e) => s + e.clientWidth, 0)
-  )}px + ${offset}px))`;
+        : items.slice(0, index - 1).reduce((s, e) => s + e.clientWidth, 0);
+
+  // тянем под пальцем
+  track.style.transform = `translateX(${-(baseOffset) + deltaX}px)`;
 }, { passive: false });
 
-track.addEventListener("touchend", () => {
+track.addEventListener("touchend", e => {
   dragging = false;
 
-  const diff = currentX - startX;
+  const diff = e.changedTouches[0].clientX - startX;
 
   track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-
-  if (!moved) return;
 
   if (diff > 50) {
     prevBtn.click();
