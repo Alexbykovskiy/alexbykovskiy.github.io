@@ -515,19 +515,30 @@ function updatePosition() {
 }
   updatePosition();
 
-  nextBtn.onclick = () => {
-    index++;
-    track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-    updatePosition();
-  };
+  let animating = false; // защита от двойных нажатий
 
-  prevBtn.onclick = () => {
-    index--;
-    track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-    updatePosition();
-  };
+nextBtn.onclick = () => {
+  if (animating) return;
+  animating = true;
+
+  index++;
+  track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+  updatePosition();
+};
+
+prevBtn.onclick = () => {
+  if (animating) return;
+  animating = true;
+
+  index--;
+  track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+  updatePosition();
+};
+
 
   track.addEventListener("transitionend", () => {
+track.addEventListener("transitionend", () => {
+  animating = false;  // ← разблокировка после анимации
   // Если попали на клон слева
   if (index === 0) {
     // первый кадр — убрать анимацию
