@@ -1142,11 +1142,13 @@ html, body {
 }
 
 /* FIX: iOS Safari prevents multiple horizontal swipes */
-.carousel,
-.carousel-track {
-  touch-action: pan-y; /* разрешаем вертикальный скролл, но даём горизонтальные жесты JS */
+.carousel {
+  touch-action: pan-y; /* оставляем для контейнера */
 }
 
+.carousel-track {
+  touch-action: none; /* разрешаем JS полностью управлять свайпом */
+}
 /* === FIX: нормальный размер иконок соцсетей внизу === */
 .socials {
   display: flex;
