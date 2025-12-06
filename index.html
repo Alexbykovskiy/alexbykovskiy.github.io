@@ -557,24 +557,52 @@ function updatePosition() {
   }
 });
 
-  // Swipe
-  let startX = 0;
-  let diff = 0;
+  // --- MOBILE SWIPE (Safari-proof) ---
+let startX = 0;
+let currentX = 0;
+let dragging = false;
 
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
+track.addEventListener("touchstart", e => {
+  dragging = true;
+  startX = e.touches[0].clientX;
+  currentX = startX;
+
+  track.style.transition = "none"; // отключаем анимацию для drag
+}, { passive: true });
+
+track.addEventListener("touchmove", e => {
+  if (!dragging) return;
+
+  const touchX = e.touches[0].clientX;
+
+  // определяем горизонтальное движение
+  const deltaX = touchX - startX;
+
+  // если движение почти вертикальное → разрешаем скроллить сайт
+  if (Math.abs(deltaX) < Math.abs(e.touches[0].clientY - e.touches[0].clientY + 0.1)) {
+    return; // не блокируем скролл
+  }
+
+  e.preventDefault(); // Safari — разрешаем полный контроль свайпа
+
+  currentX = touchX;
+}, { passive: false });
+
+track.addEventListener("touchend", () => {
+  dragging = false;
+
+  const diff = currentX - startX;
+
+  if (diff > 50) {
+    prevBtn.click();
+  } else if (diff < -50) {
+    nextBtn.click();
+  }
+
+  // возвращаем анимацию
+  requestAnimationFrame(() => {
+    track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
   });
-
-  track.addEventListener("touchmove", e => {
-    diff = e.touches[0].clientX - startX;
-  });
-
-  track.addEventListener("touchend", () => {
-    if (diff < -50) nextBtn.click();
-    if (diff > 50) prevBtn.click();
-    diff = 0;
-  });
-
 });
 
 </script>
