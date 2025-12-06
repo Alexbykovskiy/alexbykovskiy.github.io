@@ -188,6 +188,8 @@
   </div>
 </div>
 
+<div class="carousel-dots"></div>
+
           </div>
 
           <div class="works-caption">
@@ -458,7 +460,20 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const last = items[items.length - 1].cloneNode(true);
   track.append(first);
   track.prepend(last);
+const dotsContainer = document.querySelector(".carousel-dots");
 
+// создаём точки под реальные элементы
+items.forEach((_, i) => {
+  const dot = document.createElement("div");
+  dot.className = "carousel-dot";
+  dotsContainer.appendChild(dot);
+
+  // кликабельные точки (перелистывание по нажатию)
+  dot.addEventListener("click", () => {
+    index = i + 1; // +1 потому что index 0 — это клон
+    updatePosition();
+  });
+});
   const all = Array.from(carousel.querySelectorAll(".carousel-item"));
   const itemWidth = all[0].clientWidth;
 
@@ -489,6 +504,16 @@ function updatePosition() {
   all.forEach(el => el.classList.remove("active"));
   all[index].classList.add("active");
 }
+// обновление точек
+const dots = document.querySelectorAll(".carousel-dot");
+
+// вычисляем реальный индекс (без клонов)
+let realIndex = index - 1; 
+if (realIndex < 0) realIndex = items.length - 1;
+if (realIndex >= items.length) realIndex = 0;
+
+dots.forEach(d => d.classList.remove("active"));
+dots[realIndex].classList.add("active");
   updatePosition();
 
   nextBtn.onclick = () => {

@@ -1117,3 +1117,26 @@ html, body {
     display: none;
   }
 }
+
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 15;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25); /* полупрозрачные */
+  transition: 0.25s;
+}
+
+.carousel-dot.active {
+  background: rgba(255,255,255,1); /* белая как у iPhone */
+}
