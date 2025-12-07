@@ -794,9 +794,8 @@ position: relative !important;
 
 .contact-info-column {
   display: grid;
-  gap: 26px;
+  gap: 32px;   /* было 26px — чуть больше воздуха */
 }
-
 .contact-item {
   display: flex;
   gap: 16px;
@@ -804,19 +803,18 @@ position: relative !important;
 }
 
 .contact-icon-mini {
-  width: 28px;
-  height: 28px;
+  width: 36px;                  /* было 28px */
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-top: 2px;
 }
 
-/* сами SVG-иконки */
 .icon-contact {
-  width: 22px;
-  height: 22px;
+  width: 28px;                  /* было 22px */
+  height: 28px;
   display: block;
 }
 .contact-label {
