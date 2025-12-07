@@ -596,13 +596,13 @@ opacity: 1;
   display: flex;
   gap: 12px;
 
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.78);    /* ← СЕЙЧАС ЧЁРНЫЙ ФОН */
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 0 0 0 rgba(230, 0, 35, 0);
+  /* больше НЕ делаем общую пилюлю */
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  box-shadow: none;
 
   opacity: 0;
   pointer-events: none;
@@ -611,15 +611,13 @@ opacity: 1;
     opacity 0.35s ease,
     transform 0.35s ease;
 }
+
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
-
-  /* пульсирующее свечение всей пилюли при открытии */
-  animation: contact-pill-pulse 1.1s ease-out 0s 2;
+  animation: none; /* отключаем красное свечение */
 }
-
 @keyframes contact-pill-pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(230, 0, 35, 0);
@@ -699,6 +697,31 @@ opacity: 1;
   transform: scale(1.12);
 }
 
+/* --- Подсветка по брендам: используется из JS --- */
+
+.contact-icon--active-inst {
+  background: radial-gradient(circle at 30% 0%, #f9ce34, #ee2a7b, #6228d7);
+  box-shadow: 0 0 26px rgba(238, 42, 123, 0.95);
+  transform: scale(1.12);
+}
+
+.contact-icon--active-tg {
+  background: radial-gradient(circle at 30% 0%, #2AABEE, #229ED9);
+  box-shadow: 0 0 26px rgba(42, 171, 238, 0.95);
+  transform: scale(1.12);
+}
+
+.contact-icon--active-ms {
+  background: radial-gradient(circle at 30% 0%, #1877F2, #0F5BB5);
+  box-shadow: 0 0 26px rgba(24, 119, 242, 0.95);
+  transform: scale(1.12);
+}
+
+.contact-icon--active-wa {
+  background: radial-gradient(circle at 30% 0%, #25D366, #128C7E);
+  box-shadow: 0 0 26px rgba(37, 211, 102, 0.95);
+  transform: scale(1.12);
+}
 
 /* === ИДЕАЛЬНО ВЫРОВНЕННЫЕ КРУГИ + БЕЛЫЕ ИКОНКИ === */
 .contact-icon {
