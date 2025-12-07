@@ -452,175 +452,176 @@ tabs.forEach(tab => {
 });
 
 
-// ——— Новый универсальный движок карусели ———
+// ——— Новый стабильный движок карусели (стрелки + точки + свайп) ———
 document.querySelectorAll("[data-carousel]").forEach(carousel => {
-
   const track = carousel.querySelector(".carousel-track");
-  const items = Array.from(carousel.querySelectorAll(".carousel-item"));
-  const prevBtn = carousel.querySelector(".prev");
-  const nextBtn = carousel.querySelector(".next");
+  const originalSlides = Array.from(track.querySelectorAll(".carousel-item"));
+  const prevBtn = carousel.querySelector(".carousel-arrow.prev");
+  const nextBtn = carousel.querySelector(".carousel-arrow.next");
+  const dotsContainer = carousel.querySelector(".carousel-dots");
 
-  let index = 1;
+  if (!track || originalSlides.length === 0 || !prevBtn || !nextBtn || !dotsContainer) {
+    return;
+  }
 
-  // Clone for infinite loop
-  const first = items[0].cloneNode(true);
-  const last = items[items.length - 1].cloneNode(true);
-  track.append(first);
-  track.prepend(last);
-const dotsContainer = carousel.querySelector(".carousel-dots");
+  // Клоны для бесконечной прокрутки
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+  track.append(firstClone);
+  track.prepend(lastClone);
 
-// создаём точки под реальные элементы
-items.forEach((_, i) => {
-  const dot = document.createElement("div");
-  dot.className = "carousel-dot";
-  dotsContainer.appendChild(dot);
+  const slides = Array.from(track.querySelectorAll(".carousel-item")); 
+  const totalReal = originalSlides.length;
 
-  // кликабельные точки (перелистывание по нажатию)
-  dot.addEventListener("click", () => {
-    index = i + 1; // +1 потому что index 0 — это клон
-    updatePosition();
+  let index = 1;        // текущий слайд (1..totalReal), 0 и totalReal+1 — клоны
+  let animating = false;
+
+  // Точки под реальные слайды
+  const dots = originalSlides.map((_, i) => {
+    const dot = document.createElement("div");
+    dot.className = "carousel-dot";
+    dotsContainer.appendChild(dot);
+
+    dot.addEventListener("click", () => {
+      if (animating) return;
+      index = i + 1;  // реальный слайд, с учётом левого клона
+      goToSlide(false);
+    });
+
+    return dot;
+  });
+
+  function getSlideWidth() {
+    return carousel.clientWidth;   // ширина одного кадра = ширина карусели
+  }
+
+  function updateDotsAndActive() {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[index].classList.add("active");
+
+    let realIndex;
+    if (index === 0) realIndex = totalReal - 1;          // левый клон → последний реальный
+    else if (index === totalReal + 1) realIndex = 0;     // правый клон → первый реальный
+    else realIndex = index - 1;                          // обычный случай
+
+    dots.forEach(d => d.classList.remove("active"));
+    if (dots[realIndex]) {
+      dots[realIndex].classList.add("active");
+    }
+  }
+
+  function applyTransform(noTransition = false) {
+    const slideWidth = getSlideWidth();
+    if (noTransition) {
+      track.style.transition = "none";
+    } else {
+      track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
+      animating = true;
+    }
+
+    const offset = slideWidth * index;
+    track.style.transform = `translateX(-${offset}px)`;
+    updateDotsAndActive();
+  }
+
+  function goToSlide(noTransition = false) {
+    applyTransform(noTransition);
+  }
+
+  // Инициализация
+  goToSlide(true); // без анимации на старте
+
+  window.addEventListener("resize", () => {
+    // При ресайзе пересчитать позицию
+    goToSlide(true);
+  });
+
+  // Стрелки
+  nextBtn.addEventListener("click", () => {
+    if (animating) return;
+    index++;
+    goToSlide(false);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (animating) return;
+    index--;
+    goToSlide(false);
+  });
+
+  // Коррекция при достижении клонов
+  track.addEventListener("transitionend", () => {
+    animating = false;
+
+    // Если ушли на левый клон
+    if (index === 0) {
+      index = totalReal;  // прыжок на последний реальный
+      goToSlide(true);
+    }
+
+    // Если ушли на правый клон
+    if (index === totalReal + 1) {
+      index = 1;          // прыжок на первый реальный
+      goToSlide(true);
+    }
+  });
+
+  // --- Свайп на мобилке ---
+  let startX = 0;
+  let startY = 0;
+  let dragging = false;
+
+  track.addEventListener("touchstart", e => {
+    if (animating) return;
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    dragging = true;
+    track.style.transition = "none";
+  }, { passive: true });
+
+  track.addEventListener("touchmove", e => {
+    if (!dragging) return;
+
+    const touch = e.touches[0];
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+
+    // Вертикальный жест — отдаём скроллу страницы
+    if (Math.abs(dy) > Math.abs(dx)) {
+      dragging = false;
+      goToSlide(true);
+      return;
+    }
+
+    e.preventDefault();
+
+    const slideWidth = getSlideWidth();
+    const baseOffset = slideWidth * index;
+    track.style.transform = `translateX(${-(baseOffset - dx)}px)`;
+  }, { passive: false });
+
+  track.addEventListener("touchend", e => {
+    if (!dragging) return;
+    dragging = false;
+
+    const dx = e.changedTouches[0].clientX - startX;
+    const threshold = 50; // минимум пикселей для переключения
+
+    if (dx > threshold) {
+      // свайп вправо → показываем предыдущий
+      index--;
+      goToSlide(false);
+    } else if (dx < -threshold) {
+      // свайп влево → следующий
+      index++;
+      goToSlide(false);
+    } else {
+      // вернуть на место
+      goToSlide(false);
+    }
   });
 });
-  const all = Array.from(carousel.querySelectorAll(".carousel-item"));
-  const itemWidth = all[0].clientWidth;
-
-function updatePosition() {
- // корректно считаем offset с учётом разной ширины
-let offset = 0;
-
-for (let i = 0; i < index; i++) {
-  offset += all[i].clientWidth;
-}
-
-offset -= all[index].clientWidth;
-
-
-  track.style.transform = `translateX(-${offset}px)`;
-
-  all.forEach(el => el.classList.remove("active"));
-  all[index].classList.add("active");
-
-  /* === ОБНОВЛЕНИЕ ТОЧЕК === */
-  const dots = carousel.querySelectorAll(".carousel-dot");
-
-  let realIndex = index - 1;
-  if (realIndex < 0) realIndex = items.length - 1;
-  if (realIndex >= items.length) realIndex = 0;
-
-  dots.forEach(d => d.classList.remove("active"));
-  dots[realIndex].classList.add("active");
-}
-  updatePosition();
-
-  let animating = false; // защита от двойных нажатий
-
-nextBtn.onclick = () => {
-  if (animating) return;
-  animating = true;
-
-  index++;
-  track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-  updatePosition();
-};
-
-prevBtn.onclick = () => {
-  if (animating) return;
-  animating = true;
-
-  index--;
-  track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-  updatePosition();
-};
-
-
- track.addEventListener("transitionend", () => {
-  animating = false;
-
-  // Если попали на клон слева
-  if (index === 0) {
-    track.style.transition = "none";
-    index = all.length - 2;
-    updatePosition();
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-      });
-    });
-  }
-
-  // Если попали на клон справа
-  if (index === all.length - 1) {
-    track.style.transition = "none";
-    index = 1;
-    updatePosition();
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-      });
-    });
-  }
-});
-
-
-// --- MOBILE SWIPE (stable on Safari + Chrome + iOS + Android) ---
-let startX = 0;
-let startY = 0;
-let dragging = false;
-
-track.addEventListener("touchstart", e => {
-  dragging = true;
-  startX = e.touches[0].clientX;
-  startY = e.touches[0].clientY;
-  track.style.transition = "none";
-}, { passive: true });
-
-track.addEventListener("touchmove", e => {
-  if (!dragging) return;
-
-  const x = e.touches[0].clientX;
-  const y = e.touches[0].clientY;
-
-  const deltaX = x - startX;
-  const deltaY = y - startY;
-
-  // если движение вертикальное → отдаём на скролл
-  if (Math.abs(deltaY) > Math.abs(deltaX)) return;
-
-  // блокируем скролл Safari
-  e.preventDefault();
-
-  // фактическое смещение текущего слайда
-  const baseOffset =
-    index === 0
-      ? 0
-      : index === all.length - 1
-        ? items.reduce((s, e) => s + e.clientWidth, 0)
-        : items.slice(0, index - 1).reduce((s, e) => s + e.clientWidth, 0);
-
-  // тянем под пальцем
-  track.style.transform = `translateX(${-(baseOffset) + deltaX}px)`;
-}, { passive: false });
-
-track.addEventListener("touchend", e => {
-  dragging = false;
-
-  const diff = e.changedTouches[0].clientX - startX;
-
-  track.style.transition = "transform .55s cubic-bezier(0.22,1,0.36,1)";
-
-  if (diff > 50) {
-    prevBtn.click();
-  } else if (diff < -50) {
-    nextBtn.click();
-  } else {
-    updatePosition();
-  }
-});
-
-});
-
 </script>
 </body>
 </html>
