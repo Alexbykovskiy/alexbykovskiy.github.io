@@ -1204,3 +1204,31 @@ html, body {
   background: rgba(255,255,255,0.28);
   transform: scale(1.08);
 }
+
+/* === КРУГЛЫЙ ПИН С ЛОГОТИПОМ НА КАРТЕ === */
+
+.studio-logo-marker {
+  background: transparent !important; /* убираем фон Leaflet */
+  border: none !important;
+}
+
+.studio-logo-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #000; /* фон круга под логотипом */
+  border: 2px solid #f0d3a5; /* тонкая золотистая окантовка под твою палитру */
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.studio-logo-circle img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: block;
+}
