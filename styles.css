@@ -1438,3 +1438,17 @@ html, body {
     box-shadow: 0 3px 10px rgba(230, 0, 35, 0.25);
   }
 }
+
+/* === ДЕСКТОП: иконки позиционируются относительно hero-links === */
+@media (min-width: 641px) {
+  .hero-links {
+    position: relative;
+  }
+}
+
+/* === ДЕСКТОП: иконки позиционируются относительно hero-links === */
+@media (min-width: 641px) {
+  .hero-links {
+    position: relative;
+  }
+}
