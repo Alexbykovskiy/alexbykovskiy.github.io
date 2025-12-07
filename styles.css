@@ -821,17 +821,17 @@ position: relative !important;
 }
 .contact-label {
   color: var(--heading);
-  font-size: 13px;
+  font-size: 17px;              /* было 13px */
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  margin-bottom: 4px;
+  margin-bottom: 6px;           /* чуть больше отступ под крупный текст */
 }
 
 .contact-value {
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 18px;              /* было 14px */
+  line-height: 1.5;             /* чтобы строки не слипались */
 }
-
 .contact-socials {
   display: flex;
   gap: 14px;
