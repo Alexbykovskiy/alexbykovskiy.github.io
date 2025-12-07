@@ -1412,7 +1412,7 @@ html, body {
   .contact-expand-panel {
     position: absolute;
     top: calc(100% + 12px);   /* панель сразу под кнопками */
-    left: 0;                  /* привязка к началу hero-links */
+    left: 140px;                  /* привязка к началу hero-links */
     transform: translateX(0); /* убираем центрирование */
     justify-content: flex-start;
   }
