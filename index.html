@@ -614,68 +614,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
-    function startContactHighlightCycle() {
+   function startContactHighlightCycle() {
       if (!expandPanel || contactIcons.length === 0) return;
 
+      // на всякий случай сбрасываем старые таймеры и подсветку
       clearContactHighlight();
 
-      // Порядок подсветки: Instagram → Telegram → Messenger → WhatsApp
+      // порядок подсветки: Instagram → Telegram → Messenger → WhatsApp
       const order = ["inst", "tg", "ms", "wa"];
-      const onDuration = 700;   // сколько времени иконка "горит"
-      const offDuration = 250;  // пауза, когда все погасли
+      const stepDelay = 300; // задержка между «тынь» (мс)
 
-      function runStep(stepIndex) {
-        // Если панель уже закрыли — сразу выходим
-        if (!expandPanel.classList.contains("open")) {
-          clearContactHighlight();
-          return;
-        }
+      order.forEach((network, index) => {
+        const timeoutId = setTimeout(() => {
+          // если к моменту срабатывания панель уже закрыли — ничего не делаем
+          if (!expandPanel.classList.contains("open")) return;
 
-        const network = order[stepIndex % order.length];
-
-        // Сбрасываем предыдущую подсветку
-        contactIcons.forEach(icon => {
-          icon.classList.remove(
-            "contact-icon--active-inst",
-            "contact-icon--active-tg",
-            "contact-icon--active-ms",
-            "contact-icon--active-wa"
+          const icon = contactIcons.find(
+            el => el.dataset.network === network
           );
-        });
 
-        // Находим нужную иконку по data-network
-        const activeIcon = contactIcons.find(
-          icon => icon.dataset.network === network
-        );
+          if (icon) {
+            // просто ДОБАВЛЯЕМ подсветку и больше не убираем
+            icon.classList.add("contact-icon--active-" + network);
+          }
+        }, stepDelay * index);
 
-        if (activeIcon) {
-          activeIcon.classList.add("contact-icon--active-" + network);
-        }
-
-        // Через onDuration гасим иконку
-        const offId = setTimeout(() => {
-          contactIcons.forEach(icon => {
-            icon.classList.remove(
-              "contact-icon--active-inst",
-              "contact-icon--active-tg",
-              "contact-icon--active-ms",
-              "contact-icon--active-wa"
-            );
-          });
-
-          // После небольшой паузы включаем следующую
-          const nextId = setTimeout(() => {
-            runStep(stepIndex + 1);
-          }, offDuration);
-
-          contactHighlightTimeouts.push(nextId);
-        }, onDuration);
-
-        contactHighlightTimeouts.push(offId);
-      }
-
-      // Запускаем цикл с первой иконки (Instagram)
-      runStep(0);
+        contactHighlightTimeouts.push(timeoutId);
+      });
     }
 
     if (expandBtn && expandPanel) {
