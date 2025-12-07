@@ -1046,13 +1046,19 @@ html, body {
   transition: transform .55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* БАЗОВЫЙ СТИЛЬ СЛАЙДА: занимает всю ширину карусели */
+.carousel-item {
+  flex: 0 0 100%;      /* каждый слайд = 100% ширины карусели */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*** ДЕСКТОП ***/
 @media (min-width: 900px) {
   .carousel-item {
     height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -1060,9 +1066,6 @@ html, body {
 @media (min-width: 600px) and (max-width: 899px) {
   .carousel-item {
     height: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -1070,12 +1073,8 @@ html, body {
 @media (max-width: 599px) {
   .carousel-item {
     height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
-
 .carousel-item img {
   height: 100%;
   width: auto;
