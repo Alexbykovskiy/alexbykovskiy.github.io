@@ -1409,3 +1409,32 @@ html, body {
     justify-content: flex-start;
   }
 }
+
+/* === ДЕСКТОПНАЯ КРАСНАЯ ПИЛЮЛЯ ДЛЯ "ПОСМОТРЕТЬ ПРИМЕРЫ" === */
+@media (min-width: 641px) {
+  .hero-links > a.hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e60023;
+    color: #fff !important;
+
+    padding: 10px 22px;
+    height: 40px;
+    border-radius: 999px;
+
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    box-shadow: 0 6px 15px rgba(230, 0, 35, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-links > a.hero-link:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(230, 0, 35, 0.25);
+  }
+}
