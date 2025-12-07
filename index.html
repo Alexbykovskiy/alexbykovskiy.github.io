@@ -339,7 +339,7 @@
       <div>
         <div class="contact-label">ЧАСЫ РАБОТЫ</div>
         <div class="contact-value">Пн-Вс 10:00 – 18:00</div>
-        <div class="contact-value">(другие часы — по договоренности.)</div>
+        <div class="contact-value">(другие часы — по договоренности)</div>
       </div>
     </div>
 
@@ -472,13 +472,15 @@ L.tileLayer(
 const logoIcon = L.divIcon({
   className: 'studio-logo-marker',
   html: `
-    <div class="studio-logo-circle">
-      <img src="img/logo-ab.jpg" alt="AB logo">
+    <div class="studio-logo-pin">
+      <div class="studio-logo-circle">
+        <img src="img/logo-ab.jpg" alt="AB logo">
+      </div>
     </div>
   `,
-  iconSize: [54, 54],      // размер круга (должен совпадать с CSS)
-  iconAnchor: [27, 54],    // точка «ножки» иконки (низ по центру)
-  popupAnchor: [0, -56]    // сдвиг попапа вверх
+  iconSize: [54, 74],   // ширина = круг, высота = круг + хвостик
+  iconAnchor: [27, 74], // "кончик" хвостика — точка привязки к координате
+  popupAnchor: [0, -70] // попап немного выше
 });
 
 L.marker([studioLat, studioLng], { icon: logoIcon })
