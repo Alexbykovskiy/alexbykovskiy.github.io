@@ -697,17 +697,17 @@ opacity: 1;
 .contact-icon--active-tg,
 .contact-icon--active-ms,
 .contact-icon--active-wa {
-  /* мягкий тёплый фон поверх базового кружка */
   background: rgba(240, 211, 165, 0.22);
-
-  /* жёлтое свечение вокруг кружка */
   box-shadow: 0 0 26px rgba(240, 211, 165, 0.9);
-
-  /* дополнительное «свечение» через drop-shadow, работает и на мобилках */
   filter: drop-shadow(0 0 14px rgba(240, 211, 165, 0.85));
-
-  /* лёгкое увеличение */
   transform: scale(1.12);
+
+  /* ПЛАВНОЕ ЗАЖИГАНИЕ */
+  transition:
+    background 0.28s ease,
+    box-shadow 0.28s ease,
+    filter 0.28s ease,
+    transform 0.28s ease;
 }
 /* === ИДЕАЛЬНО ВЫРОВНЕННЫЕ КРУГИ + БЕЛЫЕ ИКОНКИ === */
 .contact-icon {
