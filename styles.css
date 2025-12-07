@@ -794,7 +794,7 @@ position: relative !important;
 
 .contact-info-column {
   display: grid;
-  gap: 32px;   /* было 26px — чуть больше воздуха */
+  gap: 28px;
 }
 .contact-item {
   display: flex;
@@ -803,8 +803,8 @@ position: relative !important;
 }
 
 .contact-icon-mini {
-  width: 36px;                  /* было 28px */
-  height: 36px;
+  width: 32px;                  /* было 36px */
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -813,22 +813,22 @@ position: relative !important;
 }
 
 .icon-contact {
-  width: 28px;                  /* было 22px */
-  height: 28px;
+  width: 24px;                  /* было 28px */
+  height: 24px;
   display: block;
 }
 .contact-label {
   color: var(--heading);
-  font-size: 17px;              /* было 13px */
+  font-size: 15px;              /* было 17px */
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  margin-bottom: 6px;           /* чуть больше отступ под крупный текст */
+  margin-bottom: 5px;
 }
 
 .contact-value {
   color: var(--text-muted);
-  font-size: 18px;              /* было 14px */
-  line-height: 1.5;             /* чтобы строки не слипались */
+  font-size: 16px;              /* было 18px */
+  line-height: 1.5;
 }
 .contact-socials {
   display: flex;
