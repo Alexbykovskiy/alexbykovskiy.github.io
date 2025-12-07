@@ -478,11 +478,10 @@ const logoIcon = L.divIcon({
       </div>
     </div>
   `,
-  iconSize: [54, 74],   // ширина = круг, высота = круг + хвостик
-  iconAnchor: [27, 74], // "кончик" хвостика — точка привязки к координате
-  popupAnchor: [0, -70] // попап немного выше
+  iconSize: [56, 76],   // размер всего пина (как в CSS)
+  iconAnchor: [28, 76], // кончик хвостика
+  popupAnchor: [0, -70]
 });
-
 L.marker([studioLat, studioLng], { icon: logoIcon })
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikова 14")

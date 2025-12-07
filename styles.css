@@ -1205,44 +1205,68 @@ html, body {
   transform: scale(1.08);
 }
 
-/* === ОДИН ЦЕЛЬНЫЙ ПИН С ЛОГОТИПОМ === */
+/* === ПИН С ЛОГОТИПОМ (круг + хвостик) — стабильная версия === */
 
 .studio-logo-marker {
   background: transparent !important;
   border: none !important;
 }
 
+/* общий контейнер пина */
 .studio-logo-pin {
   position: relative;
-  width: 60px;
-  height: 80px;
+  width: 56px;
+  height: 76px; /* круг 56 + хвостик */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* круг с логотипом */
+.studio-logo-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #000;
+  border: 2px solid #f0d3a5;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* фон пина */
-  background: #000;
-  border: 2px solid #f0d3a5;
-
-  /* форма: закругленный верх + треугольный низ */
-  clip-path: path("M30,0 
-                   a30,30 0 0 1 30,30 
-                   c0,22 -30,50 -30,50 
-                   S0,52 0,30 
-                   a30,30 0 0 1 30,0 Z");
-
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
 
-/* логотип */
-.studio-logo-pin img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -55%); /* чуть выше центра */
-  width: 120%;
-  height: 120%;
+/* логотип внутри круга — делаем крупнее, чтобы почти заполнял круг */
+.studio-logo-circle img {
+  width: 115%;
+  height: 115%;
   object-fit: contain;
-  pointer-events: none;
+  display: block;
 }
+
+/* хвостик пина — двойной треугольник (рамка + чёрная заливка) */
+.studio-logo-pin::before,
+.studio-logo-pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+}
+
+.studio-logo-pin::before {
+  bottom: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 22px solid #f0d3a5; /* внешняя «золотая» рамка */
+}
+
+.studio-logo-pin::after {
+  bottom: 2px; /* чуть выше, чтобы рамка осталась видна */
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid #000;      /* внутренняя чёрная часть хвостика */
+}
+Здесь уже нет clip-path, только обычные размеры и треугольники, так что ничего не сможет внезапно растянуться.
