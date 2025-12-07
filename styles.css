@@ -1397,3 +1397,15 @@ html, body {
     font-size: 10px;
   }
 }
+
+/* === ДЕСКТОП: ставим панель иконок прямо под кнопками === */
+@media (min-width: 641px) {
+
+  .contact-expand-panel {
+    position: absolute;
+    top: calc(100% + 12px);   /* панель сразу под кнопками */
+    left: 0;                  /* привязка к началу hero-links */
+    transform: translateX(0); /* убираем центрирование */
+    justify-content: flex-start;
+  }
+}
