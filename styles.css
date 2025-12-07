@@ -704,10 +704,10 @@ opacity: 1;
 
   /* ПЛАВНОЕ ЗАЖИГАНИЕ */
   transition:
-    background 0.28s ease,
-    box-shadow 0.28s ease,
-    filter 0.28s ease,
-    transform 0.28s ease;
+    background 0.6s ease,
+    box-shadow 0.6s ease,
+    filter 0.6s ease,
+    transform 0.6s ease;
 }
 /* === ИДЕАЛЬНО ВЫРОВНЕННЫЕ КРУГИ + БЕЛЫЕ ИКОНКИ === */
 .contact-icon {
