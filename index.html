@@ -533,6 +533,38 @@
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Кастомный плавный скролл к центру экрана
+    function smoothScrollToElementCenter(element, duration = 800) {
+      const rect = element.getBoundingClientRect();
+      const elementCenterY = rect.top + rect.height / 2;
+      const viewportCenterY = window.innerHeight / 2;
+      const offset = elementCenterY - viewportCenterY;
+
+      const startY = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = startY + offset;
+
+      const startTime = performance.now();
+
+      function easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+
+      function step(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeInOutQuad(progress);
+        const newY = startY + (targetY - startY) * eased;
+
+        window.scrollTo(0, newY);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
     // Всплывающее меню «НАПИСАТЬ»
     const expandBtn = document.querySelector(".contact-expand-btn");
     const expandPanel = document.querySelector(".contact-expand-panel");
@@ -544,12 +576,10 @@
         // открываем / закрываем панель
         expandPanel.classList.toggle("open");
 
-        // если панель только что ОТКРЫЛАСЬ — скроллим к ней
+        // если панель только что ОТКРЫЛАСЬ — плавно скроллим так,
+        // чтобы блок с иконками оказался по центру экрана
         if (isOpening) {
-          expandPanel.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
+          smoothScrollToElementCenter(expandPanel, 900);
         }
       });
     }
