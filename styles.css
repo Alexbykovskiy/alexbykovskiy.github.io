@@ -755,7 +755,7 @@ opacity: 1;
 }
 
 /* === FIX: не давать мобильным стилям перекрашивать CONTACT ICONS === */
-/*
+
 @media (max-width: 640px) {
   .hero-links .contact-icon {
     background: rgba(255, 255, 255, 0.20) !important;
@@ -776,7 +776,7 @@ opacity: 1;
     height: 32px !important;
   }
 }
-*/
+
 @media (max-width: 640px) {
 
   /* Контейнер двух пилюль */
