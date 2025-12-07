@@ -485,17 +485,13 @@ items.forEach((_, i) => {
   const itemWidth = all[0].clientWidth;
 
 function updatePosition() {
-  let realItems = items;
-  let offset = 0;
-
-  // корректно считаем offset с учётом разной ширины
+ // корректно считаем offset с учётом разной ширины
 let offset = 0;
 
 for (let i = 0; i < index; i++) {
   offset += all[i].clientWidth;
 }
 
-// вычитаем ширину текущего элемента, чтобы центр стал на нём
 offset -= all[index].clientWidth;
 
 
