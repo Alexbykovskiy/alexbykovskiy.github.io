@@ -709,22 +709,14 @@ L.tileLayer(
 ).addTo(map);
 
 // --- Кастомный пин с логотипом ---
-const logoIcon = L.divIcon({
-  className: 'studio-logo-marker',
-  html: `
-    <div class="studio-logo-pin">
-      <div class="studio-logo-circle">
-        <img src="img/logo-ab.jpg" alt="AB logo">
-      </div>
-    </div>
-  `,
-  iconSize: [56, 76],   // размер всего пина (как в CSS)
-  iconAnchor: [28, 76], // кончик хвостика
-  popupAnchor: [0, -70]
-});
-L.marker([studioLat, studioLng], { icon: logoIcon })
+const logoIcon = L.icon({
+  iconUrl: 'img/pin-ab.png',   // ← твоя PNG
+  iconSize: [72, 96],          // ← регулируемый размер
+  iconAnchor: [36, 96],        // ← кончик хвоста ровно в точке
+  popupAnchor: [0, -92]        // ← надпись над пином
+});L.marker([studioLat, studioLng], { icon: logoIcon })
   .addTo(map)
-  .bindPopup("Студия Body Gallery — Štefánikова 14")
+  .bindPopup("Студия Body Gallery — Štefánikоvа 14")
   .openPopup();// ——— Переключение альбомов ———
 const tabs = document.querySelectorAll(".gallery-tab");
 const blocks = document.querySelectorAll(".gallery-block");
