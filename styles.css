@@ -804,11 +804,21 @@ position: relative !important;
 }
 
 .contact-icon-mini {
-  font-size: 22px;
-  opacity: 0.8;
-  margin-top: 3px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  margin-top: 2px;
 }
 
+/* сами SVG-иконки */
+.icon-contact {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
 .contact-label {
   color: var(--heading);
   font-size: 13px;
