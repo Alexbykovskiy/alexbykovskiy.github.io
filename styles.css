@@ -755,8 +755,28 @@ opacity: 1;
 }
 
 /* === FIX: не давать мобильным стилям перекрашивать CONTACT ICONS === */
+/*
+@media (max-width: 640px) {
+  .hero-links .contact-icon {
+    background: rgba(255, 255, 255, 0.20) !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 
-
+  .hero-links .contact-icon .icon-svg {
+    fill: #fff !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+*/
 @media (max-width: 640px) {
 
   /* Контейнер двух пилюль */
@@ -771,9 +791,9 @@ position: relative !important;
     width: 100%;
   }
 
-  /* Сами пилюли */
-  .hero-links a,
-.hero-links button {
+  /* Сами пилюли — только большие кнопки, без иконок */
+  .hero-links > a.hero-link,
+  .hero-links > button.contact-expand-btn {
  flex: 0 1 auto !important; /* фиксирует ширину без растягивания */
     text-align: center !important; /* чтобы текст не смещал */
     display: inline-flex !important;
