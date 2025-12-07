@@ -589,20 +589,20 @@ opacity: 1;
 .contact-expand-panel {
   position: absolute;
   top: 100%;
-  left: 50%;                          /* центрируем */
-  transform: translate(-50%, -10px);  /* центр + смещение вверх */
+  left: 50%;
+  transform: translate(-50%, -10px);
   margin-top: 12px;
 
   display: flex;
   gap: 12px;
 
-  padding: 8px 16px;                  /* внутренние отступы для пилюли */
-  border-radius: 999px;               /* форма пилюли */
-  background: rgba(0, 0, 0, 0.78);    /* тёмное стекло под иконками */
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.78);    /* ← СЕЙЧАС ЧЁРНЫЙ ФОН */
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(10px);
 
-  box-shadow: 0 0 0 0 rgba(230, 0, 35, 0); /* старт без свечения */
+  box-shadow: 0 0 0 0 rgba(230, 0, 35, 0);
 
   opacity: 0;
   pointer-events: none;
@@ -611,7 +611,6 @@ opacity: 1;
     opacity 0.35s ease,
     transform 0.35s ease;
 }
-
 .contact-expand-panel.open {
   opacity: 1;
   pointer-events: auto;
