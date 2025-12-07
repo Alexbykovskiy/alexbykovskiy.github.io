@@ -635,11 +635,6 @@ opacity: 1;
   transform: scale(1.08);
 }
 
-/* цвета при желании */
-.contact-icon.inst { color: #e4405f; }
-.contact-icon.tg { color: #29a9e0; }
-.contact-icon.ms { color: #1877f2; }
-.contact-icon.wa { color: #25d366; }
 
   /* 2. Верхняя строка превращается в центрированную навигацию */
   .hero-top-row {
