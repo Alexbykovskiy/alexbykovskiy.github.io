@@ -529,22 +529,30 @@
     </footer>
   </div>
 
-   <script>
+     <script>
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Всплывающее меню «НАПИСАТЬ»
+    const expandBtn = document.querySelector(".contact-expand-btn");
+    const expandPanel = document.querySelector(".contact-expand-panel");
 
+    if (expandBtn && expandPanel) {
+      expandBtn.addEventListener("click", () => {
+        const isOpening = !expandPanel.classList.contains("open");
 
-// Всплывающее меню «НАПИСАТЬ»
-const expandBtn = document.querySelector(".contact-expand-btn");
-const expandPanel = document.querySelector(".contact-expand-panel");
+        // открываем / закрываем панель
+        expandPanel.classList.toggle("open");
 
-if (expandBtn && expandPanel) {
-  expandBtn.addEventListener("click", () => {
-    expandPanel.classList.toggle("open");
-  });
-}
-
+        // если панель только что ОТКРЫЛАСЬ — скроллим к ней
+        if (isOpening) {
+          expandPanel.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }
+      });
+    }
   </script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
