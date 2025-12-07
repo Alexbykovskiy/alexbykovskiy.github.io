@@ -488,15 +488,16 @@ function updatePosition() {
   let realItems = items;
   let offset = 0;
 
-  if (index === 0) {
-    offset = 0;
-  } else if (index === all.length - 1) {
-    offset = realItems.reduce((sum, el) => sum + el.clientWidth, 0);
-  } else {
-    for (let i = 1; i < index; i++) {
-      offset += realItems[i - 1].clientWidth;
-    }
-  }
+  // корректно считаем offset с учётом разной ширины
+let offset = 0;
+
+for (let i = 0; i < index; i++) {
+  offset += all[i].clientWidth;
+}
+
+// вычитаем ширину текущего элемента, чтобы центр стал на нём
+offset -= all[index].clientWidth;
+
 
   track.style.transform = `translateX(-${offset}px)`;
 
