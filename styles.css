@@ -1205,69 +1205,44 @@ html, body {
   transform: scale(1.08);
 }
 
-/* === ПИН С ЛОГОТИПОМ НА КАРТЕ (КРУГ + ХВОСТИК) === */
+/* === ОДИН ЦЕЛЬНЫЙ ПИН С ЛОГОТИПОМ === */
 
 .studio-logo-marker {
   background: transparent !important;
   border: none !important;
 }
 
-/* общий контейнер пина */
 .studio-logo-pin {
   position: relative;
-  width: 54px;
-  height: 74px; /* круг + хвостик */
-}
-
-/* круг с логотипом */
-.studio-logo-circle {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: #000;
-  border: 2px solid #f0d3a5;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
-
+  width: 60px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* фон пина */
+  background: #000;
+  border: 2px solid #f0d3a5;
+
+  /* форма: закругленный верх + треугольный низ */
+  clip-path: path("M30,0 
+                   a30,30 0 0 1 30,30 
+                   c0,22 -30,50 -30,50 
+                   S0,52 0,30 
+                   a30,30 0 0 1 30,0 Z");
+
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
 
-/* сам логотип — делаем крупнее относительно круга */
-.studio-logo-circle img {
-  width: 115%;
-  height: 115%;
-  object-fit: contain;
-  display: block;
-}
-
-/* «хвостик» пина — двойной треугольник: рамка + заливка */
-.studio-logo-pin::before,
-.studio-logo-pin::after {
-  content: "";
+/* логотип */
+.studio-logo-pin img {
   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-}
-
-.studio-logo-pin::before {
-  bottom: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-top: 22px solid #f0d3a5; /* рамка/контур */
-}
-
-.studio-logo-pin::after {
-  bottom: 2px;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-top: 20px solid #000;      /* внутренний чёрный треугольник */
+  transform: translate(-50%, -55%); /* чуть выше центра */
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+  pointer-events: none;
 }
