@@ -735,12 +735,7 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   let index = 1;        // текущий слайд (1..totalReal), 0 и totalReal+1 — клоны
   let animating = false;
 
-/ === Жёсткая корректная начальная позиция (как в первом альбоме) ===
-requestAnimationFrame(() => {
-  const slideWidth = carousel.clientWidth;
-  track.style.transition = "none";
-  track.style.transform = `translateX(-${slideWidth * index}px)`;
-});
+
 
   // Точки под реальные слайды
   const dots = originalSlides.map((_, i) => {
