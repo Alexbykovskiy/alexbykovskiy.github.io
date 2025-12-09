@@ -1006,8 +1006,8 @@ document.body.style.overflow = "";         // ← добавить
 gdprOverlay.addEventListener("click", () => {
   gdprOverlay.classList.remove("active");
   gdprModal.classList.remove("active");
+  document.body.style.overflow = "";   // ← обязательный фикс
 });
-
 // Переключение языков
 const langBtns = document.querySelectorAll(".gdpr-lang-btn");
 const ruBlock = document.getElementById("gdpr-ru");
