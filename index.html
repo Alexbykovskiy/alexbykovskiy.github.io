@@ -865,8 +865,8 @@ document.body.style.overflow = "";         // ← вернуть скролл
 overlay.addEventListener("click", () => {
   modal.classList.remove("active");
   overlay.classList.remove("active");
+  document.body.style.overflow = "";   // ← фикс
 });
-
 // отправка формы (пока просто alert, позже подключу Telegram Bot)
 document.getElementById("contactForm").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -994,11 +994,13 @@ gdprOpen.addEventListener("click", e => {
   e.preventDefault();
   gdprOverlay.classList.add("active");
   gdprModal.classList.add("active");
+document.body.style.overflow = "hidden";   // ← добавить
 });
 
 gdprClose.addEventListener("click", () => {
   gdprOverlay.classList.remove("active");
   gdprModal.classList.remove("active");
+document.body.style.overflow = "";         // ← добавить
 });
 
 gdprOverlay.addEventListener("click", () => {
