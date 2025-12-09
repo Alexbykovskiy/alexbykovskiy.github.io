@@ -875,6 +875,8 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
 
   modal.classList.remove("active");
   overlay.classList.remove("active");
+
+  document.body.style.overflow = "";   // ← ОБЯЗАТЕЛЬНО!
 });
 </script>
 
