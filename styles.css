@@ -1548,3 +1548,121 @@ font-size: 11px;
   background: var(--heading); /* фирменный жёлтый */
   border-radius: 50%;
 }
+
+/* === MODAL FORM === */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 990;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(420px, 90vw);
+  padding: 28px 24px;
+  background: rgba(25,27,30,0.95);
+  border-radius: 14px;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 999;
+  border: 1px solid rgba(240,211,165,0.15);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+}
+
+.modal.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-title {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.modal-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 10px 0 6px;
+  color: var(--text-muted);
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #151719;
+  border: 1px solid #3a3f44;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.modal-input:focus {
+  border-color: var(--heading);
+  outline: none;
+}
+
+.modal-gdpr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 10px 0 14px;
+}
+
+.modal-submit {
+  width: 100%;
+  padding: 12px;
+  background: #e60023;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(230, 0, 35, 0.45);
+  transition: 0.2s ease;
+}
+
+.modal-submit:active {
+  transform: scale(0.96);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.2s;
+}
+
+.modal-close:hover {
+  opacity: 0.9;
+}

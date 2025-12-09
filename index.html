@@ -911,6 +911,80 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 });
 </script>
 
+<!-- === MODAL FORM === -->
+<div class="modal-overlay" id="modal-overlay"></div>
+
+<div class="modal" id="modal">
+  <button class="modal-close" id="modal-close">×</button>
+
+  <h3 class="modal-title">Запись на консультацию</h3>
+
+  <form id="contactForm">
+
+    <!-- Имя -->
+    <label class="modal-label">Ваше имя</label>
+    <input type="text" class="modal-input" id="clientName" placeholder="Введите имя" required>
+
+    <!-- Метод связи -->
+    <label class="modal-label">Предпочтительный метод связи</label>
+    <select id="contactMethod" class="modal-input" required>
+      <option value="Телефон">Телефон</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Telegram">Telegram</option>
+      <option value="WhatsApp">WhatsApp</option>
+      <option value="Facebook">Facebook</option>
+    </select>
+
+    <!-- Ник или номер -->
+    <label class="modal-label">Ник или номер</label>
+    <input type="text" class="modal-input" id="contactValue" placeholder="@username или +421..." required>
+
+    <!-- Согласие GDPR -->
+    <label class="modal-gdpr">
+      <input type="checkbox" id="gdprAgree" required>
+      Соглашаюсь на обработку персональных данных
+    </label>
+
+    <!-- Кнопка -->
+    <button type="submit" class="modal-submit">Отправить</button>
+
+  </form>
+</div>
+
+<script>
+// открыть модалку
+const modal = document.getElementById("modal");
+const overlay = document.getElementById("modal-overlay");
+const openBtn = document.querySelector(".contact-expand-btn");
+const closeBtn = document.getElementById("modal-close");
+
+// открытие
+openBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+  overlay.classList.add("active");
+});
+
+// закрытие
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+overlay.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// отправка формы (пока просто alert, позже подключу Telegram Bot)
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  alert("Форма отправлена! (сюда подключим Telegram-бота)");
+
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+</script>
 
 </body>
 </html>
