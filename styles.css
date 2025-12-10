@@ -2029,6 +2029,10 @@ font-size: 11px;
   padding: 0 !important;
   margin-top: 20px !important;
 }
+.section--portfolio-intro {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 
 .portfolio-toggle-btn:hover {
   transform: translateY(-2px);
