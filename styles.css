@@ -1720,6 +1720,41 @@ font-size: 11px;
     transform 0.45s cubic-bezier(.18,.89,.32,1.28);
 }
 
+/* КОНТЕЙНЕР ДЛЯ ИКОНОК ВНУТРИ ПАНЕЛИ */
+.fast-contact-icons {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+/* КРУГЛЫЕ КНОПКИ-СОЦСЕТИ В ПАНЕЛИ */
+.fast-contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+/* РАЗМЕР САМИХ КАРТИНОК */
+.fast-contact-icon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Ховер-эффект для десктопа */
+.fast-contact-icon:hover {
+  background: rgba(255, 255, 255, 0.26);
+  transform: scale(1.06);
+}
+
+
 /* появление панели */
 .fast-contact-bar.visible {
   opacity: 1;
@@ -1784,3 +1819,26 @@ font-size: 11px;
   animation: bubble-pulse 1.7s ease-out;
 }
 
+/* === СТИЛЬ КНОПКИ "СВЕРНУТЬ" КАК НА МОБИЛЕ === */
+.fast-contact-collapse {
+  margin-top: 6px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: 0.25s ease;
+}
+
+.fast-contact-collapse:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.fast-contact-collapse:active {
+  transform: scale(0.95);
+}
