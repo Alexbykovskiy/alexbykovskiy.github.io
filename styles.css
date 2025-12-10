@@ -2044,9 +2044,12 @@ font-size: 11px;
 
 /* Единый фон для всего портфолио */
 .section--portfolio-intro,
-.portfolio-toggle-wrap,
+
 #portfolio-wrapper {
   background: var(--bg-main) !important;
+}
+.portfolio-toggle-wrap {
+  background: transparent !important;
 }
 
 /* === КАРТОЧКИ-СЕКЦИИ НАД ПАТТЕРНОМ === */
