@@ -1678,3 +1678,119 @@ font-size: 11px;
 .modal-close:hover {
   transform: scale(1.15);
 }
+
+
+/* === Плавающая пилюля с быстрыми контактами === */
+
+.fast-contact-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%) translateY(24px);
+  max-width: min(720px, 100% - 24px);
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: rgba(20, 22, 26, 0.97);
+  border: 1px solid rgba(240, 211, 165, 0.2);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.65);
+
+  color: #f4e2b8; /* тёплый жёлтоватый, как на сайте */
+  font-size: 13px;
+  line-height: 1.35;
+
+  z-index: 1200;
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.fast-contact-bar.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.fast-contact-text {
+  flex: 1;
+}
+
+.fast-contact-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fast-contact-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.fast-contact-icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.fast-contact-icon:hover {
+  background: rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+
+.fast-contact-close {
+  background: none;
+  border: none;
+  color: rgba(244,226,184,0.8);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px 2px;
+  margin-left: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.fast-contact-close:hover {
+  transform: scale(1.15);
+  color: #ffffff;
+}
+
+/* Адаптив под мобильные: текст компактнее, всё в 2 строки максимум */
+@media (max-width: 600px) {
+  .fast-contact-bar {
+    align-items: flex-start;
+    padding-right: 10px;
+  }
+
+  .fast-contact-text {
+    font-size: 12px;
+  }
+
+  .fast-contact-icons {
+    gap: 6px;
+  }
+
+  .fast-contact-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .fast-contact-icon img {
+    width: 16px;
+    height: 16px;
+  }
+}
