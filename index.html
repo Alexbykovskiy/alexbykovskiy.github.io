@@ -207,7 +207,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
 
     <div class="portfolio-toggle-wrap">
-          </div>
+      <button id="portfolio-toggle" class="portfolio-toggle-btn">
+        Посмотреть портфолио
+      </button>
+    </div>
 
     <div id="portfolio-wrapper" class="portfolio-wrapper">
 
@@ -1105,9 +1108,9 @@ if (fastBubble) {
     portWrap.classList.toggle('open');
 
     if (portWrap.classList.contains('open')) {
-      portBtn.textContent = 'СКРЫТЬ ПОРТФОЛИО';
+      portBtn.textContent = 'Скрыть работы';
     } else {
-      portBtn.textContent = 'ПОСМОТРЕТЬ ПОРТФОЛИО';
+      portBtn.textContent = 'Посмотреть примеры работ';
     }
   });
 </script>
