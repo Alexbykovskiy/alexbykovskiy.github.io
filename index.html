@@ -799,93 +799,13 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   });
 });
 </script>
-
 <script type="module">
-  // Firebase SDK
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp }
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "XXX",
-    authDomain: "XXX",
-    projectId: "XXX",
-    storageBucket: "XXX",
-    messagingSenderId: "XXX",
-    appId: "XXX"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  window.db = getFirestore(app);
-</script>
-
-
-
-<!-- === MODAL FORM === -->
-<div class="modal-overlay" id="modal-overlay"></div>
-
-<div class="modal" id="modal">
-  <button class="modal-close" id="modal-close">×</button>
-
-  <h3 class="modal-title">Запись на консультацию</h3>
-
-  <form id="contactForm">
-
-    <!-- Имя -->
-    <label class="modal-label">Ваше имя</label>
-    <input type="text" class="modal-input" id="clientName" placeholder="Введите имя" required>
-
-    <!-- Метод связи -->
-    <label class="modal-label">Предпочтительный метод связи</label>
-    <select id="contactMethod" class="modal-input" required>
-      <option value="Телефон">Телефон</option>
-      <option value="Instagram">Instagram</option>
-      <option value="Telegram">Telegram</option>
-      <option value="WhatsApp">WhatsApp</option>
-      <option value="Facebook">Facebook</option>
-    </select>
-
-    <!-- Ник или номер -->
-    <label class="modal-label">Ник или номер</label>
-    <input type="text" class="modal-input" id="contactValue" placeholder="@username или +421..." required>
-
-   
-    <!-- Кнопка -->
-    <button type="submit" class="modal-submit">Отправить</button>
-
-  </form>
-</div>
-
-<script>
-// открыть модалку
-const modal = document.getElementById("modal");
-const overlay = document.getElementById("modal-overlay");
-const openBtn = document.querySelector(".contact-expand-btn");
-const closeBtn = document.getElementById("modal-close");
-
-// открытие
-openBtn.addEventListener("click", () => {
-  modal.classList.add("active");
-  overlay.classList.add("active");
- document.body.style.overflow = "hidden";   // ← фикс!
-});
-
-// закрытие
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-document.body.style.overflow = "";         // ← вернуть скролл
-});
-
-overlay.addEventListener("click", () => {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-  document.body.style.overflow = "";   // ← фикс
-});
-<script type="module">
-import { collection, addDoc, serverTimestamp } 
+// === Импорт Firestore (уже initialized выше) ===
+import { collection, addDoc, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// === Обработчик формы ===
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -893,48 +813,58 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   const method = document.getElementById("contactMethod").value;
   const value = document.getElementById("contactValue").value.trim();
 
-  // === 1. Сохраняем в Firestore ===
+  if (!name || !value) {
+    alert("Пожалуйста, заполните имя и контакт.");
+    return;
+  }
+
+  // --- 1. Firestore ---
   try {
     await addDoc(collection(window.db, "requests"), {
-      name: name,
+      name,
       contactMethod: method,
       contactValue: value,
       createdAt: serverTimestamp(),
-      site: "tattoo-website"
+      source: "tattoo-website"
     });
   } catch (err) {
-    console.error("Firestore error:", err);
+    console.log("Ошибка Firestore:", err);
   }
 
-  // === 2. Отправляем уведомление в Telegram ===
-  const BOT_TOKEN = "ТВОЙ_ТОКЕН";
-  const CHAT_ID = "ТВОЙ_CHAT_ID";
+  // --- 2. Telegram ---
+  const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
+  const CHAT_ID = 1054798766;
 
   const text =
-    `🔥 Новая заявка!\n` +
+    "🔥 Новая заявка с сайта!\n" +
     `Имя: ${name}\n` +
-    `Метод: ${method}\n` +
+    `Способ связи: ${method}\n` +
     `Контакт: ${value}`;
 
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: text,
-      parse_mode: "HTML"
-    })
-  });
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: text
+      })
+    });
+  } catch (err) {
+    console.log("Ошибка Telegram:", err);
+  }
 
-  // === Закрываем окно ===
-  document.getElementById("modal").classList.remove("active");
-  document.getElementById("modal-overlay").classList.remove("active");
+  // --- 3. Закрыть модалку ---
+  document.getElementById("contactForm").reset();
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
   document.body.style.overflow = "";
 
-  // Может появится твой красивый алерт или тост
-  alert("Ваша заявка отправлена!");
+  alert("Спасибо! Ваша заявка отправлена.");
 });
+
 </script>
+
 
 </body>
 </html>
