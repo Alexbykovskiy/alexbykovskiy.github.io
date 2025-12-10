@@ -1927,3 +1927,47 @@ font-size: 11px;
 .why-btn:active {
   transform: scale(0.96);
 }
+
+
+/* === ОБО МНЕ — ПРЕИМУЩЕСТВА МАСТЕРА === */
+
+.section--aboutme-extended {
+  background: var(--bg-main);
+  padding: 72px 0;
+}
+
+.aboutme-intro {
+  color: var(--text-main);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+  max-width: 700px;
+}
+
+.aboutme-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 760px;
+}
+
+.aboutme-list li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.aboutme-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--heading); /* фирменный жёлтый */
+}
