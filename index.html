@@ -936,10 +936,14 @@ if (
     overlay.classList.remove("active");
     document.body.style.overflow = "";
   }
+const contactForm = document.getElementById("contactForm");
 
-  // === Обработчик формы ===
-  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const submitBtn = document.querySelector(".modal-submit");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Отправка...";
 
   const name = clientName.value.trim();
   const method = contactMethod.value;
@@ -947,10 +951,11 @@ if (
 
   if (!name || !value || !gdprAgree.checked) {
     alert("Пожалуйста, заполните все поля и подтвердите согласие.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Отправить";
     return;
   }
 
-  // Firestore
   try {
     await addDoc(
       collection(window.db, "alexbykovskiy.com/init/requests"),
@@ -966,7 +971,7 @@ if (
     console.error("Firestore error", e);
   }
 
-  // Telegram
+  // TELEGRAM
   const BOT_TOKEN = "…";
   const CHAT_ID = 1054798766;
 
@@ -979,10 +984,12 @@ if (
     })
   });
 
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Отправить";
+
   contactForm.reset();
   closeModal();
 
-  // показываем нижнюю пилюлю
   showFastContactBar();
 });
 </script>
