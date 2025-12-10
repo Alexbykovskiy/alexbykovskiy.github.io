@@ -1551,128 +1551,13 @@ font-size: 11px;
 
 /* === MODAL FORM === */
 
+/* === MODAL FORM — DARK TATTOO STYLE === */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease;
-  z-index: 990;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: min(420px, 90vw);
-  padding: 28px 24px;
-  background: rgba(25,27,30,0.95);
-  border-radius: 14px;
-  transform: translate(-50%, -50%) scale(0.85);
-  opacity: 0;
-  transition: 0.3s ease;
-  z-index: 999;
-  border: 1px solid rgba(240,211,165,0.15);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.55);
-}
-
-.modal.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-title {
-  margin: 0 0 18px;
-  text-align: center;
-  font-size: 20px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--heading);
-}
-
-.modal-label {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin: 10px 0 6px;
-  color: var(--text-muted);
-}
-
-.modal-input {
-  width: 100%;
-  padding: 12px 14px;
-  background: #151719;
-  border: 1px solid #3a3f44;
-  border-radius: 8px;
-  font-size: 15px;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.modal-input:focus {
-  border-color: var(--heading);
-  outline: none;
-}
-
-.modal-gdpr {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 10px 0 14px;
-}
-
-.modal-submit {
-  width: 100%;
-  padding: 12px;
-  background: #e60023;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: none;
-  border-radius: 999px;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 6px 15px rgba(230, 0, 35, 0.45);
-  transition: 0.2s ease;
-}
-
-.modal-submit:active {
-  transform: scale(0.96);
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: #fff;
-  cursor: pointer;
-  opacity: 0.4;
-  transition: 0.2s;
-}
-
-.modal-close:hover {
-  opacity: 0.9;
-}
-
-/* === MODAL FORM === */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
   opacity: 0;
   pointer-events: none;
   transition: .25s ease;
@@ -1689,15 +1574,14 @@ font-size: 11px;
   top: 50%;
   left: 50%;
   width: 90%;
-  max-width: 420px;
-  background: #ffffff;
-  transform: translate(-50%, -50%) scale(0.8);
-  padding: 0;
-  border-radius: 18px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  max-width: 460px;
+  background: #1b1b1b; /* Тёмно-серый */
+  border-radius: 22px;
+  transform: translate(-50%, -50%) scale(0.85);
   opacity: 0;
   pointer-events: none;
   transition: .25s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.55);
   z-index: 9999;
 }
 
@@ -1708,59 +1592,42 @@ font-size: 11px;
 }
 
 .modal-inner {
-  padding: 28px;
+  padding: 34px 32px 40px;
 }
 
 .modal-title {
-  font-size: 22px;
-  margin-bottom: 16px;
-  color: #222;
+  font-size: 26px;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  color: #E4D7A5; /* Бледно-жёлтый фирменный */
 }
 
 .modal-label {
   font-size: 14px;
-  margin-bottom: 4px;
-  margin-top: 12px;
+  margin-bottom: 6px;
+  margin-top: 14px;
   display: block;
-  color: #333;
+  color: #E4D7A5; /* тот же жёлтый */
+  letter-spacing: 0.5px;
 }
 
 .modal-input {
   width: 100%;
-  font-size: 16px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #bbb;
-  background: #f8f8f8;
-  margin-bottom: 4px;
-}
-
-.modal-submit {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
+  padding: 13px 14px;
+  font-size: 15px;
   border-radius: 12px;
-  border: none;
-  background: black;
+  border: 1px solid #444;
+  background: #2a2a2a;
   color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.2s;
+  outline: none;
+  transition: 0.25s;
 }
 
-.modal-submit:hover {
-  opacity: .85;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  font-size: 26px;
-  background: none;
-  border: none;
-  cursor: pointer;
+.modal-input:focus {
+  border-color: #E4D7A5;
+  background: #333;
 }
 
 .gdpr-check {
@@ -1768,6 +1635,46 @@ font-size: 11px;
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  margin-top: 10px;
-  color: #333;
+  margin-top: 16px;
+  color: #ccc;
+}
+
+.gdpr-check input {
+  transform: scale(1.2);
+}
+
+.modal-submit {
+  width: 100%;
+  margin-top: 28px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(180deg, #d94141 0%, #8a0000 100%);
+  box-shadow: 0 6px 22px rgba(255,0,0,0.35);
+  transition: 0.25s;
+}
+
+.modal-submit:hover {
+  transform: translateY(-2px);
+  opacity: .95;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #E4D7A5;
+  transition: .2s;
+}
+
+.modal-close:hover {
+  transform: scale(1.15);
 }
