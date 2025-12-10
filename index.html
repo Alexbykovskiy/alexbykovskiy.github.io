@@ -892,8 +892,7 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 
   // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
   const fastBar = document.getElementById("fast-contact-bar");
-  const fastBarClose = document.getElementById("fast-contact-close");
-
+ 
   function showFastContactBar() {
     if (!fastBar) return;
 
@@ -902,13 +901,7 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     localStorage.removeItem("contactBarDismissed");
   }
 
-  if (fastBarClose) {
-    fastBarClose.addEventListener("click", () => {
-      fastBar.classList.remove("visible");
-      localStorage.setItem("contactBarDismissed", "1");
-    });
-  }
-
+  
   // показать панель если был lead и не закрыта вручную
   if (
     fastBar &&
