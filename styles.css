@@ -1711,14 +1711,10 @@ font-size: 11px;
   z-index: 1200;
 
   /* сетка */
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "text close"
-    "icons icons";
-
-  gap: 6px 10px !important; /* ← основное уменьшение высоты */
+  display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px; /* можно 2px если хочешь ещё ниже */
 
   /* старт: скрыта */
   opacity: 0;
@@ -1737,11 +1733,11 @@ font-size: 11px;
 
 /* ========== Стили текста в панели ========== */
 .fast-contact-text {
-  text-align: center;       /* выравнивание по центру */
-    line-height: 1.15 !important; /* ещё ниже */
-  margin-bottom: 4px;
+    text-align: center;
+    line-height: 1.05 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-
 
 
 .fct-title {
