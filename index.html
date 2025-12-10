@@ -27,6 +27,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54MQ49KK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<!-- === MODAL FORM === -->
+<div id="modal-overlay" class="modal-overlay"></div>
+
+<div id="modal" class="modal">
+  <div class="modal-inner">
+
+    <button class="modal-close" id="modal-close">×</button>
+
+    <h3 class="modal-title">Записаться на консультацию</h3>
+
+    <form id="contactForm" class="modal-form">
+
+      <label class="modal-label">Ваше имя</label>
+      <input id="clientName" type="text" class="modal-input" placeholder="Введите имя" required>
+
+      <label class="modal-label">Предпочтительный способ связи</label>
+      <select id="contactMethod" class="modal-input" required>
+        <option value="Telegram">Telegram</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="Viber">Viber</option>
+        <option value="Phone">Телефон</option>
+        <option value="Email">Email</option>
+      </select>
+
+      <label class="modal-label">Контакт</label>
+      <input id="contactValue" type="text" class="modal-input" placeholder="@username или номер" required>
+
+      <label class="gdpr-check">
+        <input type="checkbox" id="gdprAgree" required>
+        <span>Я соглашаюсь на обработку персональных данных</span>
+      </label>
+
+      <button type="submit" class="modal-submit">Отправить</button>
+
+    </form>
+
+  </div>
+</div>
+
+
   <div class="page">
 
     <!-- HERO / HEADER -->
@@ -800,69 +841,69 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 });
 </script>
 <script type="module">
-
-// === Импорт Firestore (уже initialized выше) ===
 import { collection, addDoc, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// === Открытие модалки ===
+const modal = document.getElementById("modal");
+const overlay = document.getElementById("modal-overlay");
+
+document.querySelector(".contact-expand-btn").onclick = () => {
+  modal.classList.add("active");
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+};
+
+document.getElementById("modal-close").onclick = closeModal;
+overlay.onclick = closeModal;
+
+function closeModal() {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
 
 // === Обработчик формы ===
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("clientName").value.trim();
-  const method = document.getElementById("contactMethod").value;
-  const value = document.getElementById("contactValue").value.trim();
+  const name = clientName.value.trim();
+  const method = contactMethod.value;
+  const value = contactValue.value.trim();
 
-  if (!name || !value) {
-    alert("Пожалуйста, заполните имя и контакт.");
+  if (!name || !value || !gdprAgree.checked) {
+    alert("Пожалуйста, заполните все поля и подтвердите согласие.");
     return;
   }
 
-  // --- 1. Firestore ---
+  // --- Firestore ---
   try {
     await addDoc(collection(window.db, "requests"), {
-      name,
-      contactMethod: method,
-      contactValue: value,
-      createdAt: serverTimestamp(),
-      source: "tattoo-website"
+      name, contactMethod: method, contactValue: value,
+      createdAt: serverTimestamp(), source: "tattoo-landing"
     });
-  } catch (err) {
-    console.log("Ошибка Firestore:", err);
+  } catch (e) {
+    console.log("Firestore error", e);
   }
 
-  // --- 2. Telegram ---
+  // --- Telegram ---
   const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
   const CHAT_ID = 1054798766;
 
-  const text =
-    "🔥 Новая заявка с сайта!\n" +
-    `Имя: ${name}\n` +
-    `Способ связи: ${method}\n` +
-    `Контакт: ${value}`;
+  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
+    })
+  });
 
-  try {
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: text
-      })
-    });
-  } catch (err) {
-    console.log("Ошибка Telegram:", err);
-  }
-
-  // --- 3. Закрыть модалку ---
-  document.getElementById("contactForm").reset();
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-  document.body.style.overflow = "";
-
+  // закрываем
+  closeModal();
+  contactForm.reset();
   alert("Спасибо! Ваша заявка отправлена.");
 });
-
 </script>
 
 
