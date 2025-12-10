@@ -195,8 +195,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </div>
 </section>
+
+<div class="portfolio-toggle-wrap">
+  <button id="portfolio-toggle" class="portfolio-toggle-btn">
+    Посмотреть примеры работ
+  </button>
+</div>
                   <!-- РАБОТЫ -->
             <!-- РАБОТЫ -->
+<div id="portfolio-wrapper" class="portfolio-wrapper">
       <section class="section section--works" id="works">
         <div class="container">
 
@@ -317,7 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
       </section>
-
+</div> <!-- END portfolio-wrapper -->
 
 
 
@@ -1088,5 +1095,21 @@ if (fastBubble) {
     closeModal();
   });
 </script>
+
+<script>
+  const portBtn = document.getElementById('portfolio-toggle');
+  const portWrap = document.getElementById('portfolio-wrapper');
+
+  portBtn.addEventListener('click', () => {
+    portWrap.classList.toggle('open');
+
+    if (portWrap.classList.contains('open')) {
+      portBtn.textContent = 'Скрыть работы';
+    } else {
+      portBtn.textContent = 'Посмотреть примеры работ';
+    }
+  });
+</script>
+
 </body>
 </html>

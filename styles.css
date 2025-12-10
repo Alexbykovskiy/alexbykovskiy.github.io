@@ -1971,3 +1971,48 @@ font-size: 11px;
   border-radius: 50%;
   background: var(--heading); /* фирменный жёлтый */
 }
+
+/* === PORTFOLIO TOGGLE === */
+
+.portfolio-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+      max-height 0.6s ease,
+      opacity 0.6s ease,
+      transform 0.6s ease;
+}
+
+.portfolio-wrapper.open {
+  max-height: 5000px; /* достаточно для всех альбомов */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-toggle-wrap {
+  text-align: center;
+  margin: 40px 0 0;
+}
+
+.portfolio-toggle-btn {
+  background: #e60023;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 34px;
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 15px rgba(230,0,35,0.4);
+  transition: 0.25s ease;
+}
+
+.portfolio-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+.portfolio-toggle-btn:active {
+  transform: scale(0.96);
+}
