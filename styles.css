@@ -1683,70 +1683,53 @@ font-size: 11px;
 /* === Плавающая панель быстрых контактов — SOFT GLASS PREMIUM === */
 
 .fast-contact-bar {
-    transition:
-        opacity 0.45s ease,
-        transform 0.65s cubic-bezier(.18,.89,.32,1.28);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.85); /* центр экрана */
+  opacity: 0;
+  pointer-events: none;
+
+  width: min(360px, 90%);
+  padding: 10px 16px 12px !important;
+  border-radius: 22px;
+
+  background: rgba(25, 27, 32, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    0 4px 25px rgba(0,0,0,0.45),
+    inset 0 0 22px rgba(255,255,255,0.06);
+
+  color: #f4e2b8;
+  font-size: 14px;
+  line-height: 1.45;
+
+  z-index: 1200;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(.18,.89,.32,1.28);
 }
 
-/* Открыто */
 .fast-contact-bar.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1); /* тоже строго по центру */
 }
 
-/* Анимация открытия работает ТОЛЬКО когда элемент имеет класс .animating-open */
-.fast-contact-bar.animating-open {
-    animation: fastbar-pop 0.45s cubic-bezier(.18,.89,.32,1.4);
-}
-
-/* Закрытие — улетает в нижний правый угол */
 .fast-contact-bar.hiding {
-    opacity: 0;
-    pointer-events: none;
-
-    transform:
-        translate(calc(50vw - 70px), calc(50vh - 70px))
-        scale(0.1);
-
-    /* КРИТИЧНО: отключаем transitions, чтобы не дернуло обратно */
-    transition: transform 0.65s cubic-bezier(.17,.67,.3,1.35), opacity 0.45s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85); /* уходит в ту же точку */
 }
 
-/* === Панель открыта === */
-.fast-contact-bar.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-}
-@keyframes fastbar-pop {
-  0% {
-    transform: translate(-50%, -50%) scale(0.6);
-    opacity: 0;
-  }
-  60% {
-    transform: translate(-50%, -50%) scale(1.05);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-/* === Панель сворачивается в иконку === */
-.fast-contact-bar.hiding {
-    opacity: 0;
-    pointer-events: none;
-
-    /* смещение в сторону иконки (правый нижний угол) */
-    transform:
-        translate(calc(50vw - 70px), calc(50vh - 70px))
-        scale(0.1);
-    
-    transition:
-        opacity 0.45s ease,
-        transform 0.65s cubic-bezier(.17,.67,.3,1.35);
-}
 .fast-contact-title {
   font-size: 22px !important;      /* было ~14px → стало в 2 раза больше */
   color: #f0d3a5 !important;       /* фирменный жёлтый */
