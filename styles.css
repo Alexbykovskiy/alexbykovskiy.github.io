@@ -1720,6 +1720,15 @@ font-size: 11px;
     transform 0.45s cubic-bezier(.18,.89,.32,1.28);
 }
 
+.fast-contact-title {
+  font-size: 22px !important;      /* было ~14px → стало в 2 раза больше */
+  color: #f0d3a5 !important;       /* фирменный жёлтый */
+  font-weight: 600;
+  text-align: center !important;
+  margin-bottom: 4px;
+}
+
+
 /* КОНТЕЙНЕР ДЛЯ ИКОНОК ВНУТРИ ПАНЕЛИ */
 .fast-contact-icons {
   display: flex;
@@ -1727,19 +1736,23 @@ font-size: 11px;
   margin-top: 4px;
 }
 
-/* КРУГЛЫЕ КНОПКИ-СОЦСЕТИ В ПАНЕЛИ */
+/* Иконки без кругов, сами по себе — крупные */
 .fast-contact-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
+  background: none !important;     /* убираем полупрозрачный круг */
+  width: 44px !important;          /* размер иконки как у круга */
+  height: 44px !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  transition: 0.25s ease;
+  padding: 0 !important;
 }
 
+.fast-contact-icon img {
+  width: 36px !important;   /* сама картинка */
+  height: 36px !important;
+  object-fit: contain;
+  display: block;
+}
 /* РАЗМЕР САМИХ КАРТИНОК */
 .fast-contact-icon img {
   width: 22px;
@@ -1841,4 +1854,9 @@ font-size: 11px;
 
 .fast-contact-collapse:active {
   transform: scale(0.95);
+}
+.fast-contact-bar p,
+.fast-contact-bar div {
+  color: #ffffff !important;
+  text-align: center !important;
 }
