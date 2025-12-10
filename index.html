@@ -800,6 +800,27 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 });
 </script>
 
+<script type="module">
+  // Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "XXX",
+    authDomain: "XXX",
+    projectId: "XXX",
+    storageBucket: "XXX",
+    messagingSenderId: "XXX",
+    appId: "XXX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window.db = getFirestore(app);
+</script>
+
+
+
 <!-- === MODAL FORM === -->
 <div class="modal-overlay" id="modal-overlay"></div>
 
@@ -861,19 +882,59 @@ overlay.addEventListener("click", () => {
   overlay.classList.remove("active");
   document.body.style.overflow = "";   // ← фикс
 });
-// отправка формы (пока просто alert, позже подключу Telegram Bot)
-document.getElementById("contactForm").addEventListener("submit", (e) => {
+<script type="module">
+import { collection, addDoc, serverTimestamp } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  alert("Форма отправлена! (сюда подключим Telegram-бота)");
+  const name = document.getElementById("clientName").value.trim();
+  const method = document.getElementById("contactMethod").value;
+  const value = document.getElementById("contactValue").value.trim();
 
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
+  // === 1. Сохраняем в Firestore ===
+  try {
+    await addDoc(collection(window.db, "requests"), {
+      name: name,
+      contactMethod: method,
+      contactValue: value,
+      createdAt: serverTimestamp(),
+      site: "tattoo-website"
+    });
+  } catch (err) {
+    console.error("Firestore error:", err);
+  }
 
-  document.body.style.overflow = "";   // ← ОБЯЗАТЕЛЬНО!
+  // === 2. Отправляем уведомление в Telegram ===
+  const BOT_TOKEN = "ТВОЙ_ТОКЕН";
+  const CHAT_ID = "ТВОЙ_CHAT_ID";
+
+  const text =
+    `🔥 Новая заявка!\n` +
+    `Имя: ${name}\n` +
+    `Метод: ${method}\n` +
+    `Контакт: ${value}`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: text,
+      parse_mode: "HTML"
+    })
+  });
+
+  // === Закрываем окно ===
+  document.getElementById("modal").classList.remove("active");
+  document.getElementById("modal-overlay").classList.remove("active");
+  document.body.style.overflow = "";
+
+  // Может появится твой красивый алерт или тост
+  alert("Ваша заявка отправлена!");
 });
 </script>
-
 
 </body>
 </html>
