@@ -1687,7 +1687,7 @@ font-size: 11px;
   bottom: 22px;
   transform: translateX(-50%) translateY(35px);
   
- width: min(600px, 90%); /* панель стала уже и аккуратнее */
+  width: min(360px, 90%);
   padding: 16px 20px 18px;
   border-radius: 22px;
 
@@ -1737,16 +1737,19 @@ font-size: 11px;
 /* ========== Стили текста в панели ========== */
 .fast-contact-text {
   text-align: center;       /* выравнивание по центру */
-  line-height: 1.45;
+   line-height: 1.25
   margin-bottom: 4px;
 }
+
+
 
 .fct-title {
   display: block;
   font-size: 20px;
   font-weight: 600;
   color: #f4d9a3; /* желтый фирменный */
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+
 }
 
 .fct-sub {
@@ -1754,6 +1757,8 @@ font-size: 11px;
   font-size: 14px;
   color: #ffffff;
   opacity: 0.9;
+ margin-top: 2px !important;
+    margin-bottom: 2px !important;
 }
 
 /* ——— иконки ——— */
@@ -1815,4 +1820,18 @@ width: 95%; /* ещё уже, идеально на экране телефон�
   width: 50px; /* БЫЛО 32 — теперь крупнее и красивее */
     height: 50px;
 }
+}
+@media (max-width: 600px) {
+  .fast-contact-text {
+      line-height: 1.22 !important;
+  }
+
+  .fct-title {
+      margin-bottom: 2px !important;
+  }
+
+  .fct-sub {
+      margin-top: 2px !important;
+      margin-bottom: 2px !important;
+  }
 }
