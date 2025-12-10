@@ -1752,30 +1752,28 @@ font-size: 11px;
 }
 
 .fast-contact-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.14);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  box-shadow:
-    inset 0 0 12px rgba(255,255,255,0.14),
-    0 6px 16px rgba(0,0,0,0.35);
+  width: 60px;
+  height: 60px;
+  border-radius: 0;          /* убираем круг полностью */
+  background: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
 
-  transition: transform 0.22s ease, background 0.22s ease;
+.fast-contact-icon:hover {
+  transform: scale(1.12);
 }
 
 .fast-contact-icon img {
-  width: 26px;
-  height: 26px;
+  width: 40px;
+  height: 40px;
 }
-
 /* ——— мобильная адаптация ——— */
 @media (max-width: 600px) {
   .fast-contact-bar {
@@ -1784,14 +1782,19 @@ font-size: 11px;
     gap: 10px 12px;
   }
 
+ @media (max-width: 600px) {
+  .fast-contact-icons {
+    justify-content: space-between;
+    gap: 0;
+  }
+
   .fast-contact-icon {
-    width: 32px;
-    height: 32px;
+    width: 46px;
+    height: 46px;
   }
 
   .fast-contact-icon img {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
   }
-
- 
+}
