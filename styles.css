@@ -718,21 +718,23 @@ opacity: 1;
     transform 0.6s ease;
 }
 /* === ИДЕАЛЬНО ВЫРОВНЕННЫЕ КРУГИ + БЕЛЫЕ ИКОНКИ === */
-.contact-icon {
-  width: 56px;                 /* немного больше, хорошо смотрится */
+/* contact-icon — используется ТОЛЬКО в hero, НЕ трогать fast-contact-icon */
+.hero-links .contact-icon {
+  width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.20); /* белый с 20% прозрачностью */
+  background: rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(6px);
-
-  display: flex;               /* ВАЖНО: центрируем иконку */
+  display: flex;
   align-items: center;
   justify-content: center;
-
-  text-decoration: none;
-  cursor: pointer;
-
   transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.hero-links .contact-icon img,
+.hero-links .contact-icon .icon-svg {
+  width: 32px !important;
+  height: 32px !important;
 }
 
 .contact-icon:hover {
