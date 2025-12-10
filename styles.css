@@ -1837,3 +1837,84 @@ width: 95%; /* ещё уже, идеально на экране телефон�
       margin-bottom: 2px !important;
   }
 }
+
+.fast-contact-collapse {
+    margin-top: 6px;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    color: #f4e2b8;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.fast-contact-collapse:hover {
+    background: rgba(255,255,255,0.20);
+}
+
+.fast-contact-bubble {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(25,27,32,0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+
+    display: none; /* по умолчанию скрыт */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1500;
+
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+.fast-contact-bubble img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.9;
+}
+
+<script>
+const bar = document.getElementById("fast-contact-bar");
+const bubble = document.getElementById("fast-contact-bubble");
+const collapseBtn = document.getElementById("fastContactCollapse");
+
+function showBar() {
+    bubble.style.display = "none";
+    bar.classList.add("visible");
+    localStorage.setItem("contactWidget", "expanded");
+}
+
+function showBubble() {
+    bar.classList.remove("visible");
+    bubble.style.display = "flex";
+    localStorage.setItem("contactWidget", "collapsed");
+}
+
+collapseBtn.addEventListener("click", () => {
+    showBubble();
+});
+
+bubble.addEventListener("click", () => {
+    showBar();
+});
+
+// при загрузке
+const state = localStorage.getItem("contactWidget");
+
+if (state === "collapsed") {
+    showBubble();
+} else {
+    showBar(); // по умолчанию — развернуто
+}
+</script>
