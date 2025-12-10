@@ -2016,3 +2016,10 @@ font-size: 11px;
 .portfolio-toggle-btn:active {
   transform: scale(0.96);
 }
+
+/* Единый фон для всего портфолио */
+.section--portfolio-intro,
+.portfolio-toggle-wrap,
+#portfolio-wrapper {
+  background: var(--bg-main) !important;
+}
