@@ -1686,9 +1686,10 @@ font-size: 11px;
   left: 50%;
   bottom: 22px;
   transform: translateX(-50%) translateY(35px);
+
   
   width: min(360px, 90%);
-  padding: 16px 20px 18px;
+ padding: 10px 16px 12px !important;
   border-radius: 22px;
 
   /* ——— soft glass эффект ——— */
@@ -1717,7 +1718,7 @@ font-size: 11px;
     "text close"
     "icons icons";
 
-  gap: 14px 18px;
+  gap: 6px 10px !important; /* ← основное уменьшение высоты */
 
   /* старт: скрыта */
   opacity: 0;
@@ -1737,25 +1738,30 @@ font-size: 11px;
 /* ========== Стили текста в панели ========== */
 .fast-contact-text {
   text-align: center;       /* выравнивание по центру */
-   line-height: 1.25
+    line-height: 1.15 !important; /* ещё ниже */
   margin-bottom: 4px;
 }
 
 
 
 .fct-title {
+ font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 2px 0 !important;
+    line-height: 1.1 !important;
   display: block;
-  font-size: 20px;
-  font-weight: 600;
-  color: #f4d9a3; /* желтый фирменный */
+    color: #f4d9a3; /* желтый фирменный */
   margin-bottom: 2px;
 
 }
 
 .fct-sub {
+
+ font-size: 13px;
+    margin: 0 !important;
+    line-height: 1.15 !important;
   display: block;
-  font-size: 14px;
-  color: #ffffff;
+   color: #ffffff;
   opacity: 0.9;
  margin-top: 2px !important;
     margin-bottom: 2px !important;
