@@ -1654,12 +1654,11 @@ font-size: 11px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  color: white;
-  background: linear-gradient(180deg, #d94141 0%, #8a0000 100%);
-  box-shadow: 0 6px 22px rgba(255,0,0,0.35);
+  color: #ffffff;
+  background: #e60023; /* такой же красный, как другие кнопки */
+  box-shadow: 0 6px 15px rgba(230, 0, 35, 0.4); /* как у красных пилюль */
   transition: 0.25s;
 }
-
 .modal-submit:hover {
   transform: translateY(-2px);
   opacity: .95;
@@ -1687,14 +1686,10 @@ font-size: 11px;
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0.85);
-}
-.fast-contact-bar.visible {
-  transform: translate(-50%, -50%) scale(1);
-}
-.fast-contact-bar.hiding {
-  transform: translate(-50%, -50%) scale(0.85);
-}
+  transform: translate(-50%, -50%) scale(0.85); /* центр экрана */
+  opacity: 0;
+  pointer-events: none;
+
   width: min(360px, 90%);
   padding: 10px 16px 12px !important;
   border-radius: 22px;
@@ -1704,8 +1699,8 @@ font-size: 11px;
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   box-shadow:
-      0 4px 25px rgba(0,0,0,0.45),
-      inset 0 0 22px rgba(255,255,255,0.06);
+    0 4px 25px rgba(0,0,0,0.45),
+    inset 0 0 22px rgba(255,255,255,0.06);
 
   color: #f4e2b8;
   font-size: 14px;
@@ -1718,11 +1713,21 @@ font-size: 11px;
   align-items: center;
   gap: 4px;
 
-  pointer-events: none;
-
   transition:
     opacity 0.45s ease,
     transform 0.45s cubic-bezier(.18,.89,.32,1.28);
+}
+
+.fast-contact-bar.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1); /* тоже строго по центру */
+}
+
+.fast-contact-bar.hiding {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85); /* уходит в ту же точку */
 }
 
 .fast-contact-title {
@@ -1773,18 +1778,6 @@ font-size: 11px;
 }
 
 
-/* появление панели */
-.fast-contact-bar.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0px);
-}
-
-/* анимация сворачивания вниз */
-.fast-contact-bar.hiding {
-  opacity: 0;
-  transform: translateX(-50%) translateY(40px) scale(0.9);
-}
 
 /* пузырёк чата */
 .fast-contact-bubble {
@@ -1864,4 +1857,14 @@ font-size: 11px;
 .fast-contact-bar div {
   color: #ffffff !important;
   text-align: center !important;
+}
+
+
+/* FIX: чтобы на мобильном Safari не было авто-зум при фокусе на инпутах */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
