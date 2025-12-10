@@ -1884,37 +1884,3 @@ width: 95%; /* ещё уже, идеально на экране телефон�
     opacity: 0.9;
 }
 
-<script>
-const bar = document.getElementById("fast-contact-bar");
-const bubble = document.getElementById("fast-contact-bubble");
-const collapseBtn = document.getElementById("fastContactCollapse");
-
-function showBar() {
-    bubble.style.display = "none";
-    bar.classList.add("visible");
-    localStorage.setItem("contactWidget", "expanded");
-}
-
-function showBubble() {
-    bar.classList.remove("visible");
-    bubble.style.display = "flex";
-    localStorage.setItem("contactWidget", "collapsed");
-}
-
-collapseBtn.addEventListener("click", () => {
-    showBubble();
-});
-
-bubble.addEventListener("click", () => {
-    showBar();
-});
-
-// при загрузке
-const state = localStorage.getItem("contactWidget");
-
-if (state === "collapsed") {
-    showBubble();
-} else {
-    showBar(); // по умолчанию — развернуто
-}
-</script>
