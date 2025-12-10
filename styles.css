@@ -43,13 +43,14 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.72); /* затемнение для читабельности */
+  background: rgba(0,0,0,0.72);
   pointer-events: none;
-  z-index: -1;
+  z-index: -10; /* ← ОПУСКАЕМ НИЖЕ ВСЕГО */
 }
-
 .page {
   min-height: 100vh;
+position: relative;
+  z-index: 10; /* ← ПОДНИМАЕМ ВЕРХ ВСЕГО САЙТА */
 }
 
 .container {
