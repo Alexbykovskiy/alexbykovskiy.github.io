@@ -642,7 +642,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- СВЁРНУТАЯ КНОПКА -->
 <div id="fast-contact-bubble" class="fast-contact-bubble">
-    <img src="img/chat.svg" alt="chat">
+    <img src="img/icons/telegram.svg" alt="chat">
 </div>
 
      <script>
@@ -900,13 +900,46 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
   const fastBar = document.getElementById("fast-contact-bar");
  
-  function showFastContactBar() {
-    if (!fastBar) return;
+ // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
+const fastBar = document.getElementById("fast-contact-bar");
+const fastBubble = document.getElementById("fast-contact-bubble");
+const fastCollapseBtn = document.getElementById("fastContactCollapse");
 
-    fastBar.classList.add("visible");
-    localStorage.setItem("contactBarEnabled", "1");
-    localStorage.removeItem("contactBarDismissed");
+// показать панель
+function showFastContactBar() {
+  fastBar.classList.add("visible");
+  fastBubble.style.display = "none";
+  localStorage.setItem("contactWidgetState", "expanded");
+}
+
+// свернуть панель
+function collapseFastContactBar() {
+  fastBar.classList.remove("visible");
+  fastBubble.style.display = "flex";
+  localStorage.setItem("contactWidgetState", "collapsed");
+}
+
+// обработчики
+if (fastCollapseBtn) {
+  fastCollapseBtn.addEventListener("click", collapseFastContactBar);
+}
+if (fastBubble) {
+  fastBubble.addEventListener("click", showFastContactBar);
+}
+
+// при загрузке страницы — panel НЕ показываем
+// если пользователь не отправлял заявку → панель скрыта
+(function restoreContactWidget() {
+  const state = localStorage.getItem("contactWidgetState");
+
+  if (state === "collapsed") {
+    collapseFastContactBar();
+  } else {
+    // панель НЕ показываем, т.к. заявка ещё не отправлена
+    fastBar.classList.remove("visible");
+    fastBubble.style.display = "none";
   }
+})();
 
   
   // показать панель если был lead и не закрыта вручную
@@ -1002,40 +1035,6 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     contactForm.reset();
     closeModal();
   });
-</script>
-<script>
-const bar = document.getElementById("fast-contact-bar");
-const bubble = document.getElementById("fast-contact-bubble");
-const collapseBtn = document.getElementById("fastContactCollapse");
-
-function showBar() {
-    bubble.style.display = "none";
-    bar.classList.add("visible");
-    localStorage.setItem("contactWidget", "expanded");
-}
-
-function showBubble() {
-    bar.classList.remove("visible");
-    bubble.style.display = "flex";
-    localStorage.setItem("contactWidget", "collapsed");
-}
-
-collapseBtn.addEventListener("click", () => {
-    showBubble();
-});
-
-bubble.addEventListener("click", () => {
-    showBar();
-});
-
-// восстановление состояния
-const state = localStorage.getItem("contactWidget");
-
-if (state === "collapsed") {
-    showBubble();
-} else {
-    showBar();
-}
 </script>
 </body>
 </html>
