@@ -710,16 +710,13 @@ L.tileLayer(
   }
 ).addTo(map);
 
-// --- Кастомный пин с логотипом ---
-const logoIcon = L.icon({
-  iconUrl: 'img/pin-ab.PNG',   // ← твоя PNG
-  iconSize: [72, 96],          // ← регулируемый размер
-  iconAnchor: [36, 96],        // ← кончик хвоста ровно в точке
-  popupAnchor: [0, -92]        // ← надпись над пином
-});L.marker([studioLat, studioLng], { icon: logoIcon })
+// --- Стандартный пин Leaflet ---
+L.marker([studioLat, studioLng])
   .addTo(map)
   .bindPopup("Студия Body Gallery — Štefánikоvа 14")
-  .openPopup();// ——— Переключение альбомов ———
+  .openPopup();
+
+// ——— Переключение альбомов ———
 const tabs = document.querySelectorAll(".gallery-tab");
 const blocks = document.querySelectorAll(".gallery-block");
 
