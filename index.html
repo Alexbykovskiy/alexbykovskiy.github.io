@@ -840,72 +840,99 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   });
 });
 </script>
+
 <script type="module">
-import { collection, addDoc, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// === Открытие модалки ===
-const modal = document.getElementById("modal");
-const overlay = document.getElementById("modal-overlay");
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBzHEcrGfwek6FzguWbSGSfMgebMy1sBe8",
+    authDomain: "minibudget-4e474.firebaseapp.com",
+    projectId: "minibudget-4e474",
+    storageBucket: "minibudget-4e474.firebasestorage.app",
+    messagingSenderId: "306275735842",
+    appId: "1:306275735842:web:f1ed373750c6a317d36d7b"
+  };
 
-document.querySelector(".contact-expand-btn").onclick = () => {
-  modal.classList.add("active");
-  overlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-};
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 
-document.getElementById("modal-close").onclick = closeModal;
-overlay.onclick = closeModal;
-
-function closeModal() {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-// === Обработчик формы ===
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = clientName.value.trim();
-  const method = contactMethod.value;
-  const value = contactValue.value.trim();
-
-  if (!name || !value || !gdprAgree.checked) {
-    alert("Пожалуйста, заполните все поля и подтвердите согласие.");
-    return;
-  }
-
-  // --- Firestore ---
-  try {
-    await addDoc(collection(window.db, "requests"), {
-      name, contactMethod: method, contactValue: value,
-      createdAt: serverTimestamp(), source: "tattoo-landing"
-    });
-  } catch (e) {
-    console.log("Firestore error", e);
-  }
-
-  // --- Telegram ---
-  const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
-  const CHAT_ID = 1054798766;
-
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
-    })
-  });
-
-  // закрываем
-  closeModal();
-  contactForm.reset();
-  alert("Спасибо! Ваша заявка отправлена.");
-});
+  // Global Firestore reference
+  window.db = getFirestore(app);
 </script>
 
+
+<script type="module">
+  import { collection, addDoc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // === Открытие/закрытие модалки ===
+  const modal = document.getElementById("modal");
+  const overlay = document.getElementById("modal-overlay");
+
+  document.querySelector(".contact-expand-btn").onclick = () => {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  };
+
+  document.getElementById("modal-close").onclick = closeModal;
+  overlay.onclick = closeModal;
+
+  function closeModal() {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // === Обработчик формы ===
+  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = clientName.value.trim();
+    const method = contactMethod.value;
+    const value = contactValue.value.trim();
+
+    if (!name || !value || !gdprAgree.checked) {
+      alert("Пожалуйста, заполните все поля и подтвердите согласие.");
+      return;
+    }
+
+    // === Firestore ===
+    try {
+      await addDoc(
+        collection(window.db, "alexbykovskiy.com/init/requests"),
+        {
+          name,
+          contactMethod: method,
+          contactValue: value,
+          createdAt: serverTimestamp(),
+          source: "tattoo-landing"
+        }
+      );
+    } catch (e) {
+      console.error("Firestore error", e);
+    }
+
+    // === Telegram ===
+    const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
+    const CHAT_ID = 1054798766;
+
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
+      })
+    });
+
+    contactForm.reset();
+    closeModal();
+    alert("Спасибо! Ваша заявка отправлена.");
+  });
+</script>
 
 </body>
 </html>
