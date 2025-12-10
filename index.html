@@ -889,36 +889,35 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   import { collection, addDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Плавающая панель быстрых контактов
-const fastBar = document.getElementById("fast-contact-bar");
-const fastBarClose = document.getElementById("fast-contact-close");
+  // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
+  const fastBar = document.getElementById("fast-contact-bar");
+  const fastBarClose = document.getElementById("fast-contact-close");
 
-function showFastContactBar() {
-  if (!fastBar) return;
-  fastBar.classList.add("visible");
-  // помечаем, что человек уже оставлял заявку
-  localStorage.setItem("contactBarEnabled", "1");
-  // если раньше закрывал — сбрасываем
-  localStorage.removeItem("contactBarDismissed");
-}
+  function showFastContactBar() {
+    if (!fastBar) return;
 
-if (fastBarClose) {
-  fastBarClose.addEventListener("click", () => {
-    fastBar.classList.remove("visible");
-    localStorage.setItem("contactBarDismissed", "1");
-  });
-}
+    fastBar.classList.add("visible");
+    localStorage.setItem("contactBarEnabled", "1");
+    localStorage.removeItem("contactBarDismissed");
+  }
 
-// Показать панель при загрузке, если человек уже заполнял форму и не закрывал панель
-if (
-  fastBar &&
-  localStorage.getItem("contactBarEnabled") === "1" &&
-  localStorage.getItem("contactBarDismissed") !== "1"
-) {
-  fastBar.classList.add("visible");
-}
+  if (fastBarClose) {
+    fastBarClose.addEventListener("click", () => {
+      fastBar.classList.remove("visible");
+      localStorage.setItem("contactBarDismissed", "1");
+    });
+  }
 
-  // === Открытие/закрытие модалки ===
+  // показать панель если был lead и не закрыта вручную
+  if (
+    fastBar &&
+    localStorage.getItem("contactBarEnabled") === "1" &&
+    localStorage.getItem("contactBarDismissed") !== "1"
+  ) {
+    fastBar.classList.add("visible");
+  }
+
+  // ===== МОДАЛКА =====
   const modal = document.getElementById("modal");
   const overlay = document.getElementById("modal-overlay");
 
@@ -936,62 +935,72 @@ if (
     overlay.classList.remove("active");
     document.body.style.overflow = "";
   }
-const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  // ===== ОБРАБОТЧИК ФОРМЫ =====
+  const contactForm = document.getElementById("contactForm");
 
-  const submitBtn = document.querySelector(".modal-submit");
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Отправка...";
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = clientName.value.trim();
-  const method = contactMethod.value;
-  const value = contactValue.value.trim();
+    const submitBtn = document.querySelector(".modal-submit");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Отправка...";
 
-  if (!name || !value || !gdprAgree.checked) {
-    alert("Пожалуйста, заполните все поля и подтвердите согласие.");
+    const name = clientName.value.trim();
+    const method = contactMethod.value;
+    const value = contactValue.value.trim();
+
+    if (!name || !value || !gdprAgree.checked) {
+      alert("Пожалуйста, заполните все поля и подтвердите согласие.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Отправить";
+      return;
+    }
+
+    // ПОКАЗЫВАЕМ ПАНЕЛЬКУ МГНОВЕННО — лучший UX
+    showFastContactBar();
+
+    // ===== FIRESTORE =====
+    try {
+      await addDoc(
+        collection(window.db, "alexbykovskiy.com/init/requests"),
+        {
+          name,
+          contactMethod: method,
+          contactValue: value,
+          createdAt: serverTimestamp(),
+          source: "tattoo-landing"
+        }
+      );
+    } catch (err) {
+      console.error("Firestore error:", err);
+    }
+
+    // ===== TELEGRAM =====
+    const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
+    const CHAT_ID = 1054798766;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
+        })
+      });
+    } catch (err) {
+      console.error("Telegram error:", err);
+    }
+
+    // Возвращаем кнопку в нормальное состояние
     submitBtn.disabled = false;
     submitBtn.textContent = "Отправить";
-    return;
-  }
 
-  try {
-    await addDoc(
-      collection(window.db, "alexbykovskiy.com/init/requests"),
-      {
-        name,
-        contactMethod: method,
-        contactValue: value,
-        createdAt: serverTimestamp(),
-        source: "tattoo-landing"
-      }
-    );
-  } catch (e) {
-    console.error("Firestore error", e);
-  }
-
-  // TELEGRAM
-  const BOT_TOKEN = "…";
-  const CHAT_ID = 1054798766;
-
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
-    })
+    // Закрываем модалку + очищаем форму
+    contactForm.reset();
+    closeModal();
   });
-
-  submitBtn.disabled = false;
-  submitBtn.textContent = "Отправить";
-
-  contactForm.reset();
-  closeModal();
-
-  showFastContactBar();
-});
 </script>
 
 </body>
