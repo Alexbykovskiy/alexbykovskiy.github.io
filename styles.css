@@ -861,7 +861,7 @@ position: relative !important;
 }
 .contact-label {
   color: var(--heading);
-  font-size: 15px;              /* было 17px */
+  font-size: 16px;              /* было 17px */
   text-transform: uppercase;
   letter-spacing: 0.14em;
   margin-bottom: 5px;
@@ -1517,7 +1517,7 @@ font-size: 11px;
 
 .tagline-intro {
   color: var(--heading); /* жёлтый фирменный */
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.6;
   display: block;
@@ -1618,7 +1618,7 @@ font-size: 11px;
 .modal-input {
   width: 100%;
   padding: 13px 14px;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 12px;
   border: 1px solid #444;
   background: #2a2a2a;
@@ -1686,10 +1686,15 @@ font-size: 11px;
 .fast-contact-bar {
   position: fixed;
   left: 50%;
-  bottom: 22px;
-  transform: translateX(-50%) translateY(35px);
-  opacity: 0;
-
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+}
+.fast-contact-bar.visible {
+  transform: translate(-50%, -50%) scale(1);
+}
+.fast-contact-bar.hiding {
+  transform: translate(-50%, -50%) scale(0.85);
+}
   width: min(360px, 90%);
   padding: 10px 16px 12px !important;
   border-radius: 22px;
