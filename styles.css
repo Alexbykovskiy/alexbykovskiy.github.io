@@ -1739,44 +1739,30 @@ font-size: 11px;
   grid-area: text;
 }
 
-/* ——— кнопка закрытия ——— */
-.fast-contact-close {
-  grid-area: close;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.55);
-  font-size: 22px;
-  margin-top: -4px;
-  cursor: pointer;
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.fast-contact-close:hover {
-  color: #fff;
-  transform: scale(1.15);
-}
 
 /* ——— иконки ——— */
 .fast-contact-icons {
   grid-area: icons;
   display: flex;
+  justify-content: space-between;  /* растянуть по ширине */
   align-items: center;
-  gap: 14px;
-  margin-top: -4px;
+  width: 100%;
+  margin-top: 4px;
+  gap: 0;
 }
 
 .fast-contact-icon {
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   border-radius: 999px;
 
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    inset 0 0 10px rgba(255,255,255,0.12),
-    0 4px 14px rgba(0,0,0,0.35);
+    inset 0 0 12px rgba(255,255,255,0.14),
+    0 6px 16px rgba(0,0,0,0.35);
 
   display: flex;
   align-items: center;
@@ -1786,13 +1772,8 @@ font-size: 11px;
 }
 
 .fast-contact-icon img {
-  width: 20px;
-  height: 20px;
-}
-
-.fast-contact-icon:hover {
-  transform: translateY(-2px) scale(1.05);
-  background: rgba(255,255,255,0.24);
+  width: 26px;
+  height: 26px;
 }
 
 /* ——— мобильная адаптация ——— */
@@ -1813,7 +1794,4 @@ font-size: 11px;
     height: 16px;
   }
 
-  .fast-contact-close {
-    font-size: 18px;
-  }
-}
+ 
