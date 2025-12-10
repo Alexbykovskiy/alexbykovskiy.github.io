@@ -642,7 +642,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- СВЁРНУТАЯ КНОПКА -->
 <div id="fast-contact-bubble" class="fast-contact-bubble">
-    <img src="img/icons/telegram.svg" alt="chat">
+    <img src="img/icons/social.svg" alt="chat">
 </div>
 
      <script>
@@ -897,59 +897,93 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   import { collection, addDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  
  // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
 const fastBar = document.getElementById("fast-contact-bar");
 const fastBubble = document.getElementById("fast-contact-bubble");
 const fastCollapseBtn = document.getElementById("fastContactCollapse");
 
-// показать панель
+// аккуратно показать панель (после отправки формы или клика по bubble)
 function showFastContactBar() {
+  if (!fastBar || !fastBubble) return;
+
+  // показываем панель
   fastBar.classList.add("visible");
+  fastBar.style.opacity = "1";
+
+  // прячем пузырёк
   fastBubble.style.display = "none";
+
   localStorage.setItem("contactWidgetState", "expanded");
 }
 
-// свернуть панель
-function collapseFastContactBar() {
-  fastBar.classList.remove("visible");
-  fastBubble.style.display = "flex";
+// аккуратно свернуть панель в пузырёк
+function collapseFastContactBar(withAnimation = true) {
+  if (!fastBar || !fastBubble) return;
+
   localStorage.setItem("contactWidgetState", "collapsed");
+
+  if (withAnimation) {
+    // анимация ухода вниз и лёгкого уменьшения
+    fastBar.classList.add("hiding");
+
+    setTimeout(() => {
+      fastBar.classList.remove("visible", "hiding");
+      fastBar.style.opacity = "0";
+
+      // показываем пузырёк
+      fastBubble.style.display = "flex";
+      triggerBubblePulse();
+    }, 380); // совпадает с transition в CSS
+  } else {
+    // без анимации (например, при загрузке страницы)
+    fastBar.classList.remove("visible");
+    fastBar.style.opacity = "0";
+    fastBubble.style.display = "flex";
+  }
 }
 
-// обработчики
+// подсветка пузырька (жёлтый пульс)
+function triggerBubblePulse() {
+  fastBubble.classList.remove("pulse"); // сброс, чтобы анимация перезапустилась
+  // маленький timeout, чтобы браузер пересчитал классы
+  requestAnimationFrame(() => {
+    fastBubble.classList.add("pulse");
+  });
+}
+
+// обработчики кликов
 if (fastCollapseBtn) {
-  fastCollapseBtn.addEventListener("click", collapseFastContactBar);
-}
-if (fastBubble) {
-  fastBubble.addEventListener("click", showFastContactBar);
+  fastCollapseBtn.addEventListener("click", () => {
+    collapseFastContactBar(true);
+  });
 }
 
-// при загрузке страницы — panel НЕ показываем
-// если пользователь не отправлял заявку → панель скрыта
+if (fastBubble) {
+  fastBubble.addEventListener("click", () => {
+    showFastContactBar();
+  });
+}
+
+// восстановление состояния при загрузке страницы
 (function restoreContactWidget() {
+  if (!fastBar || !fastBubble) return;
+
   const state = localStorage.getItem("contactWidgetState");
 
+  // если раньше пользователь свернул → сразу показываем только пузырёк, без анимации
   if (state === "collapsed") {
-    collapseFastContactBar();
-  } else {
-    // панель НЕ показываем, т.к. заявка ещё не отправлена
     fastBar.classList.remove("visible");
+    fastBar.style.opacity = "0";
+    fastBubble.style.display = "flex";
+  } else {
+    // по умолчанию, до первой заявки – ничего не показываем
+    fastBar.classList.remove("visible");
+    fastBar.style.opacity = "0";
     fastBubble.style.display = "none";
   }
 })();
 
-  
-  // показать панель если был lead и не закрыта вручную
-  if (
-    fastBar &&
-    localStorage.getItem("contactBarEnabled") === "1" &&
-    localStorage.getItem("contactBarDismissed") !== "1"
-  ) {
-    fastBar.classList.add("visible");
-  }
-
-  // ===== МОДАЛКА =====
+// ===== МОДАЛКА =====
   const modal = document.getElementById("modal");
   const overlay = document.getElementById("modal-overlay");
 

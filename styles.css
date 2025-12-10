@@ -1686,201 +1686,99 @@ font-size: 11px;
   left: 50%;
   bottom: 22px;
   transform: translateX(-50%) translateY(35px);
+  opacity: 0;
 
-  
   width: min(360px, 90%);
- padding: 10px 16px 12px !important;
+  padding: 10px 16px 12px !important;
   border-radius: 22px;
 
-  /* ——— soft glass эффект ——— */
-  background: rgba(25, 27, 32, 0.45);            /* мягкий тёмный стеклянный фон */
-  border: 1px solid rgba(255, 255, 255, 0.10);    /* мягкая стеклянная кайма */
-  backdrop-filter: blur(18px) saturate(160%);     /* глубина, насыщение */
+  background: rgba(25, 27, 32, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-
-  /* внутреннее свечение */
   box-shadow:
       0 4px 25px rgba(0,0,0,0.45),
       inset 0 0 22px rgba(255,255,255,0.06);
 
-  /* текст */
   color: #f4e2b8;
   font-size: 14px;
   line-height: 1.45;
 
   z-index: 1200;
 
-  /* сетка */
   display: flex;
-flex-direction: column;
-align-items: center;
-gap: 4px; /* можно 2px если хочешь ещё ниже */
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 
-  /* старт: скрыта */
-  opacity: 0;
   pointer-events: none;
+
   transition:
     opacity 0.45s ease,
-    transform 0.45s cubic-bezier(.18,.89,.32,1.28); /* плавный подскок при появлении */
+    transform 0.45s cubic-bezier(.18,.89,.32,1.28);
 }
 
-/* ——— появление панели ——— */
+/* появление панели */
 .fast-contact-bar.visible {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0px); /* подъём */
+  transform: translateX(-50%) translateY(0px);
 }
 
-/* ========== Стили текста в панели ========== */
-.fast-contact-text {
-    text-align: center;
-    line-height: 1.05 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+/* анимация сворачивания вниз */
+.fast-contact-bar.hiding {
+  opacity: 0;
+  transform: translateX(-50%) translateY(40px) scale(0.9);
 }
 
+/* пузырёк чата */
+.fast-contact-bubble {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(25,27,32,0.85);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.14);
 
-.fct-title {
- font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 2px 0 !important;
-    line-height: 1.1 !important;
-  display: block;
-    color: #f4d9a3; /* желтый фирменный */
-  margin-bottom: 2px;
+  /* базовая тень, анимация допишем классом .pulse */
+  box-shadow: 0 4px 18px rgba(0,0,0,0.55);
 
-}
-
-.fct-sub {
-
- font-size: 13px;
-    margin: 0 !important;
-    line-height: 1.15 !important;
-  display: block;
-   color: #ffffff;
-  opacity: 0.9;
- margin-top: 2px !important;
-    margin-bottom: 2px !important;
-}
-
-/* ——— иконки ——— */
-.fast-contact-icons {
-  grid-area: icons;
-  display: flex;
-  justify-content: space-between;  /* растянуть по ширине */
-  align-items: center;
-  width: 100%;
-  margin-top: 4px;
-  gap: 0;
-}
-
-.fast-contact-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 0;          /* убираем круг полностью */
-  background: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform .2s ease;
-}
+  z-index: 1500;
 
-.fast-contact-icon:hover {
-  transform: scale(1.12);
-}
-
-.fast-contact-icon img {
-  width: 40px;
-  height: 40px;
-}
-/* ——— мобильная адаптация ——— */
-@media (max-width: 600px) {
-  .fast-contact-bar {
-    padding: 14px 14px 16px;
-    font-size: 13px;
-    gap: 10px 12px;
-width: 95%; /* ещё уже, идеально на экране телефона */
-
-  }
-
- @media (max-width: 600px) {
-  .fast-contact-icons {
-    justify-content: space-between;
-    gap: 0;
-  }
-
-  .fast-contact-icon {
-  width: 70px;  /* БЫЛО 46 — увеличено в 1.5 раза */
-    height: 70px;
-}
-
-.fast-contact-icon img {
-  width: 50px; /* БЫЛО 32 — теперь крупнее и красивее */
-    height: 50px;
-}
-}
-@media (max-width: 600px) {
-  .fast-contact-text {
-      line-height: 1.22 !important;
-  }
-
-  .fct-title {
-      margin-bottom: 2px !important;
-  }
-
-  .fct-sub {
-      margin-top: 2px !important;
-      margin-bottom: 2px !important;
-  }
-}
-
-.fast-contact-collapse {
-    margin-top: 6px;
-    width: 100%;
-    padding: 6px 0;
-    font-size: 12px;
-    text-align: center;
-    border-radius: 12px;
-    border: none;
-    background: rgba(255,255,255,0.12);
-    color: #f4e2b8;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.fast-contact-collapse:hover {
-    background: rgba(255,255,255,0.20);
-}
-
-.fast-contact-bubble {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba(25,27,32,0.55);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-
-    display: none; /* по умолчанию скрыт */
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1500;
-
-    transition: transform .3s ease, opacity .3s ease;
+  transition: transform .3s ease, opacity .3s ease, box-shadow .3s ease;
 }
 
 .fast-contact-bubble img {
-    width: 28px;
-    height: 28px;
-    opacity: 0.9;
+  width: 28px;
+  height: 28px;
+  opacity: 0.95;
+}
+
+/* жёлтый мягкий “пульс”, когда пузырёк появляется */
+@keyframes bubble-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 217, 163, 0.0);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 30px 10px rgba(244, 217, 163, 0.65);
+    transform: scale(1.06);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 217, 163, 0.0);
+    transform: scale(1);
+  }
+}
+
+.fast-contact-bubble.pulse {
+  animation: bubble-pulse 1.7s ease-out;
 }
 
