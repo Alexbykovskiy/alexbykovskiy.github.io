@@ -1687,7 +1687,7 @@ font-size: 11px;
   bottom: 22px;
   transform: translateX(-50%) translateY(35px);
   
-  width: min(720px, 100% - 24px);
+ width: min(600px, 90%); /* панель стала уже и аккуратнее */
   padding: 16px 20px 18px;
   border-radius: 22px;
 
@@ -1734,11 +1734,27 @@ font-size: 11px;
   transform: translateX(-50%) translateY(0px); /* подъём */
 }
 
-/* ——— текст ——— */
+/* ========== Стили текста в панели ========== */
 .fast-contact-text {
-  grid-area: text;
+  text-align: center;       /* выравнивание по центру */
+  line-height: 1.45;
+  margin-bottom: 4px;
 }
 
+.fct-title {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f4d9a3; /* желтый фирменный */
+  margin-bottom: 4px;
+}
+
+.fct-sub {
+  display: block;
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.9;
+}
 
 /* ——— иконки ——— */
 .fast-contact-icons {
@@ -1777,9 +1793,11 @@ font-size: 11px;
 /* ——— мобильная адаптация ——— */
 @media (max-width: 600px) {
   .fast-contact-bar {
-    padding: 14px 16px 16px;
+    padding: 14px 14px 16px;
     font-size: 13px;
     gap: 10px 12px;
+width: 95%; /* ещё уже, идеально на экране телефона */
+
   }
 
  @media (max-width: 600px) {
@@ -1789,12 +1807,12 @@ font-size: 11px;
   }
 
   .fast-contact-icon {
-    width: 46px;
-    height: 46px;
-  }
+  width: 70px;  /* БЫЛО 46 — увеличено в 1.5 раза */
+    height: 70px;
+}
 
-  .fast-contact-icon img {
-    width: 32px;
-    height: 32px;
-  }
+.fast-contact-icon img {
+  width: 50px; /* БЫЛО 32 — теперь крупнее и красивее */
+    height: 50px;
+}
 }
