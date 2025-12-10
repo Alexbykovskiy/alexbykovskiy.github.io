@@ -2046,7 +2046,7 @@ font-size: 11px;
 .section--portfolio-intro,
 
 #portfolio-wrapper {
-  background: var(--bg-main) !important;
+  background: transparent !important;
 }
 .portfolio-toggle-wrap {
   background: transparent !important;
