@@ -2306,4 +2306,12 @@ font-size: 11px;
   }
 }
 
+/* === Уменьшаем расстояние между героем и первой секцией === */
+.hero-overlay {
+  padding-bottom: 20px !important;   /* было 64px */
+}
 
+/* У первой секции убираем внешний верхний margin */
+.section:first-of-type {
+  margin-top: 10px !important;       /* было 40px */
+}
