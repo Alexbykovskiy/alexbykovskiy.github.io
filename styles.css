@@ -681,7 +681,7 @@ background: transparent;
 }
 
 .hero-content {
-    padding-top: 320px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
+    padding-top: 160px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
   }
 
  
