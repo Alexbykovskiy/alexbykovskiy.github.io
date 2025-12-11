@@ -2243,3 +2243,39 @@ font-size: 11px;
     grid-template-columns: 1fr;
   }
 }
+
+/* === FIX: чтобы фото в hero полностью входило на десктопе === */
+
+@media (min-width: 1025px) {
+
+  .hero {
+    min-height: 110vh !important; /* увеличиваем высоту секции */
+  }
+
+  .hero-bg-image {
+    background-position: center top !important; 
+    /* поднимаем фото, чтобы верхняя часть НЕ обрезалась */
+    
+    background-size: contain !important; 
+    /* ВАЖНО: показываем фото полностью */
+    
+    background-repeat: no-repeat !important;
+    background-color: black; /* если будут пустые полосы по бокам */
+  }
+
+  .hero-overlay {
+    padding-top: 120px !important; /* чтобы текст не прилип в самый верх */
+  }
+}
+
+/* На ноутбуках 13–15" делаем чуть иначе */
+@media (min-width: 900px) and (max-width: 1024px) {
+  .hero {
+    min-height: 100vh !important;
+  }
+
+  .hero-bg-image {
+    background-position: center top !important;
+    background-size: cover !important;
+  }
+}
