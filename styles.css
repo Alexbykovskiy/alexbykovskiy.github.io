@@ -77,7 +77,7 @@ background: transparent;
     url("img/hero1.PNG?v=2");
 
   /* изображение заполняет блок по ширине */
-  background-size: cover;
+  background-size: 75%;
 
   /* ТЕПЕРЬ ПРИВЯЗЫВАЕМ К ВЕРХУ — видно лицо, низ можно обрезать */
   background-position: center top;
