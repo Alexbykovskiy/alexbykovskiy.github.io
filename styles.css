@@ -2411,3 +2411,24 @@ font-size: 11px;
   background: #e60023;
   box-shadow: 0 0 8px rgba(230, 0, 35, 0.6);
 }
+
+.benefits-red-box {
+  position: relative !important;
+  z-index: 99999 !important;
+  background: rgba(255,0,0,0.1) !important;
+}
+
+.benefits-red-box {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-offer-card-dark {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-bg-overlay,
+.hero-bg-overlay::before {
+  z-index: 0 !important;
+}
