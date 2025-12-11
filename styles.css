@@ -49,7 +49,7 @@ body::before {
   z-index: -10; /* ← ОПУСКАЕМ НИЖЕ ВСЕГО */
 }
 .page {
-  min-height: 100vh;
+  min-height: 50vh;
 position: relative;
   z-index: 10; /* ← ПОДНИМАЕМ ВЕРХ ВСЕГО САЙТА */
 }
@@ -2315,3 +2315,22 @@ font-size: 11px;
 .section:first-of-type {
   margin-top: 10px !important;       /* было 40px */
 }
+
+/* === MOBILE HERO FULL HEIGHT === */
+@media (max-width: 640px) {
+
+  .hero {
+    min-height: 100vh !important;    /* вся высота экрана */
+    display: flex;
+    align-items: flex-end;           /* текст будет под фотографией */
+  }
+
+  .hero-bg-image {
+    background-size: cover !important;      /* заполняет по вертикали */
+    background-position: center top !important;
+  }
+
+  /* Убираем искусственный отступ вниз/вверх */
+  .hero-content {
+    padding-top: 40px !important;
+  }
