@@ -78,7 +78,7 @@ background: transparent;
     url("img/hero1.PNG?v=2");
 
   /* изображение заполняет блок по ширине */
-  background-size: 100%;
+  background-size: cover;
 
   /* ТЕПЕРЬ ПРИВЯЗЫВАЕМ К ВЕРХУ — видно лицо, низ можно обрезать */
   background-position: center top;
@@ -881,11 +881,6 @@ position: relative !important;
 }
 }
 
- @media (max-width: 640px) {
-  .hero-content {
-    padding-top: 260px !important; /* опускает всё */
-  }
-}
 
 /* CONTACT NEW STYLE */
 .contact-map-layout {
@@ -2373,5 +2368,36 @@ font-size: 11px;
   .hero-content {
     padding-top: 0 !important;
     padding-bottom: 32px !important;
+  }
+}
+
+/* === MOBILE HERO FIXED — FULL BACKGROUND === */
+@media (max-width: 640px) {
+
+  .hero {
+    min-height: 100vh !important;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 !important;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: url("img/hero1.PNG?v=2") !important;
+    background-size: cover !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-content {
+    padding: 24px 0 32px !important; /* маленький нормальный отступ */
   }
 }
