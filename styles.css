@@ -71,21 +71,20 @@ background: transparent;
 .hero-bg-image {
   position: absolute;
   inset: 0;
- background:
-  linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.35) 100%),
-  url("img/hero1.PNG?v=2");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-opacity: 1;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.35) 100%),
+    url("img/hero1.PNG?v=2");
+
+  /* изображение заполняет блок по ширине */
   background-size: cover;
-  background-position: center;
+
+  /* ВАЖНО: привязываем изображение к НИЗУ,
+     чтобы прозрачный край оказался внутри видимой области */
+  background-position: center bottom;
+
   background-repeat: no-repeat;
   opacity: 1;
 }
-/* later you can add:
-.hero-bg-image { background-image: url("img/your-portrait.jpg"); }
-*/
 
 .hero-overlay {
   position: relative;
