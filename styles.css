@@ -164,7 +164,7 @@ background: transparent;
 }
 
 .hero-text-block {
-  margin-top: 1px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
+  margin-top: -100px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
 }
 
 .hero-tagline {
