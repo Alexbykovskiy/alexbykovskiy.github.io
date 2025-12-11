@@ -63,7 +63,7 @@ position: relative;
 
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 140vh;
   color: var(--text-main);
   overflow: hidden;
 background: transparent;
@@ -679,7 +679,7 @@ background: transparent;
 }
 
 .hero-content {
-    padding-top: 160px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
+    padding-top: 260px !important; /* было 120–160, увеличиваем чтобы лицо освободить */
   }
 
  
@@ -2240,5 +2240,10 @@ font-size: 11px;
   .services-layout {
     grid-template-columns: 1fr;
   }
+}
+
+/* Увеличиваем высоту hero-блока, чтобы фото входило полностью */
+.hero {
+  min-height: 140vh !important;
 }
 
