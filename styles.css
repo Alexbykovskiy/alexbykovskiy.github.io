@@ -164,15 +164,89 @@ background: transparent;
 }
 
 .hero-text-block {
-  margin-top: -70px;   /* ПОДНИМАЕМ ПРАВЫЙ БЛОК ВЫШЕ */
+  margin-top: 40px;        /* комфортный отступ вниз */
+  max-width: 560px;        /* ширина карточки на десктопе */
 }
-
 .hero-tagline {
   margin: 0 0 24px;
   color: var(--text-muted);
   font-size: 14px;
 }
 
+/* === HERO OFFER CARD (главный оффер в шапке) === */
+
+.hero-offer-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f0e0 40%, #f5ded1 100%);
+  border-radius: 24px;
+  padding: 24px 26px 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  border: 1px solid rgba(0,0,0,0.18);
+
+  color: #1e1814;
+  position: relative;
+  overflow: hidden;
+}
+
+/* тонкая светлая подложка, как у референса */
+.hero-offer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.7), transparent 60%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.hero-offer-card > * {
+  position: relative; /* чтобы текст был поверх ::before */
+}
+
+/* Главная строка оффера */
+.hero-offer-line-main {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+/* Вторая строка (усиление боли) */
+.hero-offer-line-secondary {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Подзаголовок “Ты у меня получишь:” */
+.hero-offer-subtitle {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #b05722;
+}
+
+/* Список выгод внутри карточки */
+.hero-offer-card .tagline-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.hero-offer-card .tagline-list li {
+  color: #2a1d18;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* делаем кружочки чуть ярче в карточке */
+.hero-offer-card .tagline-list li::before {
+  background: #f28f3b; /* более “оранжевый” как в примере */
+}
+
+/* отступ между карточкой и кнопкой */
+.hero-links {
+  margin-top: 24px;
+}
 
 .hero-link {
   font-size: 12px;
@@ -1507,7 +1581,6 @@ font-size: 11px;
   margin: 0;
   padding: 0;
 }
-
 .tagline-intro {
   color: var(--heading); /* жёлтый фирменный */
   font-size: 16px;
