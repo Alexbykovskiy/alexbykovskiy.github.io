@@ -2302,7 +2302,7 @@ font-size: 11px;
 /* На десктопе можно задать комфортную высоту */
 @media (min-width: 900px) {
   .hero {
-    min-height: 90vh !important;
+    min-height: 1vh !important;
   }
 }
 
