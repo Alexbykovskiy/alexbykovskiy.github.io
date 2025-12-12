@@ -1095,6 +1095,7 @@ html, body {
   display: flex;
   gap: 14px;
   margin-bottom: 20px;
+ margin-top: 20px;    
   flex-wrap: wrap;
 }
 
