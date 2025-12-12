@@ -2401,3 +2401,16 @@ font-size: 11px;
     padding: 24px 0 32px !important; /* маленький нормальный отступ */
   }
 }
+
+@media (max-width: 640px) {
+
+  /* Сдвигаем ВЕСЬ оффер ниже */
+  .hero-text-block {
+    margin-top: 60px !important;   /* увеличивай до вкуса: 60–120px */
+  }
+
+  /* Можно чуть опустить и сам контейнер */
+  .hero-inner {
+    padding-top: 40px !important;
+  }
+}
