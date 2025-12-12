@@ -2109,7 +2109,7 @@ font-size: 11px;
   margin: 40px auto;
 
   /* Цвет + высокая прозрачность для стекла */
-  background: rgba(38, 96, 105, 0.50);
+  background: rgba(38, 96, 105, 0.25);
 
   /* Сильное размытие фона */
   backdrop-filter: blur(10px);
