@@ -2037,24 +2037,13 @@ font-size: 11px;
 
 /* === PORTFOLIO TOGGLE === */
 
+/* Портфолио всегда открыто */
 .portfolio-wrapper {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 
-      max-height 0.6s ease,
-      opacity 0.6s ease,
-      transform 0.6s ease;
-}
-
-.portfolio-wrapper.open {
-  max-height: 5000px; /* достаточно для всех альбомов */
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portfolio-toggle-wrap {
+  max-height: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  transform: none !important;
+}.portfolio-toggle-wrap {
   text-align: center;
   margin: 40px 0 0;
 }

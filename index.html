@@ -208,12 +208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       А ниже — примеры таких татуировок.
     </p>
 
-    <div class="portfolio-toggle-wrap">
-      <button id="portfolio-toggle" class="portfolio-toggle-btn">
-        Посмотреть портфолио
-      </button>
-    </div>
-
+   
     <div id="portfolio-wrapper" class="portfolio-wrapper">
 
       <div class="gallery-tabs">
@@ -1144,20 +1139,6 @@ if (fastBubble) {
   });
 </script>
 
-<script>
-  const portBtn = document.getElementById('portfolio-toggle');
-  const portWrap = document.getElementById('portfolio-wrapper');
-
-  portBtn.addEventListener('click', () => {
-    portWrap.classList.toggle('open');
-
-    if (portWrap.classList.contains('open')) {
-      portBtn.textContent = 'Скрыть портфолио';
-    } else {
-      portBtn.textContent = 'Посмотреть портфолио';
-    }
-  });
-</script>
 
 </body>
 </html>
