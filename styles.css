@@ -2332,7 +2332,7 @@ font-size: 11px;
 .hero-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url("img/hero1.PNG?v=2");
+  background-image: url("img/hero1.webp");
   background-size: cover !important;       /* заполняет по вертикали */
   background-position: top center !important;
   background-repeat: no-repeat;
