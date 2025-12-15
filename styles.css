@@ -113,34 +113,6 @@ background: transparent;
   text-transform: uppercase;
 }
 
-.main-nav {
-  display: flex;
-  gap: 24px;
-  font-size: 14px;
-  letter-spacing: 0.12em;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--text-main);
-  text-transform: uppercase;
-  position: relative;
-}
-
-.main-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: var(--heading);
-  transition: width 0.2s ease;
-}
-
-.main-nav a:hover::after {
-  width: 100%;
-}
 
 .hero-content {
   display: grid;
