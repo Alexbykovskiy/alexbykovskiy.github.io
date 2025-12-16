@@ -29,44 +29,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- === MODAL FORM === -->
-<div id="modal-overlay" class="modal-overlay"></div>
-
-<div id="modal" class="modal">
-  <div class="modal-inner">
-
-    <button class="modal-close" id="modal-close">×</button>
-
-    <h3 class="modal-title">Записаться на консультацию</h3>
-
-    <form id="contactForm" class="modal-form">
-
-      <label class="modal-label">Ваше имя</label>
-      <input id="clientName" type="text" class="modal-input" placeholder="Введите имя" required>
-
-      <label class="modal-label">Предпочтительный способ связи</label>
-      <select id="contactMethod" class="modal-input" required>
-        <option value="Telegram">Telegram</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Facebook">Facebook</option>
-        <option value="Phone">Телефон</option>
-        <option value="Email">Email</option>
-      </select>
-
-      <label class="modal-label">Контакт</label>
-      <input id="contactValue" type="text" class="modal-input" placeholder="@username или номер" required>
-
-      <label class="gdpr-check">
-        <input type="checkbox" id="gdprAgree" required>
-        <span>Я соглашаюсь на обработку персональных данных</span>
-      </label>
-
-      <button type="submit" class="modal-submit">Отправить</button>
-
-    </form>
-
-  </div>
-</div>
 
 
 
@@ -1014,6 +976,11 @@ function triggerBubblePulse() {
   });
 }
 
+// === Открытие панели соцсетей по кнопке "Получить консультацию" ===
+document.querySelector(".contact-expand-btn").onclick = () => {
+  showFastContactBar();
+};
+
 // обработчики кликов
 if (fastCollapseBtn) {
   fastCollapseBtn.addEventListener("click", () => {
@@ -1045,82 +1012,6 @@ if (fastBubble) {
     fastBubble.style.display = "none";
   }
 })();
-
-// ===== МОДАЛКА =====
-  const modal = document.getElementById("modal");
-  const overlay = document.getElementById("modal-overlay");
-
-  document.querySelector(".contact-expand-btn").onclick = () => {
-    modal.classList.add("active");
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-  };
-
-  document.getElementById("modal-close").onclick = closeModal;
-  overlay.onclick = closeModal;
-
-  function closeModal() {
-    modal.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-  }
-
-  // ===== ОБРАБОТЧИК ФОРМЫ =====
-  const contactForm = document.getElementById("contactForm");
-
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const submitBtn = document.querySelector(".modal-submit");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Отправка...";
-
-    const name = clientName.value.trim();
-    const method = contactMethod.value;
-    const value = contactValue.value.trim();
-
-    if (!name || !value || !gdprAgree.checked) {
-      alert("Пожалуйста, заполните все поля и подтвердите согласие.");
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Отправить";
-      return;
-    }
-
-    // ПОКАЗЫВАЕМ ПАНЕЛЬКУ МГНОВЕННО — лучший UX
-    showFastContactBar();
-
-    // ===== FIRESTORE =====
-    try {
-      await addDoc(
-        collection(window.db, "alexbykovskiy.com/init/requests"),
-        {
-          name,
-          contactMethod: method,
-          contactValue: value,
-          createdAt: serverTimestamp(),
-          source: "tattoo-landing"
-        }
-      );
-    } catch (err) {
-      console.error("Firestore error:", err);
-    }
-
-    // ===== TELEGRAM =====
-    const BOT_TOKEN = "8297445570:AAFG-2fJnAY6qEuUtfRP1IJ9jisJtnyvUgA";
-    const CHAT_ID = 1054798766;
-
-    try {
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: `🔥 Новая заявка!\nИмя: ${name}\nСвязь: ${method}\nКонтакт: ${value}`
-        })
-      });
-    } catch (err) {
-      console.error("Telegram error:", err);
-    }
 
     // Возвращаем кнопку в нормальное состояние
     submitBtn.disabled = false;
