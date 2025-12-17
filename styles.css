@@ -2042,8 +2042,10 @@ font-size: 11px;
   margin-top: 20px !important;
 }
 .section--portfolio-intro {
-  background: transparent !important;
-  box-shadow: none !important;
+   box-shadow: none !important;
+ background: rgba(38, 96, 105, 0.25) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .portfolio-toggle-btn:hover {
