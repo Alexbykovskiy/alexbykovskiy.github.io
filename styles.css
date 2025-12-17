@@ -1418,10 +1418,11 @@ font-size: 11px;
 
 /* Деньги — красные карточки (предоплата / финальный расчёт) */
 .process-card--money {
-  background: linear-gradient(135deg, #e60023, #a8001a);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(192, 0, 26, 0.5); /* красный 50% */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
-
 .process-card--money .process-card-number,
 .process-card--money .process-card-title,
 .process-card--money .process-card-text {
