@@ -2042,8 +2042,7 @@ font-size: 11px;
   margin-top: 20px !important;
 }
 .section--portfolio-intro {
-   box-shadow: none !important;
- background: rgba(38, 96, 105, 0.25) !important;
+   background: rgba(38, 96, 105, 0.25) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -2056,15 +2055,6 @@ font-size: 11px;
   transform: scale(0.96);
 }
 
-/* Единый фон для всего портфолио */
-.section--portfolio-intro,
-
-#portfolio-wrapper {
-  background: transparent !important;
-}
-.portfolio-toggle-wrap {
-  background: transparent !important;
-}
 
 /* === КАРТОЧКИ-СЕКЦИИ НАД ПАТТЕРНОМ === */
 .section {
@@ -2388,9 +2378,3 @@ font-size: 11px;
 
 
 
-/* === FIX: галерея в общем бирюзовом стиле === */
-.section--works {
-  background: rgba(38, 96, 105, 0.25) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
