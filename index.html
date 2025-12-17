@@ -921,32 +921,9 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 });
 </script>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBzHEcrGfwek6FzguWbSGSfMgebMy1sBe8",
-    authDomain: "minibudget-4e474.firebaseapp.com",
-    projectId: "minibudget-4e474",
-    storageBucket: "minibudget-4e474.firebasestorage.app",
-    messagingSenderId: "306275735842",
-    appId: "1:306275735842:web:f1ed373750c6a317d36d7b"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  // Global Firestore reference
-  window.db = getFirestore(app);
-</script>
 
 
-<script type="module">
-  import { collection, addDoc, serverTimestamp }
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+<script>
  // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
 const fastBar = document.getElementById("fast-contact-bar");
 const fastBubble = document.getElementById("fast-contact-bubble");
