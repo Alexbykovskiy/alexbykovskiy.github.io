@@ -2384,22 +2384,11 @@ font-size: 11px;
   }
 }
 
-/* === КРАСНАЯ ПОЛУПРОЗРАЧНАЯ ПОДЛОЖКА ПОД "ТЫ У МЕНЯ ПОЛУЧИШЬ!" === */
-.benefits-red-box {
-  background: rgba(230, 0, 35, 0.22); /* полупрозрачный красный */
-  border: 1px solid rgba(230, 0, 35, 0.55); /* тонкая красная рамка */
-  border-radius: 14px;
-  padding: 16px 18px;
-  margin: 18px 0 0;
-  backdrop-filter: blur(4px);
-}
 
-/* Текст внутри */
-.benefits-red-box .benefits-title {
-  color: #ff4f60;       /* ярко-красный акцент */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0;
-  margin-bottom: 12px;
+
+/* === FIX: галерея в общем бирюзовом стиле === */
+.section--works {
+  background: rgba(38, 96, 105, 0.25) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
