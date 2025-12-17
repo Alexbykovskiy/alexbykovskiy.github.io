@@ -1422,7 +1422,9 @@ font-size: 11px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+ font-weight: 400; /* обычный, тонкий */
 }
+
 .process-card--money .process-card-number,
 .process-card--money .process-card-title,
 .process-card--money .process-card-text {
