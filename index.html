@@ -7,13 +7,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/favicon.PNG">
 
- <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-54MQ49KK');</script>
-<!-- End Google Tag Manager -->
 
   <title>Тату-мастер в Братиславе — реализм, минимализм, акварель, цветные, черно-белые татуировки, перекрытие шрамов и старых татуировок</title>
 
@@ -24,11 +17,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54MQ49KK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 
 
 
@@ -1024,7 +1012,91 @@ if (fastBubble) {
 })();
 
    </script>
+<div id="cookie-overlay">
+  <div class="cookie-box">
+    <h3>Мы используем cookies</h3>
+    <p>
+      Мы используем cookies для аналитики и улучшения работы сайта.
+      Вы можете принять или отказаться.
+    </p>
 
+    <div class="cookie-actions">
+      <button id="cookie-accept">Принять</button>
+      <button id="cookie-decline">Отказаться</button>
+    </div>
 
+    <a href="/privacy.html" target="_blank">Подробнее</a>
+  </div>
+</div>
+<script>
+(function () {
+  const consent = localStorage.getItem('cookieConsent');
+  const overlay = document.getElementById('cookie-overlay');
+
+  if (consent === 'accepted') {
+    overlay.remove();
+    loadAnalytics();
+    loadMap();
+    return;
+  }
+
+  if (consent === 'declined') {
+    overlay.remove();
+    return;
+  }
+
+  document.getElementById('cookie-accept').onclick = () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    overlay.remove();
+    loadAnalytics();
+    loadMap();
+  };
+
+  document.getElementById('cookie-decline').onclick = () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    overlay.remove();
+  };
+
+  // --- GOOGLE TAG MANAGER ---
+  function loadAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-54MQ49KK';
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+  }
+
+  // --- MAP ---
+  function loadMap() {
+    if (!document.getElementById('map')) return;
+
+    const leafletCss = document.createElement('link');
+    leafletCss.rel = 'stylesheet';
+    leafletCss.href = 'https://unpkg.com/leaflet/dist/leaflet.css';
+    document.head.appendChild(leafletCss);
+
+    const leafletJs = document.createElement('script');
+    leafletJs.src = 'https://unpkg.com/leaflet/dist/leaflet.js';
+    leafletJs.onload = initMap;
+    document.body.appendChild(leafletJs);
+  }
+
+  function initMap() {
+    const map = L.map('map').setView([48.15314570292922, 17.106663532019553], 18);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    L.marker([48.15314570292922, 17.106663532019553])
+      .addTo(map)
+      .bindPopup("Студия Body Gallery");
+  }
+})();
+</script>
 </body>
 </html>

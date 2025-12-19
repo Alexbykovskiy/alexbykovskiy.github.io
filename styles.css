@@ -2393,4 +2393,56 @@ font-size: 11px;
   text-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
 
+#cookie-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cookie-box {
+  max-width: 420px;
+  padding: 26px 24px;
+  border-radius: 18px;
+
+  background: rgba(25,27,32,0.95);
+  color: #fff;
+
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.cookie-box h3 {
+  margin-top: 0;
+  color: #f0d3a5;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cookie-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+#cookie-accept {
+  background: #e60023;
+  color: #fff;
+}
+
+#cookie-decline {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
 
