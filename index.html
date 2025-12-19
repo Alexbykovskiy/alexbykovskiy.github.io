@@ -1052,7 +1052,7 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
 
   // --- если пользователь уже сделал выбор ---
   if (consent === 'accepted') {
-    overlay.remove();
+    overlay.style.display = 'none';
     cookieFab.style.display = 'flex';
     loadGTM();
     loadMap();
@@ -1060,7 +1060,7 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   }
 
   if (consent === 'declined') {
-    overlay.remove();
+    overlay.style.display = 'none';
     cookieFab.style.display = 'flex';
     return;
   }
@@ -1068,7 +1068,7 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   // --- ACCEPT ---
   acceptBtn.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'accepted');
-    overlay.remove();
+    overlay.style.display = 'none';
     cookieFab.style.display = 'flex';
     loadGTM();
     loadMap();
@@ -1077,7 +1077,7 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   // --- DECLINE ---
   declineBtn.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'declined');
-    overlay.remove();
+    overlay.style.display = 'none';
     cookieFab.style.display = 'flex';
   });
 
