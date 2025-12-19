@@ -2469,18 +2469,23 @@ font-size: 11px;
    PRIVACY PAGE LINKS FIX
    =============================== */
 
-.page a {
-  color: rgba(255, 255, 255, 0.9);
+/* ===============================
+   PRIVACY PAGE — FORCE LINK COLORS
+   =============================== */
+
+.page .section a,
+.page .section a:visited {
+  color: rgba(255, 255, 255, 0.92) !important;
   text-decoration: underline;
 }
 
-.page a:hover {
-  color: #ff2b2b;
+.page .section a:hover {
+  color: #e60023 !important;
   text-decoration: none;
 }
 
-/* Телефон и email — чуть плотнее */
-.page a[href^="mailto"],
-.page a[href^="tel"] {
+/* mailto / tel */
+.page .section a[href^="mailto"],
+.page .section a[href^="tel"] {
   font-weight: 500;
 }
