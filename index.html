@@ -7,6 +7,13 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/favicon.PNG">
 
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-54MQ49KK');</script>
+<!-- End Google Tag Manager -->
 
   <title>Тату-мастер в Братиславе — реализм, минимализм, акварель, цветные, черно-белые татуировки, перекрытие шрамов и старых татуировок</title>
 
@@ -17,6 +24,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54MQ49KK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 
 
@@ -695,86 +706,39 @@
     <img src="img/icons/social.svg" alt="chat">
 </div>
 
-
-<!-- COOKIE BANNER -->
-<div id="cookieBanner" class="cookie-banner">
-  <div class="cookie-content">
-    <p>
-      Мы используем cookies для аналитики и улучшения работы сайта.
-      Вы можете принять или отказаться от использования cookies.
-    </p>
-
-    <div class="cookie-buttons">
-      <button id="cookie-accept">Принять</button>
-      <button id="cookie-decline">Отказаться</button>
-    </div>
-
-    <a href="/privacy.html" class="cookie-link" target="_blank">
-      Политика конфиденциальности
-    </a>
-  </div>
-</div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const banner = document.getElementById("cookieBanner");
-    const acceptBtn = document.getElementById("cookie-accept");
-    const declineBtn = document.getElementById("cookie-decline");
-
-    const consent = localStorage.getItem("cookieConsent");
-
-    if (!consent) {
-      banner.classList.add("show");
-    }
-
-    acceptBtn.addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "accepted");
-      banner.classList.remove("show");
-      loadAnalytics();
-    });
-
-    declineBtn.addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "declined");
-      banner.classList.remove("show");
-    });
-  });
-
-  function loadAnalytics() {
-    // СЮДА ДОБАВЛЯЕМ ВСЕ GOOGLE-СКРИПТЫ
-    console.log("Cookies accepted — analytics loaded");
-  }
-</script>
-
      <script>
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
 
-       // --- Координаты ВХОДА Body Gallery ---
+        </script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+// --- Координаты ВХОДА Body Gallery ---
 const studioLat = 48.15314570292922;
 const studioLng = 17.106663532019553;
 
-function initMap() {
-  const studioLat = 48.15314570292922;
-  const studioLng = 17.106663532019553;
+const map = L.map('map', {
+  zoomControl: true,
+  scrollWheelZoom: true
+}).setView([studioLat, studioLng], 18);
 
-  const map = L.map('map', {
-    zoomControl: true,
-    scrollWheelZoom: true
-  }).setView([studioLat, studioLng], 18);
+// --- СТАНДАРТНАЯ СВЕТЛАЯ КАРТА ---
+L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  }
+).addTo(map);
 
-  L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap'
-    }
-  ).addTo(map);
+// --- Стандартный пин Leaflet ---
+L.marker([studioLat, studioLng])
+  .addTo(map)
+  .bindPopup("Студия Body Gallery — Štefánikоvа 14")
+  .openPopup();
 
-  L.marker([studioLat, studioLng])
-    .addTo(map)
-    .bindPopup("Студия Body Gallery — Štefánikova 14")
-    .openPopup();
-}
 // ——— Переключение альбомов ———
 const tabs = document.querySelectorAll(".gallery-tab");
 const blocks = document.querySelectorAll(".gallery-block");
@@ -1061,92 +1025,6 @@ if (fastBubble) {
 
    </script>
 
-<!-- === COOKIE CONSENT === -->
-<div id="cookie-banner" class="cookie-banner">
-  <div class="cookie-content">
-    <p>
-      Мы используем cookies и сторонние сервисы (аналитика, карты),
-      чтобы улучшить работу сайта.
-      <br>
-      Вы можете принять или отклонить использование cookies.
-    </p>
-
-    <div class="cookie-buttons">
-      <button id="cookie-accept">Принять</button>
-      <button id="cookie-decline">Отклонить</button>
-    </div>
-
-    <a href="privacy.html" class="cookie-link" target="_blank">
-      Подробнее о cookies
-    </a>
-  </div>
-</div>
-
-<script>
-(function () {
-  const banner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('cookie-accept');
-  const declineBtn = document.getElementById('cookie-decline');
-
-  const consent = localStorage.getItem('cookieConsent');
-
-  if (!consent) {
-    banner.classList.add('show');
-  }
-
-  acceptBtn.onclick = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    banner.classList.remove('show');
-    loadAnalyticsAndMaps();
-  };
-
-  declineBtn.onclick = () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    banner.classList.remove('show');
-  };
-
-  if (consent === 'accepted') {
-    loadAnalyticsAndMaps();
-  }
-
-  function loadAnalyticsAndMaps() {
-    loadGTM();
-    loadLeaflet();
-  }
-
-  function loadGTM() {
-    if (window.gtmLoaded) return;
-    window.gtmLoaded = true;
-
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-54MQ49KK';
-    document.head.appendChild(s);
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-  }
-
-  function loadLeaflet() {
-    if (window.leafletLoaded) return;
-    window.leafletLoaded = true;
-
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://unpkg.com/leaflet/dist/leaflet.css';
-    document.head.appendChild(link);
-
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/leaflet/dist/leaflet.js';
-    script.onload = () => {
-      if (typeof initMap === 'function') {
-        initMap();
-      }
-    };
-    document.body.appendChild(script);
-  }
-})();
-</script>
 
 </body>
 </html>
