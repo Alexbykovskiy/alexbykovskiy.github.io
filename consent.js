@@ -10,26 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- если уже был выбор ---
   if (consent === 'accepted') {
-    overlay.remove();
+    overlay.style.display = 'none';
     fab.style.display = 'flex';
     if (typeof loadGTM === 'function') loadGTM();
     return;
   }
 
   if (consent === 'declined') {
-    overlay.remove();
+    overlay.style.display = 'none';
     fab.style.display = 'flex';
     return;
   }
 
-  // --- показать overlay ---
+  // --- первый визит ---
   overlay.style.display = 'flex';
   fab.style.display = 'none';
 
   // --- ACCEPT ---
   acceptBtn.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'accepted');
-    overlay.remove();
+    overlay.style.display = 'none';
     fab.style.display = 'flex';
     if (typeof loadGTM === 'function') loadGTM();
   });
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- DECLINE ---
   declineBtn.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'declined');
-    overlay.remove();
+    overlay.style.display = 'none';
     fab.style.display = 'flex';
   });
 
