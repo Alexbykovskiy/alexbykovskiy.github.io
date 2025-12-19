@@ -1034,45 +1034,57 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   </div>
 </div>
 <script>
+<script>
 (function () {
-  const consent = localStorage.getItem('cookieConsent');
+
   const overlay = document.getElementById('cookie-overlay');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+  const cookieFab = document.getElementById('cookie-fab');
 
-const cookieFab = document.getElementById('cookie-fab');
+  const consent = localStorage.getItem('cookieConsent');
 
-// если пользователь уже делал выбор — показываем кнопку
-if (localStorage.getItem('cookieConsent')) {
-  cookieFab.style.display = 'flex';
-}
-
+  // --- если пользователь уже сделал выбор ---
   if (consent === 'accepted') {
-  overlay.remove();
-  loadGTM();   // ← ВОТ ЗДЕСЬ ЗАПУСКАЕТСЯ GOOGLE
-  loadMap();
-  return;
-}
-
-  if (consent === 'declined') {
     overlay.remove();
+    cookieFab.style.display = 'flex';
+    loadGTM();
+    loadMap();
     return;
   }
 
-  document.getElementById('cookie-accept').onclick = () => {
-  localStorage.setItem('cookieConsent', 'accepted');
-  overlay.remove();
-  cookieFab.style.display = 'flex';
-  loadGTM();
-  loadMap();
-};
+  if (consent === 'declined') {
+    overlay.remove();
+    cookieFab.style.display = 'flex';
+    return;
+  }
 
-  document.getElementById('cookie-decline').onclick = () => {
+  // --- ACCEPT ---
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    overlay.remove();
+    cookieFab.style.display = 'flex';
+    loadGTM();
+    loadMap();
+  });
+
+  // --- DECLINE ---
+  declineBtn.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'declined');
     overlay.remove();
-  cookieFab.style.display = 'flex';
-  };
+    cookieFab.style.display = 'flex';
+  });
 
+  // --- открыть панель по кнопке 🍪 ---
+  cookieFab.addEventListener('click', () => {
+    document.body.appendChild(overlay);
+  });
+
+  // --- загрузка карты ТОЛЬКО после consent ---
   function loadMap() {
     if (!document.getElementById('map')) return;
+    if (window.__mapLoaded) return;
+    window.__mapLoaded = true;
 
     const leafletCss = document.createElement('link');
     leafletCss.rel = 'stylesheet';
@@ -1097,15 +1109,11 @@ if (localStorage.getItem('cookieConsent')) {
 
     L.marker([48.15314570292922, 17.106663532019553])
       .addTo(map)
-      .bindPopup("Студия Body Gallery");
+      .bindPopup("Studio Body Gallery");
   }
 
 })();
-cookieFab.addEventListener('click', () => {
-  document.body.appendChild(overlay);
-});
 </script>
-
 <!-- COOKIE FLOATING BUTTON -->
 <button id="cookie-fab" aria-label="Cookie settings">
   🍪
