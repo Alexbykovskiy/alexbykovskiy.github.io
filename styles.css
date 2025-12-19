@@ -2465,4 +2465,22 @@ font-size: 11px;
   text-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
 
+/* ===============================
+   PRIVACY PAGE LINKS FIX
+   =============================== */
 
+.page a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+.page a:hover {
+  color: #ff2b2b;
+  text-decoration: none;
+}
+
+/* Телефон и email — чуть плотнее */
+.page a[href^="mailto"],
+.page a[href^="tel"] {
+  font-weight: 500;
+}
