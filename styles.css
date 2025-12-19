@@ -1412,7 +1412,7 @@ html, body {
 
 /* Текст шага */
 .process-card-text {
- white-space: normal  
+ white-space: normal;  
 font-size: 11px;
   line-height: 1.5;
   color: var(--text-muted);
