@@ -1082,9 +1082,10 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   });
 
   // --- открыть панель по кнопке 🍪 ---
-  cookieFab.addEventListener('click', () => {
-    document.body.appendChild(overlay);
-  });
+cookieFab.addEventListener('click', () => {
+  overlay.style.display = 'flex';
+  cookieFab.style.display = 'none';
+});
 
   // --- загрузка карты ТОЛЬКО после consent ---
   function loadMap() {
