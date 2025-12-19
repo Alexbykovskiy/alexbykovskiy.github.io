@@ -134,17 +134,21 @@ position: relative;
 
 /* === COOKIE FLOATING BUTTON === */
 #cookie-fab img {
-  width: 36px;       /* ↑ примерно в 1.5 раза больше */
-  height: 36px;
-  object-fit: contain;
+  width: 32px;                /* гарантированно меньше круга */
+  height: 32px;
+  max-width: 32px;            /* ⬅️ ломает поведение SVG */
+  max-height: 32px;
+
   display: block;
-  pointer-events: none; /* чтобы клик всегда шёл по кнопке */
+  object-fit: contain;
+  pointer-events: none;
 }
+
 #cookie-fab {
   background: rgba(25, 27, 32, 0.85);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-
+ overflow: hidden;           /* ⬅️ КРИТИЧНО: обрезает SVG по кругу */
   border: 1px solid rgba(255,255,255,0.16);
 
   box-shadow:
@@ -2562,40 +2566,4 @@ font-size: 11px;
 .page .section a[href^="mailto"],
 .page .section a[href^="tel"] {
   font-weight: 500;
-}
-
-/* === COOKIE FLOATING BUTTON === */
-
-#cookie-fab {
-  position: fixed;
-  left: 22px;
-  bottom: 22px;
-
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-
-  background: rgba(25,27,32,0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255,255,255,0.14);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.55);
-
-  color: #f0d3a5;
-  font-size: 22px;
-
-  display: none; /* ← СКРЫТА ПО УМОЛЧАНИЮ */
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  z-index: 1500;
-
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-#cookie-fab:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 26px rgba(240, 211, 165, 0.6);
 }
