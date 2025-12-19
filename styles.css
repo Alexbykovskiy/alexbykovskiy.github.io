@@ -139,9 +139,13 @@ background: transparent;
 }
 
 .hero-text-block {
-  margin-top: 40px;        /* комфортный отступ вниз */
-  max-width: 560px;        /* ширина карточки на десктопе */
+  margin-top: 40px;
+  width: max-content;          /* ← ключевая строка */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;        /* ← растягиваем по ширине кнопки */
 }
+
 .hero-tagline {
   margin: 0 0 24px;
   color: var(--text-muted);
@@ -1467,7 +1471,8 @@ font-size: 11px;
   .hero-links > a.hero-link {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    width: 100%;                 /* ← ЭТАЛОН ШИРИНЫ */
+  justify-content: center;
 
     background: #e60023;
     color: #fff !important;
@@ -2381,16 +2386,29 @@ font-size: 11px;
   }
 }
 .hero-offer-title {
+  display: block;
+  width: 100%;                 /* ← подчиняется ширине контейнера */
+  text-align: left;
+
   font-size: clamp(28px, 4.5vw, 52px);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
 
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   line-height: 1.1;
 
   text-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
 
+@media (max-width: 640px) {
+  .hero-text-block {
+    width: 100%;
+    align-items: center;
+  }
 
+  .hero-offer-title {
+    text-align: center;
+  }
+}
