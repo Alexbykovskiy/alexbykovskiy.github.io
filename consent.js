@@ -45,16 +45,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   overlay.addEventListener('click', (e) => {
     if (e.target.id === 'cookie-accept') {
-      localStorage.setItem('cookieConsent', 'accepted');
-      overlay.style.display = 'none';
-      if (fab) fab.style.display = 'flex';
-      if (typeof loadGTM === 'function') loadGTM();
-    }
+  localStorage.setItem('cookieConsent', 'accepted');
+
+  overlay.style.display = 'none';
+
+  if (fab) {
+    fab.style.display = 'flex';
+
+    // запускаем мягкий pulse (перезапуск анимации)
+    fab.classList.remove('pulse');
+    requestAnimationFrame(() => {
+      fab.classList.add('pulse');
+    });
+  }
+
+  if (typeof loadGTM === 'function') loadGTM();
+}
 
     if (e.target.id === 'cookie-decline') {
-      localStorage.setItem('cookieConsent', 'declined');
-      overlay.style.display = 'none';
-      if (fab) fab.style.display = 'flex';
-    }
+  localStorage.setItem('cookieConsent', 'declined');
+
+  overlay.style.display = 'none';
+
+  if (fab) {
+    fab.style.display = 'flex';
+
+    // запускаем мягкий pulse (перезапуск анимации)
+    fab.classList.remove('pulse');
+    requestAnimationFrame(() => {
+      fab.classList.add('pulse');
+    });
+  }
+}
   });
 });
