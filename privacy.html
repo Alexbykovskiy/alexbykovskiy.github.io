@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>Ochrana osobných údajov | Alex Bykovskiy Tattoo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ТОТ ЖЕ CSS, ЧТО И НА САЙТЕ -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <section class="section">
+    <div class="container">
+
+      <h1 class="section-title">Ochrana osobných údajov a cookies</h1>
+
+      <p>
+        Táto stránka vysvetľuje, aké údaje spracúvame a ako používame súbory cookies.
+      </p>
+
+      <h2>1. Prevádzkovateľ</h2>
+      <p>
+        <strong>Alex Bykovskiy Tattoo</strong><br>
+        Bratislava, Slovenská republika<br>
+        Email: <a href="mailto:alexbykovskiytattoo@gmail.com">alexbykovskiytattoo@gmail.com</a><br>
+        Telefón: <a href="tel:+421949516252">+421 949 516 252</a>
+      </p>
+
+      <h2>2. Spracúvanie údajov</h2>
+      <p>
+        Webová stránka nezhromažďuje osobné údaje prostredníctvom formulárov.
+        Používame iba anonymné štatistické údaje pomocou Google Analytics 4,
+        a to výlučne po udelení súhlasu.
+      </p>
+
+      <h2>3. Cookies</h2>
+      <p>
+        Používame technické cookies potrebné na fungovanie stránky a
+        analytické cookies (Google Analytics 4) iba po súhlase používateľa.
+      </p>
+
+      <h2>4. Udelenie alebo odmietnutie súhlasu</h2>
+      <p>
+        Svoj súhlas môžete udeliť alebo odmietnuť pomocou tlačidiel nižšie.
+      </p>
+
+      <!-- КНОПКИ COOKIE -->
+      <div style="margin: 32px 0; display: flex; gap: 16px; flex-wrap: wrap;">
+        <button id="accept-cookies" class="why-btn">Prijať cookies</button>
+        <button id="decline-cookies" class="why-btn" style="background: rgba(255,255,255,0.2);">
+          Odmietnuť cookies
+        </button>
+      </div>
+
+      <!-- ССЫЛКА НАЗАД -->
+      <p>
+        <a href="/" style="text-decoration: underline;">← Späť na hlavnú stránku</a>
+      </p>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- JS ДЛЯ COOKIE -->
+<script>
+  document.getElementById('accept-cookies').onclick = function () {
+    localStorage.setItem('cookieConsent', 'accepted');
+    window.location.href = '/';
+  };
+
+  document.getElementById('decline-cookies').onclick = function () {
+    localStorage.setItem('cookieConsent', 'declined');
+    window.location.href = '/';
+  };
+</script>
+
+</body>
+</html>
