@@ -132,6 +132,27 @@ position: relative;
   text-decoration: underline;
 }
 
+/* ===============================
+   PRIVACY PAGE — FORCE LINK COLORS
+   =============================== */
+
+.page .section a,
+.page .section a:visited {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-decoration: underline;
+}
+
+.page .section a:hover {
+  color: #e60023 !important;
+  text-decoration: none;
+}
+
+/* mailto / tel */
+.page .section a[href^="mailto"],
+.page .section a[href^="tel"] {
+  font-weight: 500;
+}
+
 /* HERO */
 
 .hero {
@@ -2464,10 +2485,6 @@ font-size: 11px;
 
   text-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
-
-/* ===============================
-   PRIVACY PAGE LINKS FIX
-   =============================== */
 
 /* ===============================
    PRIVACY PAGE — FORCE LINK COLORS
