@@ -1012,6 +1012,8 @@ if (fastBubble) {
 })();
 
    </script>
+
+<!-- ================= COOKIE OVERLAY ================= -->
 <div id="cookie-overlay">
   <div class="cookie-box">
     <h3>Мы используем cookies</h3>
@@ -1035,7 +1037,6 @@ if (fastBubble) {
 
   if (consent === 'accepted') {
     overlay.remove();
-    loadAnalytics();
     loadMap();
     return;
   }
@@ -1048,7 +1049,6 @@ if (fastBubble) {
   document.getElementById('cookie-accept').onclick = () => {
     localStorage.setItem('cookieConsent', 'accepted');
     overlay.remove();
-    loadAnalytics();
     loadMap();
   };
 
@@ -1057,21 +1057,6 @@ if (fastBubble) {
     overlay.remove();
   };
 
-  // --- GOOGLE TAG MANAGER ---
-  function loadAnalytics() {
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-54MQ49KK';
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js'
-    });
-  }
-
-  // --- MAP ---
   function loadMap() {
     if (!document.getElementById('map')) return;
 
@@ -1087,7 +1072,11 @@ if (fastBubble) {
   }
 
   function initMap() {
-    const map = L.map('map').setView([48.15314570292922, 17.106663532019553], 18);
+    const map = L.map('map').setView(
+      [48.15314570292922, 17.106663532019553],
+      18
+    );
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     }).addTo(map);
