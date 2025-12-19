@@ -133,41 +133,62 @@ position: relative;
 }
 
 /* === COOKIE FLOATING BUTTON === */
-
+#cookie-fab img {
+  width: 36px;       /* ↑ примерно в 1.5 раза больше */
+  height: 36px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none; /* чтобы клик всегда шёл по кнопке */
+}
 #cookie-fab {
-  position: fixed;
-  left: 22px;
-  bottom: 22px;
+  background: rgba(25, 27, 32, 0.85);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
 
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.16);
 
-  background: rgba(25,27,32,0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.55),
+    inset 0 0 14px rgba(255,255,255,0.05);
 
-  border: 1px solid rgba(255,255,255,0.14);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.55);
-
-  color: #f0d3a5;
-  font-size: 22px;
-
-  display: none; /* ← СКРЫТА ПО УМОЛЧАНИЮ */
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  z-index: 1500;
-
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* hover — как у соцсетей */
 #cookie-fab:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 26px rgba(240, 211, 165, 0.6);
+  transform: scale(1.1);
+  box-shadow:
+    0 0 28px 10px rgba(240, 211, 165, 0.65),
+    inset 0 0 18px rgba(255,255,255,0.08);
 }
 
+/* активный клик */
+#cookie-fab:active {
+  transform: scale(0.95);
+}
+
+/* === ЖЁЛТЫЙ ПУЛЬС === */
+@keyframes cookie-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 211, 165, 0.0);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 34px 14px rgba(240, 211, 165, 0.7);
+    transform: scale(1.08);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 211, 165, 0.0);
+    transform: scale(1);
+  }
+}
+
+/* класс для запуска пульса */
+#cookie-fab.pulse {
+  animation: cookie-pulse 1.7s ease-out;
+}
 /* ===============================
    PRIVACY PAGE — FORCE LINK COLORS
    =============================== */
