@@ -1038,6 +1038,13 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   const consent = localStorage.getItem('cookieConsent');
   const overlay = document.getElementById('cookie-overlay');
 
+const cookieFab = document.getElementById('cookie-fab');
+
+// если пользователь уже делал выбор — показываем кнопку
+if (localStorage.getItem('cookieConsent')) {
+  cookieFab.style.display = 'flex';
+}
+
   if (consent === 'accepted') {
   overlay.remove();
   loadGTM();   // ← ВОТ ЗДЕСЬ ЗАПУСКАЕТСЯ GOOGLE
@@ -1053,13 +1060,15 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
   document.getElementById('cookie-accept').onclick = () => {
   localStorage.setItem('cookieConsent', 'accepted');
   overlay.remove();
-  loadGTM();   // ← ВОТ ЗДЕСЬ
+  cookieFab.style.display = 'flex';
+  loadGTM();
   loadMap();
 };
 
   document.getElementById('cookie-decline').onclick = () => {
     localStorage.setItem('cookieConsent', 'declined');
     overlay.remove();
+  cookieFab.style.display = 'flex';
   };
 
   function loadMap() {
@@ -1090,9 +1099,17 @@ a analýzu návštevnosti. Interaktívna mapa Google sa zobrazí až po udelení
       .addTo(map)
       .bindPopup("Студия Body Gallery");
   }
+
 })();
+cookieFab.addEventListener('click', () => {
+  document.body.appendChild(overlay);
+});
 </script>
 
+<!-- COOKIE FLOATING BUTTON -->
+<button id="cookie-fab" aria-label="Cookie settings">
+  🍪
+</button>
 
 
 </body>

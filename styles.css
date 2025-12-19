@@ -2506,3 +2506,39 @@ font-size: 11px;
 .page .section a[href^="tel"] {
   font-weight: 500;
 }
+
+/* === COOKIE FLOATING BUTTON === */
+
+#cookie-fab {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background: rgba(25,27,32,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+
+  color: #f0d3a5;
+  font-size: 22px;
+
+  display: none; /* ← СКРЫТА ПО УМОЛЧАНИЮ */
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 1500;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+#cookie-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 26px rgba(240, 211, 165, 0.6);
+}
