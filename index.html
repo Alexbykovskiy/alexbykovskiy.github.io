@@ -699,33 +699,8 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
         </script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
-// --- Координаты ВХОДА Body Gallery ---
-const studioLat = 48.15314570292922;
-const studioLng = 17.106663532019553;
-
-const map = L.map('map', {
-  zoomControl: true,
-  scrollWheelZoom: true
-}).setView([studioLat, studioLng], 18);
-
-// --- СТАНДАРТНАЯ СВЕТЛАЯ КАРТА ---
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap'
-  }
-).addTo(map);
-
-// --- Стандартный пин Leaflet ---
-L.marker([studioLat, studioLng])
-  .addTo(map)
-  .bindPopup("Студия Body Gallery — Štefánikоvа 14")
-  .openPopup();
 
 // ——— Переключение альбомов ———
 const tabs = document.querySelectorAll(".gallery-tab");
