@@ -1,24 +1,49 @@
-function syncCookieUI() {
-  const consent = localStorage.getItem('cookieConsent');
+document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('cookie-overlay');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
   const fab = document.getElementById('cookie-fab');
 
-  if (!overlay || !fab) return;
+  if (!overlay || !acceptBtn || !declineBtn || !fab) return;
 
-  if (consent === 'accepted' || consent === 'declined') {
-    overlay.style.display = 'none';
+  const consent = localStorage.getItem('cookieConsent');
 
-    // показываем кнопку
+  // --- если уже был выбор ---
+  if (consent === 'accepted') {
+    overlay.remove();
     fab.style.display = 'flex';
+    if (typeof loadGTM === 'function') loadGTM();
+    return;
+  }
 
-    // запускаем мягкий пульс
-    fab.classList.remove('pulse');
-    requestAnimationFrame(() => {
-      fab.classList.add('pulse');
-    });
+  if (consent === 'declined') {
+    overlay.remove();
+    fab.style.display = 'flex';
+    return;
+  }
 
-  } else {
+  // --- показать overlay ---
+  overlay.style.display = 'flex';
+  fab.style.display = 'none';
+
+  // --- ACCEPT ---
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    overlay.remove();
+    fab.style.display = 'flex';
+    if (typeof loadGTM === 'function') loadGTM();
+  });
+
+  // --- DECLINE ---
+  declineBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    overlay.remove();
+    fab.style.display = 'flex';
+  });
+
+  // --- клик по круглой кнопке ---
+  fab.addEventListener('click', () => {
     overlay.style.display = 'flex';
     fab.style.display = 'none';
-  }
-}
+  });
+});

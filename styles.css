@@ -133,66 +133,28 @@ position: relative;
 }
 
 /* === COOKIE FLOATING BUTTON === */
-#cookie-fab img {
-  width: 32px;                /* гарантированно меньше круга */
-  height: 32px;
-  max-width: 32px;            /* ⬅️ ломает поведение SVG */
-  max-height: 32px;
+#cookie-fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden; /* ⬅️ КРИТИЧНО */
+}
+
+#cookie-fab img {
+  width: 48px;        /* ⬅️ 32 × 1.5 */
+  height: 48px;
+
   object-fit: contain;
+  display: block;
+
   pointer-events: none;
 }
 
-#cookie-fab {
-  background: rgba(25, 27, 32, 0.85);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
- overflow: hidden;           /* ⬅️ КРИТИЧНО: обрезает SVG по кругу */
-  border: 1px solid rgba(255,255,255,0.16);
-
-  box-shadow:
-    0 4px 18px rgba(0,0,0,0.55),
-    inset 0 0 14px rgba(255,255,255,0.05);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-/* hover — как у соцсетей */
-#cookie-fab:hover {
-  transform: scale(1.1);
-  box-shadow:
-    0 0 28px 10px rgba(240, 211, 165, 0.65),
-    inset 0 0 18px rgba(255,255,255,0.08);
-}
-
-/* активный клик */
-#cookie-fab:active {
-  transform: scale(0.95);
-}
-
-/* === ЖЁЛТЫЙ ПУЛЬС === */
-@keyframes cookie-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(240, 211, 165, 0.0);
-    transform: scale(1);
-  }
-  40% {
-    box-shadow: 0 0 34px 14px rgba(240, 211, 165, 0.7);
-    transform: scale(1.08);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(240, 211, 165, 0.0);
-    transform: scale(1);
-  }
-}
-
-/* класс для запуска пульса */
-#cookie-fab.pulse {
-  animation: cookie-pulse 1.7s ease-out;
-}
 /* ===============================
    PRIVACY PAGE — FORCE LINK COLORS
    =============================== */
