@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (consent === 'accepted') {
     overlay.style.display = 'none';
     if (typeof loadGTM === 'function') loadGTM();
+  if (typeof loadOpenStreetMap === 'function') loadOpenStreetMap();
   } else if (consent === 'declined') {
     overlay.style.display = 'none';
   } else {
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (typeof loadGTM === 'function') loadGTM();
+  if (typeof loadOpenStreetMap === 'function') loadOpenStreetMap();
 }
 
     if (e.target.id === 'cookie-decline') {
