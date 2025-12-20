@@ -210,6 +210,8 @@ background: transparent;
   /* ТЕПЕРЬ ПРИВЯЗЫВАЕМ К ВЕРХУ — видно лицо, низ можно обрезать */
   background-position: center top;
 
+
+
   background-repeat: no-repeat;
   opacity: 1;
 }
