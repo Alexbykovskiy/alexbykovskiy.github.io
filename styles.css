@@ -2410,12 +2410,6 @@ font-size: 11px;
   }
 }
 
-/* На десктопе можно задать комфортную высоту */
-@media (min-width: 900px) {
-  .hero {
-    min-height: 1vh !important;
-  }
-}
 
 /* === Уменьшаем расстояние между героем и первой секцией === */
 .hero-overlay {
@@ -2430,40 +2424,13 @@ font-size: 11px;
 /* === MOBILE HERO FULL HEIGHT === */
 @media (max-width: 640px) {
 
-  .hero {
-    min-height: 100vh !important;    /* вся высота экрана */
-    display: flex;
-    align-items: flex-end;           /* текст будет под фотографией */
-  }
-
-  .hero-bg-image {
-    background-size: cover !important;      /* заполняет по вертикали */
-    background-position: center top !important;
-  }
-
+  
   /* Убираем искусственный отступ вниз/вверх */
   .hero-content {
     padding-top: 40px !important;
   }
 
 /* === HERO AS FULL BACKGROUND IMAGE === */
-.hero {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-}
-
-/* Фотография — полноценный фон */
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  background-image: url("img/hero1.PNG");
-  background-size: cover !important;       /* заполняет по вертикали */
-  background-position: top center !important;
-  background-repeat: no-repeat;
-  z-index: 0;
-}
 
 /* Контент — поверх */
 .hero-overlay,
@@ -2473,52 +2440,11 @@ font-size: 11px;
   z-index: 2;
 }
 
-/* === MOBILE: фото занимает ВСЮ высоту экрана === */
-@media (max-width: 640px) {
-  .hero {
-    min-height: 100vh !important;
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .hero-content {
-    padding-top: 0 !important;
-    padding-bottom: 32px !important;
-  }
-}
 
 /* === MOBILE HERO FIXED — FULL BACKGROUND === */
 @media (max-width: 640px) {
 
-  .hero {
-    min-height: 100vh !important;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: 0 !important;
-  }
-
-  .hero-bg-image {
-    position: absolute;
-    inset: 0;
-   background-image: url("img/hero1.PNG");
-    background-size: cover !important;
-    background-position: top center !important;
-    background-repeat: no-repeat !important;
-    z-index: 0;
-  }
-
-  .hero-overlay {
-    z-index: 2;
-    width: 100%;
-  }
-
-  .hero-content {
-    padding: 24px 0 32px !important; /* маленький нормальный отступ */
-  }
-}
-
-@media (max-width: 640px) {
+  @media (max-width: 640px) {
 
   /* Сдвигаем ВЕСЬ оффер ниже */
   .hero-text-block {
