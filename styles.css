@@ -202,7 +202,7 @@ background: transparent;
   inset: 0;
   background:
     linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.35) 100%),
-   url("img/hero1.png");
+   url("img/hero1.PNG");
 
   /* изображение заполняет блок по ширине */
   background-size: cover;
@@ -2458,7 +2458,7 @@ font-size: 11px;
 .hero-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url("img/hero1.png");
+  background-image: url("img/hero1.PNG");
   background-size: cover !important;       /* заполняет по вертикали */
   background-position: top center !important;
   background-repeat: no-repeat;
@@ -2501,7 +2501,7 @@ font-size: 11px;
   .hero-bg-image {
     position: absolute;
     inset: 0;
-   background-image: url("img/hero1.png");
+   background-image: url("img/hero1.PNG");
     background-size: cover !important;
     background-position: top center !important;
     background-repeat: no-repeat !important;
