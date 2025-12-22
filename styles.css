@@ -131,6 +131,36 @@ position: relative;
   color: #aaa;
   text-decoration: underline;
 }
+/* ===============================
+   CONTACTS PAGE – FINAL FIX
+================================ */
+
+.contacts-page .contacts-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.contacts-page .contacts-icons a {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts-page .contacts-icons a img {
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  object-fit: contain;
+}
+
 
 /* === COOKIE FLOATING BUTTON === */
 #cookie-fab {
@@ -288,36 +318,6 @@ background: transparent;
   border-radius: 18px;
 
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-}
-
-/* ===============================
-   CONTACTS PAGE – FINAL FIX
-================================ */
-
-.contacts-page .contacts-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-
-.contacts-page .contacts-icons a {
-  width: 64px;
-  height: 64px;
-  flex: 0 0 64px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contacts-page .contacts-icons a img {
-  width: 28px;
-  height: 28px;
-  max-width: 28px;
-  max-height: 28px;
-  object-fit: contain;
 }
 
 /* Заголовок */
