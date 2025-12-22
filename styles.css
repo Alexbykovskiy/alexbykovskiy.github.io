@@ -2591,86 +2591,28 @@ font-size: 11px;
    CONTACTS PAGE – FINAL FIX
 ================================ */
 
-.contacts-page {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 80px 20px;
-}
-
-/* Контейнер */
-.contacts-wrapper {
-  max-width: 900px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Заголовок */
-.contacts-title {
-  font-size: clamp(32px, 4vw, 46px);
-  letter-spacing: 0.2em;
-  margin-bottom: 18px;
-}
-
-/* Текст */
-.contacts-text {
-  font-size: 17px;
-  line-height: 1.6;
-  opacity: 0.9;
-  margin-bottom: 36px;
-}
-
-/* ===== ИКОНКИ ===== */
-.contacts-icons {
+.contacts-page .contacts-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
 }
 
-/* Кружок */
-.contacts-icons a {
+.contacts-page .contacts-icons a {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  flex: 0 0 64px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.25s ease;
 }
 
-.contacts-icons a:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.3);
-}
-
-/* САМОЕ ВАЖНОЕ — ОГРАНИЧЕНИЕ РАЗМЕРА SVG */
-.contacts-icons img {
+.contacts-page .contacts-icons a img {
   width: 28px;
   height: 28px;
   max-width: 28px;
   max-height: 28px;
-}
-
-/* КНОПКА */
-.contacts-back-btn {
-  display: inline-block;
-  padding: 16px 36px;
-  background: #e10600;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(225,6,0,0.4);
-  transition: 0.25s ease;
-}
-
-.contacts-back-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(225,6,0,0.55);
+  object-fit: contain;
 }
