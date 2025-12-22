@@ -1126,7 +1126,9 @@ position: relative !important;
 .contact-info-column {
   display: grid;
   gap: 28px;
+ margin-top: 48px; /* ← ВОТ ОН, нужный отступ */
 }
+
 .contact-item {
   display: flex;
   gap: 16px;
