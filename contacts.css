@@ -144,3 +144,25 @@ body::before {
   box-shadow: 0 16px 40px rgba(225,6,0,0.55);
 }
 
+/* ===============================
+   CONTACT ICONS — MOBILE FIX
+================================ */
+@media (max-width: 480px) {
+  .contacts-icons {
+    flex-wrap: nowrap;          /* ❗ запрещаем перенос */
+    gap: 14px;                  /* уменьшаем расстояние */
+  }
+
+  .contacts-icons a {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+  }
+
+  .contacts-icons a img {
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+  }
+}
