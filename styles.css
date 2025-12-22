@@ -196,26 +196,22 @@ background: transparent;
 }
 
 .hero-bg-image {
-
-
   position: absolute;
   inset: 0;
+
+  /* ЧИСТЫЙ ФОН КАК В РЕФЕРЕНСЕ */
   background:
-    linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.35) 100%),
-   url("img/hero1.PNG");
+    linear-gradient(
+      135deg,
+      #1b1f24 0%,
+      #20252b 45%,
+      #1a1d22 100%
+    );
 
-  /* изображение заполняет блок по ширине */
   background-size: cover;
-
-  /* ТЕПЕРЬ ПРИВЯЗЫВАЕМ К ВЕРХУ — видно лицо, низ можно обрезать */
-  background-position: center top;
-
-
-
-
   background-repeat: no-repeat;
-  opacity: 1;
 }
+
 .hero-overlay {
   position: relative;
   z-index: 1;
@@ -274,6 +270,100 @@ background: transparent;
   margin: 0 0 24px;
   color: var(--text-muted);
   font-size: 14px;
+}
+
+/* === HERO OFFER LAYOUT (как в референсе) === */
+
+.hero-offer-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 620px;
+  margin-top: 60px;
+}
+
+.hero-offer-text {
+  background: rgba(20, 22, 25, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 32px 34px;
+  border-radius: 18px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* Заголовок */
+.hero-offer-title {
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
+  color: #ffffff;
+}
+
+/* Вопрос / боль */
+.hero-offer-question {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 24px;
+}
+
+/* Блок выгод */
+.hero-offer-benefits {
+  margin-bottom: 28px;
+}
+
+.hero-offer-benefits-title {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--heading);
+  margin-bottom: 12px;
+}
+
+.hero-offer-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-offer-benefits li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.hero-offer-benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--heading);
+}
+
+@media (max-width: 640px) {
+  .hero-offer-layout {
+    margin-top: 90px;
+    max-width: 100%;
+  }
+
+  .hero-offer-text {
+    padding: 26px 22px;
+  }
+
+  .hero-offer-title {
+    font-size: 26px;
+  }
+
+  .hero-offer-question {
+    font-size: 15px;
+  }
 }
 
 /* === HERO OFFER CARD (главный оффер в шапке) === */
