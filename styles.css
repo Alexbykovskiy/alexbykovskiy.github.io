@@ -2587,3 +2587,19 @@ font-size: 11px;
 .page .section a[href^="tel"] {
   font-weight: 500;
 }
+
+.fast-contact-page .fast-contact-bar {
+  position: static;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: none;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.fast-contact-page .fast-contact-collapse {
+  display: none;
+}
