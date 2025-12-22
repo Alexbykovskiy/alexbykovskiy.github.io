@@ -199,15 +199,14 @@ background: transparent;
   position: absolute;
   inset: 0;
 
-  /* ЧИСТЫЙ ФОН КАК В РЕФЕРЕНСЕ */
   background:
     linear-gradient(
-      135deg,
-      #1b1f24 0%,
-      #20252b 45%,
-      #1a1d22 100%
-    );
-
+      to bottom,
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.15)
+    ),
+    url("img/hero1.png") center / cover no-repeat;
+}
   background-size: cover;
   background-repeat: no-repeat;
 }
