@@ -2459,4 +2459,12 @@ font-size: 11px;
 .page .section a[href^="tel"] {
   font-weight: 500;
 }
-
+/* ===============================
+   HERO OFFER TITLE — MOBILE OFFSET
+   (desktop untouched)
+================================ */
+@media (max-width: 768px) {
+  .hero-offer-title {
+    margin-top: 80px;
+  }
+}
