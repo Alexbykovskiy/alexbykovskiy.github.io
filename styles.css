@@ -2588,41 +2588,60 @@ font-size: 11px;
   font-weight: 500;
 }
 
-/* ================================
-   CONTACTS PAGE – independent
+/* ===============================
+   CONTACTS PAGE – CENTERED LAYOUT
 ================================ */
 
-/* базовая секция страницы */
-.page-section {
-  width: 100%;
-  padding: 80px 0;
-}
-
-/* контакты */
 .page-section--contact {
-  min-height: auto;
-  height: auto;
-  overflow: visible;
+  text-align: center;
 }
 
-/* контейнер */
-.page-section--contact .container {
-  max-width: 1100px;
+/* Заголовок */
+.page-section--contact .section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 0.18em;
+  margin-bottom: 30px;
 }
 
-/* превращаем fast-contact в обычный блок */
-.page-section--contact .fast-contact-bar {
-  position: relative !important;
-  bottom: auto !important;
-  left: auto !important;
-  transform: none !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  display: flex !important;
-  margin-top: 24px;
+/* Подзаголовок */
+.page-section--contact .fast-contact-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
-/* на всякий случай */
+/* Текст под заголовком */
+.page-section--contact .fct-sub {
+  display: block;
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+/* Иконки — по центру */
 .page-section--contact .fast-contact-icons {
-  opacity: 1 !important;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* ===== КНОПКА "НА ГЛАВНУЮ" ===== */
+
+.contact-back-btn {
+  display: inline-block;
+  margin-top: 48px;
+  padding: 16px 34px;
+  background: #e10600;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(225,6,0,0.35);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.contact-back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(225,6,0,0.45);
 }

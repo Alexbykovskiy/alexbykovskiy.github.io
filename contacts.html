@@ -40,15 +40,153 @@
               <img src="img/icons/email.svg" alt="">
             </a>
           
-        <p style="margin-top:40px;">
-          <a href="/" style="text-decoration: underline;">← На главную</a>
-        </p>
+      <p style="margin-top:40px;">
+  <a href="/" class="contact-back-btn">← На главную</a>
+</p>
 
       </div>
 
     </div>
   </section>
 </div>
+
+<section id="contact" class="section section--contact">
+  <div class="container">
+    <h2 class="section-title">КОНТАКТЫ</h2>
+
+   <div class="contact-map-layout">
+
+  <div class="map-and-routes">
+
+    <!-- MAP PLACEHOLDER / OSM -->
+    <div id="map" class="contact-map">
+      <!-- сюда подставим iframe через JS -->
+    </div>
+
+    <!-- ROUTE BUTTONS -->
+    <div class="route-buttons under-map">
+      <a
+        class="route-btn"
+        href="https://www.google.com/maps/dir/?api=1&destination=48.15314570292922,17.106663532019553"
+        target="_blank"
+      >
+        Маршрут в Google Maps
+      </a>
+
+      <a
+        class="route-btn"
+        href="http://maps.apple.com/?daddr=48.15314570292922,17.106663532019553"
+        target="_blank"
+      >
+        Маршрут в Apple Maps
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- CONTACT INFO RIGHT SIDE -->
+  <div class="contact-info-column">
+
+    <!-- Телефон -->
+    <div class="contact-item">
+      <span class="contact-icon-mini">
+        <svg class="icon-contact" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2z"/>
+        </svg>
+      </span>
+      <div>
+        <div class="contact-label">ЗАПИСЬ И ИНФОРМАЦИЯ</div>
+        <a href="tel:+421949516252" class="contact-value">+421 949 516 252</a>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="contact-item">
+      <span class="contact-icon-mini">
+        <svg class="icon-contact" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="16" rx="2" ry="2"/>
+          <polyline points="4 6 12 12 20 6"/>
+        </svg>
+      </span>
+      <div>
+        <div class="contact-label">EMAIL</div>
+        <a href="mailto:alexbykovskiytattoo@gmail.com" class="contact-value">
+          alexbykovskiytattoo@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Часы работы -->
+    <div class="contact-item">
+      <span class="contact-icon-mini">
+        <svg class="icon-contact" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <polyline points="12 7 12 12 16 14"/>
+        </svg>
+      </span>
+      <div>
+        <div class="contact-label">ЧАСЫ РАБОТЫ</div>
+        <div class="contact-value">Пн-Вс 10:00 – 18:00</div>
+        <div class="contact-value">(другие часы — по договоренности)</div>
+      </div>
+    </div>
+
+    <!-- Парковка -->
+    <div class="contact-item">
+      <span class="contact-icon-mini">
+        <svg class="icon-contact" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="3" width="16" height="18" rx="2" ry="2"/>
+          <path d="M10 17V7h3.5a3 3 0 010 6H10"/>
+        </svg>
+      </span>
+      <div>
+        <div class="contact-label">ПАРКОВКА РЯДОМ</div>
+        <div class="contact-value">Leškova + Spojná ulica</div>
+        <div class="contact-value">(PAAS зона)</div>
+      </div>
+    </div>
+
+    <!-- Адрес -->
+    <div class="contact-item">
+      <span class="contact-icon-mini">
+        <svg class="icon-contact" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s-6-7.1-6-11a6 6 0 1112 0c0 3.9-6 11-6 11z"/>
+          <circle cx="12" cy="11" r="2.5"/>
+        </svg>
+      </span>
+      <div>
+        <div class="contact-label">АДРЕС</div>
+        <div class="contact-value">Студия «Body Gallery»</div>
+        <div class="contact-value">Štefánikova 14</div>
+        <div class="contact-value">Bratislava, 811 05</div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
 
 </body>
 </html>
