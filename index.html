@@ -666,48 +666,7 @@
     </footer>
   </div>
 
-  <!-- Плавающая пилюля с быстрыми контактами -->
-  <div id="fast-contact-bar" class="fast-contact-bar">
-    <div class="fast-contact-text">
-  <div class="fast-contact-title">Получить консультацию</div>
-  <span class="fct-sub">и задать все интересующие вопросы,</span><br>
-  <span class="fct-sub">можно любым удобным способом:</span>
-</div>
-    <div class="fast-contact-icons">
-      <a href="https://www.instagram.com/alexbykovskiy/" class="fast-contact-icon" target="_blank" aria-label="Instagram">
-        <img src="img/icons/instagram.svg" alt="Instagram">
-      </a>
-      <a href="https://t.me/abtattooer" class="fast-contact-icon" target="_blank" aria-label="Telegram">
-        <img src="img/icons/telegram.svg" alt="Telegram">
-      </a>
-      <a href="https://wa.me/421949516252" class="fast-contact-icon" target="_blank" aria-label="WhatsApp">
-        <img src="img/icons/whatsapp.svg" alt="WhatsApp">
-      </a>
-      <a href="https://www.facebook.com/alexbykovskiy" class="fast-contact-icon" target="_blank" aria-label="Messenger/Facebook">
-        <img src="img/icons/facebook.svg" alt="Facebook">
-      </a>
-
-<a href="tel:+421949516252" class="fast-contact-icon" target="_blank" aria-label="Позвонить">
-        <img src="img/icons/phone.svg" alt="phone">
-      </a>
-
-<a href="mailto:alexbykovskiytattoo@gmail.com" class="fast-contact-icon" target="_blank" aria-label="E-mail">
-        <img src="img/icons/email.svg" alt="email">
-      </a>
-
-
-   
-
-
- </div>
-     <button class="fast-contact-collapse" id="fastContactCollapse">Свернуть</button>
-</div>
-
-<!-- СВЁРНУТАЯ КНОПКА -->
-<div id="fast-contact-bubble" class="fast-contact-bubble">
-    <img src="img/icons/social.svg" alt="chat">
-</div>
-
+ 
      <script>
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -908,95 +867,6 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
 
 
 
-<script>
- // ===== ПАНЕЛЬКА БЫСТРЫХ КОНТАКТОВ =====
-const fastBar = document.getElementById("fast-contact-bar");
-const fastBubble = document.getElementById("fast-contact-bubble");
-const fastCollapseBtn = document.getElementById("fastContactCollapse");
-
-// аккуратно показать панель (после отправки формы или клика по bubble)
-function showFastContactBar() {
-  if (!fastBar || !fastBubble) return;
-
-  // показываем панель
-  fastBar.classList.add("visible");
-  fastBar.style.opacity = "1";
-
-  // прячем пузырёк
-  fastBubble.style.display = "none";
-
-  localStorage.setItem("contactWidgetState", "expanded");
-}
-
-// аккуратно свернуть панель в пузырёк
-function collapseFastContactBar(withAnimation = true) {
-  if (!fastBar || !fastBubble) return;
-
-  localStorage.setItem("contactWidgetState", "collapsed");
-
-  if (withAnimation) {
-    // анимация ухода вниз и лёгкого уменьшения
-    fastBar.classList.add("hiding");
-
-    setTimeout(() => {
-      fastBar.classList.remove("visible", "hiding");
-      fastBar.style.opacity = "0";
-
-      // показываем пузырёк
-      fastBubble.style.display = "flex";
-      triggerBubblePulse();
-    }, 380); // совпадает с transition в CSS
-  } else {
-    // без анимации (например, при загрузке страницы)
-    fastBar.classList.remove("visible");
-    fastBar.style.opacity = "0";
-    fastBubble.style.display = "flex";
-  }
-}
-
-// подсветка пузырька (жёлтый пульс)
-function triggerBubblePulse() {
-  fastBubble.classList.remove("pulse"); // сброс, чтобы анимация перезапустилась
-  // маленький timeout, чтобы браузер пересчитал классы
-  requestAnimationFrame(() => {
-    fastBubble.classList.add("pulse");
-  });
-}
-
-
-// обработчики кликов
-if (fastCollapseBtn) {
-  fastCollapseBtn.addEventListener("click", () => {
-    collapseFastContactBar(true);
-  });
-}
-
-if (fastBubble) {
-  fastBubble.addEventListener("click", () => {
-    showFastContactBar();
-  });
-}
-
-// восстановление состояния при загрузке страницы
-(function restoreContactWidget() {
-  if (!fastBar || !fastBubble) return;
-
-  const state = localStorage.getItem("contactWidgetState");
-
-  // если раньше пользователь свернул → сразу показываем только пузырёк, без анимации
-  if (state === "collapsed") {
-    fastBar.classList.remove("visible");
-    fastBar.style.opacity = "0";
-    fastBubble.style.display = "flex";
-  } else {
-    // по умолчанию, до первой заявки – ничего не показываем
-    fastBar.classList.remove("visible");
-    fastBar.style.opacity = "0";
-    fastBubble.style.display = "none";
-  }
-})();
-
-   </script>
 
 
 <script>
