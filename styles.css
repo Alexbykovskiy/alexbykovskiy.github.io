@@ -309,6 +309,13 @@ background: transparent;
   margin-bottom: 16px;                /* было 24 */
 }
 
+.hero-offer-question strong {
+  font-size: 1.08em;      /* +8% */
+  font-weight: 500;       /* не жирно, а уверенно */
+  color: #ffffff;
+  display: inline-block;
+}
+
 /* Блок выгод */
 .hero-offer-benefits {
   margin-bottom: 18px;                /* было 28 */
