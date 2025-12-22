@@ -2589,33 +2589,40 @@ font-size: 11px;
 }
 
 /* ================================
-   CONTACTS PAGE (independent)
+   CONTACTS PAGE – independent
 ================================ */
 
+/* базовая секция страницы */
 .page-section {
   width: 100%;
   padding: 80px 0;
 }
 
+/* контакты */
 .page-section--contact {
-  overflow: visible;
-  height: auto;
   min-height: auto;
+  height: auto;
+  overflow: visible;
 }
 
+/* контейнер */
 .page-section--contact .container {
   max-width: 1100px;
 }
 
-/* Заголовок */
-.page-section--contact .section-title {
-  margin-bottom: 32px;
+/* превращаем fast-contact в обычный блок */
+.page-section--contact .fast-contact-bar {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  display: flex !important;
+  margin-top: 24px;
 }
 
-/* Контакты как обычный блок */
-.page-section--contact .fast-contact-bar {
-  position: relative;
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
+/* на всякий случай */
+.page-section--contact .fast-contact-icons {
+  opacity: 1 !important;
 }
