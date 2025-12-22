@@ -2589,122 +2589,89 @@ font-size: 11px;
 }
 
 /* ===============================
-   CONTACTS PAGE — FULL ISOLATION
+   CONTACTS PAGE – FINAL FIX
 ================================ */
 
 .contacts-page {
-  all: initial;
-  display: block;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #ffffff;
-}
-
-/* Разрешаем наследование размеров экрана */
-.contacts-page * {
-  box-sizing: border-box;
-}
-
-/* ФОН СТРАНИЦЫ */
-.contacts-page {
-  min-height: 100vh;
-  background: url("img/background.webp") repeat center top;
-  background-size: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 80px 20px;
 }
 
-/* ЦЕНТР КОНТЕНТА */
-.contacts-page .contacts-wrapper {
-  max-width: 960px;
-  margin: 0 auto;
+/* Контейнер */
+.contacts-wrapper {
+  max-width: 900px;
+  width: 100%;
   text-align: center;
-
-  background: rgba(38, 96, 105, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-radius: 28px;
-  padding: 60px 40px;
-
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
 }
 
-/* ЗАГОЛОВОК */
-.contacts-page h1 {
-  font-size: clamp(32px, 4vw, 48px);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  color: #f0d3a5;
+/* Заголовок */
+.contacts-title {
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: 0.2em;
+  margin-bottom: 18px;
 }
 
-/* ТЕКСТ */
-.contacts-page p {
+/* Текст */
+.contacts-text {
   font-size: 17px;
   line-height: 1.6;
   opacity: 0.9;
   margin-bottom: 36px;
 }
 
-/* ИКОНКИ */
-.contacts-page .contacts-icons {
+/* ===== ИКОНКИ ===== */
+.contacts-icons {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 22px;
-  margin-top: 24px;
   flex-wrap: wrap;
+  margin-bottom: 48px;
 }
 
-.contacts-page .contacts-icons a {
-  width: 56px;
-  height: 56px;
+/* Кружок */
+.contacts-icons a {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(6px);
-
+  background: rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: 0.25s ease;
 }
 
-.contacts-page .contacts-icons a:hover {
-  background: rgba(255,255,255,0.32);
-  transform: scale(1.1);
+.contacts-icons a:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.3);
 }
 
-.contacts-page .contacts-icons img {
-  width: 30px;
-  height: 30px;
+/* САМОЕ ВАЖНОЕ — ОГРАНИЧЕНИЕ РАЗМЕРА SVG */
+.contacts-icons img {
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
 }
 
-/* КНОПКА "НА ГЛАВНУЮ" */
-.contacts-page .back-home {
+/* КНОПКА */
+.contacts-back-btn {
   display: inline-block;
-  margin-top: 48px;
-  padding: 18px 40px;
-
-  background: #e60023;
-  color: #ffffff;
-
+  padding: 16px 36px;
+  background: #e10600;
+  color: #fff;
   text-decoration: none;
-  font-size: 15px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-
   border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(230,0,35,0.45);
+  box-shadow: 0 10px 30px rgba(225,6,0,0.4);
   transition: 0.25s ease;
 }
 
-.contacts-page .back-home:hover {
+.contacts-back-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(230,0,35,0.6);
-}
-
-/* МОБИЛКА */
-@media (max-width: 600px) {
-  .contacts-page .contacts-wrapper {
-    padding: 40px 20px;
-  }
+  box-shadow: 0 16px 40px rgba(225,6,0,0.55);
 }
