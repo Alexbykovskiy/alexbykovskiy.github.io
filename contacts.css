@@ -99,28 +99,25 @@ body::before {
   flex: 0 0 64px;
 
   border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  background: transparent; /* ← УБРАЛИ КРУЖКИ */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
-
 .contacts-icons a:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.3);
+  transform: scale(1.12);
+  opacity: 0.85;
 }
-
 .contacts-icons a img {
-  width: 28px;
-  height: 28px;
-  max-width: 28px;
-  max-height: 28px;
+  width: 44px;
+  height: 44px;
+  max-width: 44px;
+  max-height: 44px;
   object-fit: contain;
 }
-
 /* Кнопка */
 .contacts-back-btn {
   display: inline-block;
