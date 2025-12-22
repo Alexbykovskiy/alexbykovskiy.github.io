@@ -205,7 +205,7 @@ background: transparent;
       rgba(0,0,0,0.45),
       rgba(0,0,0,0.15)
     ),
-    url("img/hero1.png") center / cover no-repeat;
+    url("img/hero1.PNG") center / cover no-repeat;
 }
   background-size: cover;
   background-repeat: no-repeat;
