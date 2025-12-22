@@ -273,14 +273,15 @@ background: transparent;
 }
 
 /* === HERO OFFER LAYOUT (как в референсе) === */
-
 .hero-offer-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  max-width: 860px;          /* ← БЛОК СТАЛ ШИРЕ */
-  margin-top: 80px;
-}
+  grid-template-columns: 1.2fr 0.8fr; /* текст + фото */
+  gap: 40px;
 
+  max-width: 1200px;
+  margin-top: 80px;
+  align-items: stretch;
+}
 
 .hero-offer-text {
   background: rgba(20, 22, 25, 0.55);
@@ -291,6 +292,32 @@ background: transparent;
   border-radius: 18px;
 
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+.hero-offer-visual {
+  background: #e5e5e5;              /* серый как в примере */
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #555;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  min-height: 420px;
+}
+
+@media (max-width: 768px) {
+  .hero-offer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-offer-visual {
+    display: none;
+  }
 }
 
 /* Заголовок */
