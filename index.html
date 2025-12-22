@@ -63,9 +63,9 @@
 
 
     <div class="hero-links">
-      <button class="contact-expand-btn" type="button">
+    <a href="/contacts.html" class="hero-link hero-link--accent">
         ПОЛУЧИТЬ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ
-      </button>
+     </a>
     </div>
 
   </div>
@@ -136,9 +136,9 @@
     </ul>
 
     <div class="why-btn-wrap">
-      <button class="why-btn" onclick="document.querySelector('.contact-expand-btn').click()">
+     <a href="/contacts.html" class="why-btn">
         Получить консультацию
-      </button>
+      </a>
     </div>
   </div>
 </section>
@@ -349,9 +349,9 @@
     </div>
 
      <div class="why-btn-wrap">
-      <button class="why-btn" onclick="document.querySelector('.contact-expand-btn').click()">
+     <a href="/contacts.html" class="hero-link hero-link--accent">
         Получить консультацию
-      </button>
+      </a>
     </div>
 
 
@@ -960,10 +960,6 @@ function triggerBubblePulse() {
   });
 }
 
-// === Открытие панели соцсетей по кнопке "Получить консультацию" ===
-document.querySelector(".contact-expand-btn").onclick = () => {
-  showFastContactBar();
-};
 
 // обработчики кликов
 if (fastCollapseBtn) {
