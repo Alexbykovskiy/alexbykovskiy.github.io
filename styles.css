@@ -244,7 +244,7 @@ background: transparent;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 48px;
    align-items: start;
-  padding-top: 120px; /* немного уменьшаем */
+  padding-top: 0px; /* немного уменьшаем */
   padding-bottom: 60px;
 }
 
@@ -258,11 +258,11 @@ background: transparent;
 }
 
 .hero-name {
-  margin-top: 40px;   /* ПОДНИМАЕМ ФИО НИЖЕ */
+  margin-top: 0px;   /* ПОДНИМАЕМ ФИО НИЖЕ */
 }
 
 .hero-text-block {
-  margin-top: 40px;        /* комфортный отступ вниз */
+  margin-top: 0px;        /* комфортный отступ вниз */
   max-width: 560px;        /* ширина карточки на десктопе */
 }
 .hero-tagline {
@@ -277,7 +277,7 @@ background: transparent;
   display: grid;
   grid-template-columns: 1fr;
   max-width: 620px;
-  margin-top: -10px;
+  margin-top: 5px;
 }
 
 .hero-offer-text {
@@ -2512,11 +2512,7 @@ font-size: 11px;
 @media (max-width: 640px) {
 
   
-  /* Убираем искусственный отступ вниз/вверх */
-  .hero-content {
-    padding-top: 40px !important;
-  }
-
+  
 /* === HERO AS FULL BACKGROUND IMAGE === */
 
 /* Контент — поверх */
