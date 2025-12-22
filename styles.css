@@ -206,11 +206,10 @@ background: transparent;
       rgba(0,0,0,0.15)
     ),
     url("img/hero1.PNG") center / cover no-repeat;
-}
+
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .hero-overlay {
   position: relative;
   z-index: 1;
