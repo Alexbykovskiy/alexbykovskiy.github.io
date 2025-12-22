@@ -2,6 +2,58 @@
    CONTACTS PAGE — ISOLATED STYLES
 ================================ */
 
+/* COLOR PALETTE (from your scheme)
+   -----------------------------
+   background / blocks 1: #2a3c47
+   headings:             #f0d3a5
+   dark background:      #211e1e
+   dark background 2:    #25292c
+   action button:        #e60023
+*/
+
+:root {
+  --bg-main: #211e1e;
+  --bg-alt: #25292c;
+  --bg-block: #2a3c47;
+  --text-main: #f4f4f4;
+  --text-muted: #b2b2b2;
+  --heading: #f0d3a5;
+  --accent: #e60023;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+
+  /* НОВЫЙ ФОН — геометрический паттерн */
+  background: url("img/background.webp") repeat-y center top;
+ background-repeat: repeat;
+  background-size: 720px; /* ← регулируешь размер паттерна */
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+ background: rgba(0,0,0,0);
+  pointer-events: none;
+  z-index: -10; /* ← ОПУСКАЕМ НИЖЕ ВСЕГО */
+}
+
+
 .contacts-page {
   min-height: 100vh;
   display: flex;
