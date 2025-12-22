@@ -277,9 +277,10 @@ background: transparent;
 .hero-offer-layout {
   display: grid;
   grid-template-columns: 1fr;
-  max-width: 620px;
-  margin-top: 60px;
+  max-width: 860px;          /* ← БЛОК СТАЛ ШИРЕ */
+  margin-top: 80px;
 }
+
 
 .hero-offer-text {
   background: rgba(20, 22, 25, 0.55);
@@ -294,32 +295,32 @@ background: transparent;
 
 /* Заголовок */
 .hero-offer-title {
-  font-size: clamp(28px, 4.2vw, 44px);
-  line-height: 1.1;
-  letter-spacing: 0.06em;
+  font-size: clamp(34px, 5.6vw, 64px);   /* ← КРУПНО */
+  line-height: 1.05;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin: 0 0 22px;
+
+  margin: 0 0 36px;
   color: #ffffff;
 }
 
-/* Вопрос / боль */
-.hero-offer-question {
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 24px;
-}
 
+.hero-offer-question {
+  font-size: 22px;          /* ← заметно крупнее */
+  line-height: 1.4;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 32px;
+}
 /* Блок выгод */
 .hero-offer-benefits {
   margin-bottom: 28px;
 }
 
 .hero-offer-benefits-title {
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  color: var(--heading);
-  margin-bottom: 12px;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 18px;
 }
 
 .hero-offer-benefits ul {
@@ -330,10 +331,11 @@ background: transparent;
 
 .hero-offer-benefits li {
   position: relative;
-  padding-left: 14px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 1.5;
+  padding-left: 18px;
+  margin-bottom: 14px;
+
+  font-size: 18px;          /* ← КРУПНЕЕ */
+  line-height: 1.45;
 }
 
 .hero-offer-benefits li::before {
@@ -349,20 +351,24 @@ background: transparent;
 
 @media (max-width: 640px) {
   .hero-offer-layout {
-    margin-top: 90px;
+    margin-top: 70px;
     max-width: 100%;
   }
 
   .hero-offer-text {
-    padding: 26px 22px;
+    padding: 32px 24px;
   }
 
   .hero-offer-title {
-    font-size: 26px;
+    font-size: 32px;
   }
 
   .hero-offer-question {
-    font-size: 15px;
+    font-size: 18px;
+  }
+
+  .hero-offer-benefits li {
+    font-size: 16px;
   }
 }
 
