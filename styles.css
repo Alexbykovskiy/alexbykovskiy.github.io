@@ -351,7 +351,11 @@ background: transparent;
   border-radius: 50%;
   background: var(--heading);
 }
-
+@media (max-width: 768px) {
+  .hero-offer-title {
+    transform: translateY(80px);
+  }
+}
 /* МОБИЛКА */
 @media (max-width: 640px) {
   .hero-offer-layout {
@@ -2466,3 +2470,8 @@ font-size: 11px;
    HERO OFFER TITLE — MOBILE OFFSET
    (desktop untouched)
 ================================ */
+@media (max-width: 768px) {
+  .hero-offer-title {
+    transform: translateY(80px);
+  }
+}
