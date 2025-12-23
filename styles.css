@@ -351,11 +351,15 @@ background: transparent;
   border-radius: 50%;
   background: var(--heading);
 }
+/* ===============================
+   HERO OFFER BLOCK — MOBILE OFFSET
+================================ */
 @media (max-width: 768px) {
-  .hero-offer-title {
-    transform: translateY(80px);
+  .hero-offer-text {
+    margin-top: 80px;
   }
 }
+
 /* МОБИЛКА */
 @media (max-width: 640px) {
   .hero-offer-layout {
@@ -2467,11 +2471,10 @@ font-size: 11px;
   font-weight: 500;
 }
 /* ===============================
-   HERO OFFER TITLE — MOBILE OFFSET
-   (desktop untouched)
+   HERO OFFER BLOCK — MOBILE OFFSET
 ================================ */
 @media (max-width: 768px) {
-  .hero-offer-title {
-    transform: translateY(80px);
+  .hero-offer-text {
+    margin-top: 80px;
   }
 }
