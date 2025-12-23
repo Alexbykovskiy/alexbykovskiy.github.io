@@ -362,7 +362,7 @@ background: transparent;
   .hero-offer-text {
     width: 75%;
     align-self: flex-start;
-    margin-left: 16px;
+    margin-left: 3px;
   }
 }
 /* ===============================
@@ -2497,6 +2497,6 @@ font-size: 11px;
   .hero-offer-text {
     width: 75%;
     align-self: flex-start;
-    margin-left: 16px;
+    margin-left: 3px;
   }
 }
