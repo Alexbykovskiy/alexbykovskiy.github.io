@@ -365,6 +365,9 @@ background: transparent;
 
   .hero-offer-title {
     font-size: 24px;
+    margin-top: 80px;
+ }
+
   }
 
   .hero-offer-question {
@@ -2463,8 +2466,3 @@ font-size: 11px;
    HERO OFFER TITLE — MOBILE OFFSET
    (desktop untouched)
 ================================ */
-@media (max-width: 768px) {
-  .hero-offer-title {
-    margin-top: 80px;
-  }
-}
