@@ -360,7 +360,7 @@ background: transparent;
 }
 @media (max-width: 768px) {
   .hero-offer-text {
-    width: 75%;
+    width: 65%;
     align-self: flex-start;
     margin-left: 3px;
   }
@@ -2495,8 +2495,8 @@ font-size: 11px;
 
 @media (max-width: 768px) {
   .hero-offer-text {
-    width: 75%;
+    width: 65%;
     align-self: flex-start;
-    margin-left: 3px;
+    margin-left: 1px;
   }
 }
