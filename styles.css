@@ -241,7 +241,7 @@ background: transparent;
 ================================ */
 @media (max-width: 768px) {
   .hero {
-    background-position: 35% center;
+    background-position: 25% center;
   }
 }
 
