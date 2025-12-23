@@ -236,7 +236,14 @@ background: transparent;
   border: 1px solid rgba(240, 211, 165, 0.6);
   text-transform: uppercase;
 }
-
+/* ===============================
+   HERO BACKGROUND — MOBILE FACE SHIFT
+================================ */
+@media (max-width: 768px) {
+  .hero {
+    background-position: 35% center;
+  }
+}
 
 .hero-content {
   display: grid;
