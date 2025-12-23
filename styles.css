@@ -370,7 +370,7 @@ background: transparent;
 ================================ */
 @media (max-width: 768px) {
   .hero-offer-text {
-    margin-top: 50px;
+    margin-top: 1px;
   }
 }
 
@@ -2489,7 +2489,7 @@ font-size: 11px;
 ================================ */
 @media (max-width: 768px) {
   .hero-offer-text {
-    margin-top: 50px;
+    margin-top: 1px;
   }
 }
 
