@@ -358,12 +358,19 @@ background: transparent;
   border-radius: 50%;
   background: var(--heading);
 }
+@media (max-width: 768px) {
+  .hero-offer-text {
+    width: 75%;
+    align-self: flex-start;
+    margin-left: 16px;
+  }
+}
 /* ===============================
    HERO OFFER BLOCK — MOBILE OFFSET
 ================================ */
 @media (max-width: 768px) {
   .hero-offer-text {
-    margin-top: 350px;
+    margin-top: 320px;
   }
 }
 
@@ -2483,5 +2490,13 @@ font-size: 11px;
 @media (max-width: 768px) {
   .hero-offer-text {
     margin-top: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-offer-text {
+    width: 75%;
+    align-self: flex-start;
+    margin-left: 16px;
   }
 }
