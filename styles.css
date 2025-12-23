@@ -356,7 +356,7 @@ background: transparent;
 ================================ */
 @media (max-width: 768px) {
   .hero-offer-text {
-    margin-top: 80px;
+    margin-top: 180px;
   }
 }
 
@@ -2475,6 +2475,6 @@ font-size: 11px;
 ================================ */
 @media (max-width: 768px) {
   .hero-offer-text {
-    margin-top: 80px;
+    margin-top: 180px;
   }
 }
