@@ -48,17 +48,20 @@ function loadGTM() {
   if (window.__gtmLoaded) return;
   window.__gtmLoaded = true;
 
+  // dataLayer
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     'event': 'gtm.js',
     'gtm.start': new Date().getTime()
   });
 
+  // основной GTM
   const gtmScript = document.createElement('script');
   gtmScript.async = true;
   gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-54MQ49KK';
   document.head.appendChild(gtmScript);
 
+  // noscript iframe
   const noscript = document.createElement('noscript');
   noscript.innerHTML =
     '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54MQ49KK" ' +
@@ -66,6 +69,7 @@ function loadGTM() {
   document.body.appendChild(noscript);
 }
 </script>
+
 
 <script src="/consent.js"></script>
 
