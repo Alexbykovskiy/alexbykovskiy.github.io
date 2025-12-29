@@ -169,6 +169,45 @@
 
 </div>
 
+<script>
+/* ===== ЗАГРУЗКА GOOGLE TAG MANAGER ПОСЛЕ СОГЛАСИЯ ===== */
+function loadGTM() {
+  if (window.__gtmLoaded) return;
+  window.__gtmLoaded = true;
+
+  // dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'gtm.js',
+    gtm.start: new Date().getTime()
+  });
+
+  // основной GTM
+  const gtmScript = document.createElement('script');
+  gtmScript.async = true;
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-54MQ49KK';
+  document.head.appendChild(gtmScript);
+
+  // noscript iframe
+  const noscript = document.createElement('noscript');
+  noscript.innerHTML =
+    '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54MQ49KK" ' +
+    'height="0" width="0" style="display:none;visibility:hidden"></iframe>';
+  document.body.appendChild(noscript);
+}
+</script>
+
+<script>
+  // --- АВТОПОДКЛЮЧЕНИЕ GTM ЕСЛИ СОГЛАСИЕ УЖЕ ДАНО ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const consent = localStorage.getItem('cookieConsent');
+
+    if (consent === 'accepted') {
+      loadGTM();
+    }
+  });
+</script>
+
 <!-- JS ДЛЯ COOKIE -->
 <script>
   document.getElementById('accept-cookies').onclick = function () {
