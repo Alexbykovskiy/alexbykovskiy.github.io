@@ -178,8 +178,8 @@ function loadGTM() {
   // dataLayer
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
-    event: 'gtm.js',
-    gtm.start: new Date().getTime()
+    'event': 'gtm.js',
+    'gtm.start': new Date().getTime()
   });
 
   // основной GTM
@@ -198,12 +198,14 @@ function loadGTM() {
 </script>
 
 <script>
-  // --- АВТОПОДКЛЮЧЕНИЕ GTM ЕСЛИ СОГЛАСИЕ УЖЕ ДАНО ---
+  // --- АВТОЗАГРУЗКА GTM, ЕСЛИ КУКИ УЖЕ ПРИНЯТЫ ---
   document.addEventListener('DOMContentLoaded', () => {
     const consent = localStorage.getItem('cookieConsent');
 
     if (consent === 'accepted') {
-      loadGTM();
+      if (typeof loadGTM === 'function') {
+        loadGTM();
+      }
     }
   });
 </script>
