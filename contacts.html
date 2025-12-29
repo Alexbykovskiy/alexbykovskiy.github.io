@@ -70,6 +70,18 @@ function loadGTM() {
 }
 </script>
 
+<script>
+  // --- АВТОЗАГРУЗКА GTM, ЕСЛИ КУКИ УЖЕ ПРИНЯТЫ ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const consent = localStorage.getItem('cookieConsent');
+
+    if (consent === 'accepted') {
+      if (typeof loadGTM === 'function') {
+        loadGTM();
+      }
+    }
+  });
+</script>
 
 <script src="/consent.js"></script>
 
